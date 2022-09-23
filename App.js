@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text,TouchableOpacity,ImageBackground } from 'react-native';
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
-import bgImg from './assets/images/intro.png';
-import Navigator from './routes/homeStack';
-
-
-
 
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+
 import openingPage from './screens/opening_page';
 import launchPage from './screens/launch_page';
 import introPage from './screens/intro_page';
 
+//userAuth
+import LoginSignUpPage   from './screens/userAuth/LoginSignup';
+import verificationPage from './screens/userAuth/verification';
+import userRegistration from './screens/userAuth/userRegistration';
+
+
+import clickPhotoPage from './screens/demo_screens/click_photo';
 
 const RootStack  = createStackNavigator (
     {
         default:introPage,
-        Home: launchPage,
-        Opening: openingPage
+        launchPage: launchPage,
+        Opening: openingPage,
+        clickPhotoPage: clickPhotoPage,
+        LoginSignUP: LoginSignUpPage,
+        Verification:verificationPage,
+        UserRegister:userRegistration,
     },
     {
+        // initialRouteName:'UserRegister',
         initialRouteName:'default',
+    
     }
 
 );

@@ -1,14 +1,39 @@
-import launch1 from '../assets/images/2_OPENING_PAGES.png';
+
+
+import launch1 from '../assets/images/1_LAUNCH_PAGE.png';
 import React, { Component } from 'react';
 import { StyleSheet, View, Text,TouchableOpacity,ImageBackground } from 'react-native';
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 // -------launch page
 export default class launchPage extends React.Component{
     render(){
+        const buttonClickedHandler = () => {
+            this.props.navigation.navigate('Opening');
+         };
         return (
+                                    
+                    <TouchableOpacity
+                        style={styles.container}
+                        onPress={buttonClickedHandler}
+                    >
             <ImageBackground source = {launch1} style = {{flex:1   }}>
 
             </ImageBackground>
+                      
+                    </TouchableOpacity>
+                  
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: "center",
+  
+    },
+    
+    countContainer: {
+      alignItems: "center",
+      padding: 10
+    }
+  });

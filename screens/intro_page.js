@@ -6,8 +6,11 @@ import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 export default class introPage extends React.Component {
   render() {
     const buttonClickedHandler = () => {
-         this.props.navigation.navigate('Opening');
+         this.props.navigation.navigate('launchPage');
       };
+      const userAuthPage = () =>{
+          this.props.navigation.navigate('LoginSignUP');
+      }
     return (<>
     
         <ImageBackground source = {bgImg} style = {{flex:1   }}>
@@ -24,8 +27,9 @@ export default class introPage extends React.Component {
         </View>
         <View style={styles.bottomView}>
           <Text style={styles.textStyle}>
-              <Text style={{color:'white',padding:"20",fontSize:"20", textAlign:'center', bottom:10,fontFamily: 'OpenSans-Blod'}}> Have an account?  <Text style={{fontFamily:'Open-Sans-Medium', color: '#2D3791'}}
-      onPress={() => Linking.openURL('###')}>SIGNIN
+              <Text style={{color:'white',padding:"20",fontSize:"20", textAlign:'center', bottom:10,fontFamily: 'OpenSans-Blod'}}> Have an account? 
+               <Text style={{fontFamily:'Open-Sans-Medium', color: '#2D3791'}}
+                onPress={userAuthPage}  >SIGNIN
             </Text> 
             </Text>
             </Text>
