@@ -5,9 +5,10 @@ import { StyleSheet, View, Text,TouchableOpacity,ImageBackground, Touchable } fr
 
  const LoginSignUpPage = () =>{
         const [value, setValue] = useState("");
-      
-   
-
+        //navigate to OTP verification 
+        const userAuthPage = () =>{
+            navigation.navigate('Verification');
+          }
         const phoneInput = useRef(null);
             return (
                 <ImageBackground source = {bgImg} style = {{flex:1   }}>
@@ -25,9 +26,8 @@ import { StyleSheet, View, Text,TouchableOpacity,ImageBackground, Touchable } fr
                 }}
                 
               />
-     
-       
-    <TouchableOpacity
+        <TouchableOpacity
+              onPress={ userAuthPage } 
             style={{
                 marginTop:50,
                 borderWidth:1,
@@ -39,12 +39,9 @@ import { StyleSheet, View, Text,TouchableOpacity,ImageBackground, Touchable } fr
                 color:'red;',
                 borderRadius:32,
               }}
-              onPress={ ()=>{
-                // navigation.navigate('default');
-
-              } } 
           >
               <Text style={{color:'white', fontSize:'20'} }>Proceed</Text>
+          
           </TouchableOpacity>
             </View>
           </View>

@@ -1,42 +1,46 @@
 import React,{useState,  Component } from 'react';
 import { Dimensions, StyleSheet, View, Text,TouchableOpacity,ImageBackground, Image } from 'react-native';
 import {scale} from 'react-native-size-matters';
-//....
 
-import Step1 from '../../assets/images/step1.png';
-import Step2 from '../../assets/images/step2.png';
-import Step3 from '../../assets/images/step3.png';
-// 
- 
+// images description array
+const images = [
+    {
+        image:  require('../../assets/images/step1.png'),
+        description: "Just take a picture of your clothes 📸  ",
+    },
 
+    {
+        image:  require('../../assets/images/step2.png'),
+        description: "Get matching suggestions with your favorite brands 👚",
+    },
+
+    {
+        image:  require('../../assets/images/step3.png'),
+        description: "See endless outfits for your closet 💡",
+    },
  
+];
+
+
+
 const clickPhotoPage =() =>{
     const [value, setValue] = useState(1);
     const [stepDesc, setStepDesc] = useState("Just take a picture of your clothes 📸  ");
-    
-    var img = Step1;
- 
+
+
     const incrementValue = () => {
         if(value<3){
-            
-            setValue(value + 1);
 
+            setValue(value + 1);
         if(value+1 == 2 ) {
-            //changing the between images 
-                img = Step2;
-            //and tips
-            setStepDesc("Get matching suggestions with your favorite brands 👚");
+            setStepDesc(images[1].description);
+
         }
         else if( value+1 ==3){
-            const userAuthPage = () =>{
-                this.props.navigation.navigate('default');
-            }
+            setStepDesc(images[2].description);
         }
         }else{
-            //we have to jump to login page 
-            img = require('../../assets/images/step1.png');
-            setStepDesc("Just take a picture of your clothes 📸  ");
-            setValue(1);
+            navigation.navigate('LoginSignUP'); 
         }
     }
   
@@ -46,15 +50,14 @@ const clickPhotoPage =() =>{
         marginTop:scale(40),fontSize: scale(15), color:'#008000'}}> Step <Text style={{fontSize:'20'}}>{value}</Text>
         </Text>  
         
-
         <Text style={{fontFamily: 'OpenSans', paddingLeft:10,
         marginTop:scale(20),    fontSize: scale(15), color:'black'}}> {stepDesc}          </Text>
-
-        <Image style={{marginTop:20, resizeMode: "strech", width:385, height:429}}   source={ img    }  />
         
-    <TouchableOpacity style={styles.touchable} onPress={incrementValue}>
+        <Image style={{marginTop:20, resizeMode: "strech", width:385, height:429}}   source={  images[value-1].image     }  />
+        
+        <TouchableOpacity style={styles.touchable} onPress={incrementValue}>
         <Text style={styles.touchableText}>Next</Text>
-    </TouchableOpacity>
+        </TouchableOpacity>
        
     </View>
   );

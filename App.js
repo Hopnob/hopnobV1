@@ -26,9 +26,10 @@ const RootStack  = createStackNavigator (
         UserRegister:userRegistration,
     },
     {
-        // initialRouteName:'UserRegister',
+        // change this for testing and changing screens
+        // initialRouteName:'clickPhotoPage',
         initialRouteName:'default',
-    
+
     }
 
 );

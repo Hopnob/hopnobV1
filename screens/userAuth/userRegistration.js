@@ -23,7 +23,7 @@ import { Placeholder } from 'react-bootstrap';
           };
         const [text, onChangeText] = React.useState("");
         const userAuthPage = () =>{
-            this.props.navigation.navigate('LoginSignUP');
+          navigation.navigate('LoginSignUP');
         }
 
         const phoneInput = useRef(null);
