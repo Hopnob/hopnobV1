@@ -11,8 +11,9 @@ import introPage from './screens/intro_page';
 import LoginSignUpPage   from './screens/userAuth/LoginSignup';
 import verificationPage from './screens/userAuth/verification';
 import userRegistration from './screens/userAuth/userRegistration';
-//User Style 
+//User Style and  Face Scan 
 import styleTestPage from './screens/userStyles/style_test';
+import faceScanPage from './screens/userStyles/faceScan';
 
 import clickPhotoPage from './screens/demo_screens/click_photo';
 
@@ -26,6 +27,7 @@ const RootStack  = createStackNavigator (
         Verification:verificationPage,
         UserRegister:userRegistration,
         StyleTest:styleTestPage,
+        faceScan:faceScanPage,
     },
     {
         // change this for testing and changing screens
