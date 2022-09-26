@@ -11,7 +11,8 @@ import introPage from './screens/intro_page';
 import LoginSignUpPage   from './screens/userAuth/LoginSignup';
 import verificationPage from './screens/userAuth/verification';
 import userRegistration from './screens/userAuth/userRegistration';
-
+//User Style 
+import styleTestPage from './screens/userStyles/style_test';
 
 import clickPhotoPage from './screens/demo_screens/click_photo';
 
@@ -24,11 +25,12 @@ const RootStack  = createStackNavigator (
         LoginSignUP: LoginSignUpPage,
         Verification:verificationPage,
         UserRegister:userRegistration,
+        StyleTest:styleTestPage,
     },
     {
         // change this for testing and changing screens
-        // initialRouteName:'clickPhotoPage',
-        initialRouteName:'default',
+        initialRouteName:'StyleTest',
+        // initialRouteName:'default',
 
     }
 
