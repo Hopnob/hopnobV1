@@ -17,6 +17,12 @@ import faceScanPage from './screens/userStyles/faceScan';
 
 import clickPhotoPage from './screens/demo_screens/click_photo';
 
+//bottom nav bar
+import bottomNav from './screens/components/bottom_navbar';
+//top nav bar
+import topNavBar from './screens/components/top_navbar';
+
+
 const RootStack  = createStackNavigator (
     {
         default:introPage,
@@ -28,10 +34,12 @@ const RootStack  = createStackNavigator (
         UserRegister:userRegistration,
         StyleTest:styleTestPage,
         faceScan:faceScanPage,
+        bottomNavBar: bottomNav,
+        topNavBar:topNavBar,
     },
     {
         // change this for testing and changing screens
-        initialRouteName:'StyleTest',
+        initialRouteName:'topNavBar',
         // initialRouteName:'default',
 
     }
