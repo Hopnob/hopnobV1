@@ -5,7 +5,7 @@ import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 export default class  extends React.Component {
   render() {
     const buttonClickedHandler = () => {
-         this.props.navigation.navigate('launchPage');
+         this.props.navigation.navigate('dressMeHome');
       };
       
 

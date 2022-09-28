@@ -5,12 +5,10 @@ import {useState} from'react';
 import Bottomnav from '../components/bottom_navbar';
 import Topnavbar from '../components/top_navbar';
 
-import { StyleSheet,ImageBackground, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import { StyleSheet,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 
 export default function addPage() {
-    const clothingHandler =()=>{
-        this.props.navigation.navigate('addWardrobeSection');
-    }
+    
   return (
    <View style={styles.appContainer}>
        <View style={styles.topNavBar}>
@@ -18,36 +16,36 @@ export default function addPage() {
        </View>
 
        <View style={styles.banner}>
-            <ImageBackground style={{ width:"100%",height:206,justifyContent:'center'}} source={ require('../../assets/images/addMe/bannerAdd.png')}>
-                <Text style={{fontSize:19,textAlign:'center', fontWeight:600,width:'40%',padding:5}}>Start with your favorite items</Text>
-                <Text style={{fontSize:16,textAlign:'center', fontWeight:400,width:'40%',padding:10}}>Add just 15 clothes to begin!</Text>
-            </ImageBackground>
+           <Image style={{position:'absolute',right:0, width: 172,height: 161, justifyContent:'center'}} source={ require('../../assets/images/addMe/bannerAdd2.png')} /> 
+            <Text style={{fontSize:19,textAlign:'center', fontWeight:600,width:'60%',padding:40}}>Add “YOUR” clothing images</Text>
+           
        </View>
 
         <View style={styles.clothing}>
-        <TouchableOpacity onPress={clothingHandler}>
-        
-            <Text style={{color:'white', fontSize:16,textAlign:'center', fontWeight:600}}> 
-            <Text style = {{textDecorationLine: 'underline'}}> CLICK HERE
-            </Text>  to Add “YOUR” Clothing images</Text>
-
+        <TouchableOpacity >
+        <Text style={{paddingHorizontal:15,textAlign:'center', marginHorizontal:10,paddingVertical:4,color:'white',backgroundColor:'#2B388F', borderRadius:20, fontSize:20, fontWeight:600}}> 
+             CLICK  </Text>
         </TouchableOpacity>
+
+        <Text style={{ color:'black', fontSize:16, fontWeight:600}}> 
+        photos from your camera</Text>
+
         </View>
 
         <View style={{width:"100%",marginTop:40}}>
-
             <Text style={{color:'black', fontSize:16,textAlign:'center', fontWeight:600}}> OR  </Text>
-
         </View>
 
         <View style={styles.ourImage}>
-        <TouchableOpacity>
-        
-            <Text style={{color:'white', fontSize:16,textAlign:'center', fontWeight:600}}> 
-            <Text style = {{textDecorationLine: 'underline'}}> CLICK HERE
-            </Text>  to Select from “OUR” images</Text>
-
+        <TouchableOpacity >
+        <Text style={{paddingHorizontal:15,textAlign:'center', marginHorizontal:10,paddingVertical:4,color:'white',backgroundColor:'#2B388F', borderRadius:20, fontSize:20, fontWeight:600}}> 
+        UPLOAD  </Text>
         </TouchableOpacity>
+
+        <Text style={{ color:'black', fontSize:16, fontWeight:600}}> 
+        pictures from your gallery
+         </Text>
+
         </View>
 
 
@@ -74,24 +72,26 @@ const styles = StyleSheet.create({
      width:'100%',
      position:'absolute',
  },banner:{
-     width:'100%',
      marginTop:30,
+     width:"100%",
+     alignContent:'center',
 
  },clothing:{
      width:'100%',
-     backgroundColor:'#5BAE58',
+     backgroundColor:'rgba(219, 34, 94, 0.3)',
      marginTop:30,
-     borderRadius:20,
      paddingVertical:10,
      paddingHorizontal:5,
+     flexDirection:'row'
  },
  ourImage:{
     width:'100%',
-    backgroundColor:'#C87600',
+    backgroundColor:'rgba(251, 162, 59, 0.8)',
     marginTop:30,
-    borderRadius:20,
     paddingVertical:10,
     paddingHorizontal:5,
+    flexDirection:'row'
+
 },
  
 });

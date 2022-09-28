@@ -5,7 +5,10 @@ import { StyleSheet, View, Text,TouchableOpacity,ImageBackground, Touchable } fr
 
  const verificationPage = () =>{
         const [value, setValue] = useState("");
-        const userAuthPage = () =>{
+        // const userAuthPage = () =>{
+        //     this.props.navigation.navigate('LoginSignUP');
+        // }
+        function userAuthPage() {
             this.props.navigation.navigate('LoginSignUP');
         }
         const phoneInput = useRef(null);

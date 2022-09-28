@@ -22,6 +22,9 @@ const icons = [
 ];
 
 const Bottomnav =() =>{
+    const addClickedHandler = () => {
+        this.props.navigation.navigate('addSection');
+     };
   return (
     <View style={styles.containerMain} >
          <View style={{backgroundColor:'white',flexDirection:'row',justifyContent:'space-around'}}>
@@ -33,7 +36,7 @@ const Bottomnav =() =>{
                </View>
                
                <View style={{padding:10,justifyContent:'space-around',alignItems:'center'}}>
-               <TouchableOpacity style={{justifyContent:'space-around',alignItems:'center' }}>
+               <TouchableOpacity onPress={addClickedHandler} style={{justifyContent:'space-around',alignItems:'center' }}>
                <Image style={{width:30,height:30}} source={icons[1].image}></Image>
                     
                 <Text style={{fontSize:12,fontWeight:700}}>Add</Text>

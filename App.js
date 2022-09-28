@@ -17,6 +17,10 @@ import faceScanPage from './screens/userStyles/faceScan';
 
 import clickPhotoPage from './screens/demo_screens/click_photo';
 
+//dressMeHomePage
+import dressMeHome from './screens/dressMe/dressme_page';
+
+
 //bottom nav bar
 import Bottomnav from './screens/components/bottom_navbar';
 //top nav bar
@@ -24,6 +28,7 @@ import Topnavbar from './screens/components/top_navbar';
 
 //addSection
 import addPage from './screens/addSection/addPage';
+import addWardrobePage from './screens/addSection/addPage2';
 
 const RootStack  = createStackNavigator (
     {
@@ -39,11 +44,13 @@ const RootStack  = createStackNavigator (
         bottomNavBar: Bottomnav,
         topNavBar:Topnavbar,
         addSection:addPage,
+        dressMeHome:dressMeHome,
+        addWardrobeSection:addWardrobePage
     },
     {
         // change this for testing and changing screens
-        initialRouteName:'addSection',
-        // initialRouteName:'default',
+        // initialRouteName:'dressMeHome',
+        initialRouteName:'addWardrobeSection',
 
     }
 

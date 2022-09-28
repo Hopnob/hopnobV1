@@ -22,8 +22,8 @@ import { Placeholder } from 'react-bootstrap';
             );
           };
         const [text, onChangeText] = React.useState("");
-        const userAuthPage = () =>{
-          navigation.navigate('LoginSignUP');
+        const processedHandler = () =>{
+          navigation.navigate('StyleTest');
         }
 
         const phoneInput = useRef(null);
@@ -76,9 +76,7 @@ import { Placeholder } from 'react-bootstrap';
                 color:'red;',
                 borderRadius:32,
               }}
-              onPress={ ()=>{
-                // navigation.navigate('default');
-              } } 
+              onPress={ processedHandler } 
           >
               <Text style={{color:'white', fontSize:'20'} }>Submit</Text>
           </TouchableOpacity>
