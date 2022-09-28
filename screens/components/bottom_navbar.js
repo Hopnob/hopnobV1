@@ -21,7 +21,7 @@ const icons = [
     },
 ];
 
-const bottomNav =() =>{
+const Bottomnav =() =>{
   return (
     <View style={styles.containerMain} >
          <View style={{backgroundColor:'white',flexDirection:'row',justifyContent:'space-around'}}>
@@ -57,7 +57,7 @@ const bottomNav =() =>{
     </View>
   );
 }
-export default bottomNav;
+export default Bottomnav;
  
 const styles = StyleSheet.create({
     containerMain: {

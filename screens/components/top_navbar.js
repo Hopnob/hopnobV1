@@ -19,7 +19,7 @@ const icons = [
     
 ];
 
-const topNavBar =() =>{
+const Topnavbar =() =>{
   return (
     <View style={styles.containerMain} >
          <View style={{backgroundColor:'none',flexDirection:'row',justifyContent:'space-around'}}>
@@ -49,7 +49,7 @@ const topNavBar =() =>{
     </View>
   );
 }
-export default topNavBar;
+export default Topnavbar;
  
 const styles = StyleSheet.create({
     containerMain: {
