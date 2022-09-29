@@ -50,8 +50,8 @@ const RootStack  = createStackNavigator (
     },
     {
         // change this for testing and changing screens
-        initialRouteName:'addWardrobeSection',
-        // initialRouteName:'ourImages',
+        // initialRouteName:'dressMeHome',
+        initialRouteName:'ourImages',
 
     }
 
