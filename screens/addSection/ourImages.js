@@ -8,10 +8,10 @@ export default function ourImagesPage() {
 
     const[people, setPeople] = useState([
         {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'1'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'2'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'3'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'4'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'5'},
+        {image: require('../../assets/images/topsWardrobe/Rectangle101.png'), id:'2'},
+        {image: require('../../assets/images/topsWardrobe/Rectangle80.png'), id:'3'},
+        {image: require('../../assets/images/topsWardrobe/Rectangle98.png'), id:'4'},
+        {image: require('../../assets/images/topsWardrobe/Rectangle99.png'), id:'5'},
         {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'6'},
     ])
 
@@ -21,6 +21,7 @@ export default function ourImagesPage() {
     }
   return (
    <View style={styles.appContainer}>
+
        <View style={styles.topNavBar}>
            <Topnavbar />
        </View>
@@ -31,7 +32,6 @@ export default function ourImagesPage() {
             <Text style={{marginTop:30, fontWeight:400, fontSize:20}}> TOPS </Text>     
 
        </View>
-
 
         <View style={{backgroundColor:'white', alignItems:'center'}} >
             <FlatList numColumns={2} 
@@ -75,8 +75,6 @@ const styles = StyleSheet.create({
      margin:24,
      height:130,
      width:130,
-     backgroundColor:'pink',
-     fontSize:20
  },
  bottomNavBar:{
      bottom:0,
