@@ -29,7 +29,7 @@ import Topnavbar from './screens/components/top_navbar';
 //addSection
 import addPage from './screens/addSection/addPage';
 import addWardrobePage from './screens/addSection/addPage2';
-
+import ourImagesPage from './screens/addSection/ourImages';
 const RootStack  = createStackNavigator (
     {
         default:introPage,
@@ -41,16 +41,17 @@ const RootStack  = createStackNavigator (
         UserRegister:userRegistration,
         StyleTest:styleTestPage,
         faceScan:faceScanPage,
+        addWardrobeSection:addWardrobePage,
         bottomNavBar: Bottomnav,
         topNavBar:Topnavbar,
         addSection:addPage,
         dressMeHome:dressMeHome,
-        addWardrobeSection:addWardrobePage
+        ourImages:ourImagesPage,
     },
     {
         // change this for testing and changing screens
         // initialRouteName:'dressMeHome',
-        initialRouteName:'addWardrobeSection',
+        initialRouteName:'ourImages',
 
     }
 
