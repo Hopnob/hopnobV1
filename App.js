@@ -30,6 +30,11 @@ import Topnavbar from './screens/components/top_navbar';
 import addPage from './screens/addSection/addPage';
 import addWardrobePage from './screens/addSection/addPage2';
 import ourImagesPage from './screens/addSection/ourImages';
+
+
+//imporint camera component
+import Cameracmp from './screens/components/camera';
+
 const RootStack  = createStackNavigator (
     {
         default:introPage,
@@ -47,11 +52,12 @@ const RootStack  = createStackNavigator (
         addSection:addPage,
         dressMeHome:dressMeHome,
         ourImages:ourImagesPage,
+        Cameracomponent:Cameracmp,
     },
     {
         // change this for testing and changing screens
-        // initialRouteName:'dressMeHome',
-        initialRouteName:'addSection',
+        // initialRouteName:'default',
+        initialRouteName:'Cameracomponent',
 
     }
 
