@@ -1,62 +1,163 @@
-import { StatusBar } from 'expo-status-bar';
-import {useState} from'react';
-
+ 
 //import nav bar components
 import Bottomnav from '../components/bottom_navbar';
 import Topnavbar from '../components/top_navbar';
 
-import { StyleSheet,ImageBackground, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+//import bottom sheet
+import BottomSheet from 'reanimated-bottom-sheet';
+import Animated from 'react-native-reanimated';
 
-export default function addPage() {
-    const clothingHandler =()=>{
-        this.props.navigation.navigate('addWardrobeSection');
-    }
+import React from 'react';
+
+import { StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+
+export default class addPage extends React.Component {
+  
+    bs = React.createRef();
+    fall = new Animated.Value(1);
+    
+    renderInner =() =>( 
+        <View style={{height:'100%', backgroundColor:'white',paddingLeft:30}}>
+            
+            <TouchableOpacity>
+            <View style={{flexDirection:'row',marginTop:20,marginBottom:20 }}> 
+               
+               <View style={{ width:42,height:36, padding:10, marginRight:20 }}>
+               <Image style={{width:40, height:32 ,} }  source ={ require ('../../assets/images/bottomSheet/camera.png')} />
+                   
+               </View>
+               <View style={{marginRight:50,paddingTop:15}}>
+               <Text style={{fontSize:14, fontWeight:700 }}  > <Text style={{color:'#E4637C'}}> Click </Text>  from your camera </Text> 
+                   
+               </View>
+               <View style={{paddingTop:15}}>
+               <Image style={{width:35, height:35,}} source ={ require ('../../assets/images/bottomSheet/arrow_circle.png')} />
+                   
+               </View>
+               </View>        
+
+
+            </TouchableOpacity>
+                
+            <TouchableOpacity>
+            <View style={{flexDirection:'row',marginTop:20,marginBottom:20 }}>  
+
+
+                <View style={{ width:42,height:36, padding:10, marginRight:20 }}>
+                <Image style={{width:44.9, height:32.86}}  source ={ require ('../../assets/images/bottomSheet/upload.png')} />
+
+                    
+                </View>
+                <View style={{marginRight:45,paddingTop:15}}>
+                <Text style={{fontSize:14, fontWeight:700}}> <Text style={{color:'#E4637C'}}> Upload </Text>  from your gallery </Text> 
+                    
+                </View>
+                <View style={{paddingTop:15}}>
+                <Image style={{width:35, height:35}} source ={ require ('../../assets/images/bottomSheet/arrow_circle.png')} />
+                    
+                </View>
+                </View>        
+
+            </TouchableOpacity>
+
+               
+
+
+
+
+        </View>
+        );
+
+    renderHeader =() => (
+            <View style={{backgroundColor:'white', paddingLeft:30, borderTopLeftRadius:20, borderTopRightRadius:20}}> 
+            <Text style={{ color:'#2D3791', fontSize:16, fontWeight:700}}> Add your clothing images </Text>
+            </View> 
+           );
+     
+    render(){
+        
   return (
-   <View style={styles.appContainer}>
-       <View style={styles.topNavBar}>
-           <Topnavbar />
-       </View>
+    <View style={styles.appContainer}>
+        <View style={styles.topNavBar}>
+            <Topnavbar />
+        </View>
 
-       <View style={styles.banner}>
-            <ImageBackground style={{ width:"100%",height:206,justifyContent:'center'}} source={ require('../../assets/images/addMe/bannerAdd.png')}>
-                <Text style={{fontSize:19,textAlign:'center', fontWeight:600,width:'40%',padding:5}}>Start with your favorite items</Text>
-                <Text style={{fontSize:16,textAlign:'center', fontWeight:400,width:'40%',padding:10}}>Add just 15 clothes to begin!</Text>
-            </ImageBackground>
-       </View>
-
-        <View style={styles.clothing}>
-        <TouchableOpacity onPress={clothingHandler}>
+        <BottomSheet 
+        ref={this.bs}
         
-            <Text style={{color:'white', fontSize:16,textAlign:'center', fontWeight:600}}> 
-            <Text style = {{textDecorationLine: 'underline'}}> CLICK HERE
-            </Text>  to Add “YOUR” Clothing images</Text>
+        renderContent={this.renderInner}
+        renderHeader = {this.renderHeader}
 
-        </TouchableOpacity>
+
+
+        snapPoints={[210,0]}
+        initialSnap={1}
+        callbackNode={this.fall}
+        enabledGestureInteraction={true}
+
+        />
+
+
+ 
+    <View style={{width:"100%",marginTop:10, alignItems:'center'}}>
+         <Image style={{width:327, height:150}} source ={ require ('../../assets/images/addMe/bannerLP2.png')} />
+    </View>
+ 
+         
+         <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-around' }}> 
+         <View style={{ padding:10, width:155,height:184, backgroundColor:'#F3F3F3',
+     marginTop:30,
+     borderRadius:20 ,justifyContent:'space-around', alignItems:'center'}}>
+         <Image style={{width:35, height:35}} source ={ require ('../../assets/images/addMe/addLP2.png')} />
+
+                <View  >
+                <TouchableOpacity onPress ={() => this.bs.current.snapTo(0) } >
+                    <Text style={{color:'black', fontSize:16,textAlign:'center', fontWeight:600}}> 
+                    <Text style = {{color:'#E4637C'}}> Add 
+                    </Text>  your clothing images </Text>
+
+                </TouchableOpacity>
+                </View> 
+
+        <Image style={{width:35, height:35}} source ={ require ('../../assets/images/bottomSheet/arrow_circle.png')} />
+         
+         </View>
+
+         <View style={{ padding:10, width:155,height:184, backgroundColor:'#F3F3F3',
+     marginTop:30,
+     borderRadius:20 ,justifyContent:'space-around', alignItems:'center'}}>
+         <Image style={{width:35, height:35}} source ={ require ('../../assets/images/addMe/checkLP2.png')} />
+
+                <View  >
+                <TouchableOpacity  >
+                    <Text style={{color:'black', fontSize:16,textAlign:'center', fontWeight:600}}> 
+                   Select <Text style = {{color:'#E4637C'}}> Our 
+                    </Text>  clothing images </Text>
+
+                </TouchableOpacity>
+                </View> 
+
+        <Image style={{width:35, height:35}} source ={ require ('../../assets/images/bottomSheet/arrow_circle.png')} />
+         
+         </View>
+         
+
+         </View>
+ 
+         
+ 
+           
+ 
+       
+ 
+        <View style={styles.bottomNavBar}>
+            <Bottomnav />
         </View>
+ 
+    </View>
+   );
+    }
 
-        <View style={{width:"100%",marginTop:40}}>
-
-            <Text style={{color:'black', fontSize:16,textAlign:'center', fontWeight:600}}> OR  </Text>
-
-        </View>
-
-        <View style={styles.ourImage}>
-        <TouchableOpacity>
-        
-            <Text style={{color:'white', fontSize:16,textAlign:'center', fontWeight:600}}> 
-            <Text style = {{textDecorationLine: 'underline'}}> CLICK HERE
-            </Text>  to Select from “OUR” images</Text>
-
-        </TouchableOpacity>
-        </View>
-
-
-       <View style={styles.bottomNavBar}>
-           <Bottomnav />
-       </View>
-
-   </View>
-  );
 }
 
 const styles = StyleSheet.create({
@@ -76,10 +177,12 @@ const styles = StyleSheet.create({
  },banner:{
      width:'100%',
      marginTop:30,
+    
 
  },clothing:{
-     width:'100%',
-     backgroundColor:'#5BAE58',
+     width:155,
+     height:184,
+     backgroundColor:'#F3F3F3',
      marginTop:30,
      borderRadius:20,
      paddingVertical:10,

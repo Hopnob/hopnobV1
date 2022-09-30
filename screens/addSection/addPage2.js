@@ -33,7 +33,7 @@ export default function addPage() {
         </View>
 
         <View style={{width:"100%",marginTop:40}}>
-            <Text style={{color:'black', fontSize:16,textAlign:'center', fontWeight:600}}> OR  </Text>
+            <Text style={{color:'black', fontSize:16,textAlign:'center', fontWeight:600}}> OR </Text>
         </View>
 
         <View style={styles.ourImage}>
