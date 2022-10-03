@@ -21,7 +21,7 @@ export default function Cameracmp() {
   }, []);
 
   if (hasCameraPermission === undefined) {
-    return <Text>Requesting permissions...</Text>
+    return <Text>Requesting permissions </Text>
   } else if (!hasCameraPermission) {
     return <Text>Permission for camera not granted. Please change this in settings.</Text>
   }
@@ -62,22 +62,24 @@ export default function Cameracmp() {
 
   return (
     <View style={{padding:24, backgroundColor:'white',flex: 1}}>  
-            <View style={{flex:1, marginBottom:104}}> 
+              <View style={{flex:1, marginBottom:104}}> 
                     <Camera ref={cameraRef}>
-                        <StatusBar style="auto" />
+                    <StatusBar style="auto" />
                     </Camera>
-            </View>    
+              </View>    
 
             <View style={styles.buttonContainer}>
             <TouchableOpacity onPress={takePic}>
                 <Image style={{width:50,height:50}} source={ require('../../assets/images/Camera/capture.png')} />
             </TouchableOpacity>
-
             </View>
+             
             <View style={styles.buttonContainer2}>
-                <TouchableOpacity><Text style={{fontSize:20, fontWeight:400}}>Cancel</Text> </TouchableOpacity>
-               
+                         <TouchableOpacity>
+                            <Text style={{fontSize:20}}> Cancel</Text>
+                          </TouchableOpacity>
             </View>
+             
     </View> 
     
   );

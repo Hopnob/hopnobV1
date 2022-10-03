@@ -27,6 +27,8 @@ import Bottomnav from './screens/components/bottom_navbar';
 import Topnavbar from './screens/components/top_navbar';
 
 //addSection
+
+
 import addPage from './screens/addSection/addPage';
 import addWardrobePage from './screens/addSection/addPage2';
 import ourImagesPage from './screens/addSection/ourImages';
@@ -34,7 +36,7 @@ import ourImagesPage from './screens/addSection/ourImages';
 
 //imporint camera component
 import Cameracmp from './screens/components/camera';
-
+import Gallerycmp from './screens/components/gallery';
 const RootStack  = createStackNavigator (
     {
         default:introPage,
@@ -53,6 +55,7 @@ const RootStack  = createStackNavigator (
         dressMeHome:dressMeHome,
         ourImages:ourImagesPage,
         Cameracomponent:Cameracmp,
+        Gallery:Gallerycmp,
     },
     {
         // change this for testing and changing screens

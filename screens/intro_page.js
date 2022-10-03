@@ -15,20 +15,20 @@ export default class introPage extends React.Component {
     
         <ImageBackground source = {bgImg} style = {{flex:1   }}>
    <View style={styles.containerMain} >
-            <Text style={{fontFamily: 'OpenSans-ExtraBlod',textAlign:'center',marginTop:scale(40),fontSize: scale(15),marginRight:scale(66),  marginLeft:scale(65), color:'white'}}>Hi! Let’s build your digital wardrobe </Text>
+            <Text style={{textAlign:'center',marginTop:scale(40),marginRight:scale(66),  marginLeft:scale(65), color:'white'}}>Hi! Let’s build your digital wardrobe </Text>
 
         <View style={styles.button1}>
             <TouchableOpacity 
                 onPress={buttonClickedHandler}
                 style={styles.roundButton1}>
-                <Text style={{fontFamily: 'OpenSans-ExtraBlod', color:'white'}}>START</Text>
+                <Text style={{ color:'white'}}>START</Text>
             </TouchableOpacity>
 
         </View>
         <View style={styles.bottomView}>
           <Text style={styles.textStyle}>
-              <Text style={{color:'white',padding:"20",fontSize:"20", textAlign:'center', bottom:10,fontFamily: 'OpenSans-Blod'}}> Have an account? 
-               <Text style={{fontFamily:'Open-Sans-Medium', color: '#2D3791'}}
+              <Text style={{color:'white',padding:"20", textAlign:'center', bottom:10}}> Have an account? 
+               <Text style={{  color: '#2D3791'}}
                 onPress={userAuthPage}  >SIGNIN
             </Text> 
             </Text>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: '#fff',
-    fontSize: 18,
+ 
   },    roundButton1: {
     width: 75,
 height: 75,
