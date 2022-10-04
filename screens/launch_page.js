@@ -13,7 +13,7 @@ export default class launchPage extends React.Component{
                                     
                     <TouchableOpacity
                         style={styles.container}
-                        onPress={buttonClickedHandler}
+                       
                     >
             <ImageBackground source = {launch1} style = {{flex:1   }}>
 

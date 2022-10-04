@@ -37,30 +37,51 @@ import ourImagesPage from './screens/addSection/ourImages';
 //imporint camera component
 import Cameracmp from './screens/components/camera';
 import Gallerycmp from './screens/components/gallery';
+
+
+//import wardrobe 
+import WardrobePage  from './screens/wardrobe/wardrobe_page';
+import ProductHopnobPage from './screens/wardrobe/wardrobe_hopnob';
+import ProductConsumerPage from './screens/wardrobe/wardrobe_consumer';
+
+
+
+//improting outfits
+import OutfitsPage from './screens/outfits/outfitsPage';
+
+
+import DefaultTestingPage from './screens/testingDefault';
+
 const RootStack  = createStackNavigator (
     {
         default:introPage,
         launchPage: launchPage,
-        Opening: openingPage,
-        clickPhotoPage: clickPhotoPage,
-        LoginSignUP: LoginSignUpPage,
-        Verification:verificationPage,
-        UserRegister:userRegistration,
-        StyleTest:styleTestPage,
-        faceScan:faceScanPage,
-        addWardrobeSection:addWardrobePage,
-        bottomNavBar: Bottomnav,
-        topNavBar:Topnavbar,
-        addSection:addPage,
-        dressMeHome:dressMeHome,
-        ourImages:ourImagesPage,
-        Cameracomponent:Cameracmp,
+        Opening: openingPage,//crash
+        clickPhotoPage: clickPhotoPage,//crash
+        LoginSignUP: LoginSignUpPage,//crash
+        Verification:verificationPage,//crash
+        UserRegister:userRegistration,//crash
+        StyleTest:styleTestPage,//crash
+        faceScan:faceScanPage,//crash
+        addWardrobeSection:addWardrobePage,//crash
+        bottomNavBar: Bottomnav,//crash
+        topNavBar:Topnavbar,//crash
+        addSection:addPage,//crash
+        dressMeHome:dressMeHome,//crash
+        ourImages:ourImagesPage, //CRASHED
+        Cameracomponent:Cameracmp,//crash
         Gallery:Gallerycmp,
+        WardrobePage:WardrobePage,
+        ProductHopnobPage:ProductHopnobPage,
+        ProductConsumerPage:ProductConsumerPage,
+        OutfitsPage:OutfitsPage,
+        DefaultTestingPage:DefaultTestingPage, 
     },
     {
         // change this for testing and changing screens
         // initialRouteName:'default',
-        initialRouteName:'Cameracomponent',
+        initialRouteName:'DefaultTestingPage',
+        
 
     }
 
