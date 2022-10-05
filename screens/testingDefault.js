@@ -32,8 +32,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
             const launchButton =() =>{
                 this.props.navigation.navigate('launchPage');
             }
-           
-
+            const introButton =() =>{
+                this.props.navigation.navigate('IntroductoryPageZero');
+            }
               return (
                  <View style={styles.appContainer}>
                         <Text style={{margin:10}}>Page for testing Screens</Text>
@@ -57,6 +58,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
                         </View>
                         <View style={{padding:10, wardrobeConsumerButton:'column',}}>
                                 <Button onPress={launchButton} title='Launch Page'/>
+                        </View>
+                        <View style={{padding:10, wardrobeConsumerButton:'column',}}>
+                                <Button onPress={introButton} title='Introductory Page'/>
                         </View>
                 </View>
         

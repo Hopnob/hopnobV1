@@ -52,6 +52,15 @@ import OutfitsPage from './screens/outfits/outfitsPage';
 
 import DefaultTestingPage from './screens/testingDefault';
 
+
+//importing Introductory pages
+import IntroductoryPageZero from './screens/Introductory/introPage0';
+import IntroductoryPageOne from './screens/Introductory/introPage1';
+import IntroductoryPageTwo from './screens/Introductory/IntroPage2';
+import IntroductoryThree from './screens/Introductory/introPage3';
+
+
+
 const RootStack  = createStackNavigator (
     {
         default:introPage,
@@ -76,11 +85,16 @@ const RootStack  = createStackNavigator (
         ProductConsumerPage:ProductConsumerPage,
         OutfitsPage:OutfitsPage,
         DefaultTestingPage:DefaultTestingPage, 
+        IntroductoryPageZero:IntroductoryPageZero,
+        IntroductoryPageOne:IntroductoryPageOne,
+        IntroductoryPageTwo:IntroductoryPageTwo,
+        IntroductoryThree:IntroductoryThree,
+
     },
     {
         // change this for testing and changing screens
         // initialRouteName:'default',
-        initialRouteName:'DefaultTestingPage',
+        initialRouteName:'IntroductoryPageZero',
         
 
     }
