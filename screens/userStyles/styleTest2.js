@@ -1,18 +1,17 @@
 import React ,{useState} from 'react';
 import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
   
 //   export default function DefaultTestingPage() {
-  export default function DefaultTestingPage({navigation}){
-     
-        
+    export default class StyleTestTwo extends React.Component {
+        render(){
+            const introButtonPage =() =>{
+                this.props.navigation.navigate('IntroductoryPageTwo');
+            }
               return (
                  <View style={styles.appContainer}>
                     <View style={{alignItems:'flex-end', marginRight:25,marginTop:25}}>
-                      <TouchableOpacity onPress={()=> navigation.navigate('StyleTestTwo') }>
-                      <Text style={{fontSize:12,fontWeight:'700'}}> SKIP </Text>
-                      </TouchableOpacity>
+                        <Text style={{fontSize:12,fontWeight:'700'}}> SKIP </Text>
                     </View>
                     {/* title */}
                     <View style={{marginLeft:25,marginTop:15}}>
@@ -21,11 +20,11 @@ import { useNavigation } from '@react-navigation/native';
 
                     {/* tabs */}
                     <View style={{marginLeft:25,marginRight:25, marginTop:26,flexDirection:'row',alignItems:'center', justifyContent:'space-around'}}>
-                        <View style={{ borderBottomColor:'#E4637C',alignItems:'center' ,width:'45%', borderBottomWidth:1,}}>
-                                <Text style={{padding:4, color:'#E4637C', fontSize:15,fontWeight:'700',}}>Bust  </Text>
+                        <View style={{ borderBottomColor:'#A2A2A2',alignItems:'center' ,width:'45%', borderBottomWidth:1,}}>
+                                <Text style={{padding:4, color:'#A2A2A2', fontSize:15,fontWeight:'700',}}>Bust  </Text>
                         </View>
-                        <View style={{borderBottomColor:'#A2A2A2',alignItems:'center' ,width:'45%', borderBottomWidth:1,}} >
-                                <Text style={{padding:4,  color:'#A2A2A2', fontSize:15,fontWeight:'700'}}> Hips </Text>
+                        <View style={{borderBottomColor:'#E4637C',alignItems:'center' ,width:'45%', borderBottomWidth:1,}} >
+                                <Text style={{padding:4,  color:'#E4637C' , fontSize:15,fontWeight:'700'}}> Hips </Text>
                         </View>
                     </View>
 
@@ -36,28 +35,28 @@ import { useNavigation } from '@react-navigation/native';
                               width: '100%',
                               height: '100%',
                               resizeMode: 'contain',
-                         }} source={ require('../../assets/images/UserStyles/style1.png')} />
+          }} source={ require('../../assets/images/UserStyles/style2.png')} />
                     </View>
 
                     {/* NEXT */}
                     <View style={{alignItems:'center',}}>
                       <View style={{marginBottom:15,marginTop:30}}>
-                      <Text style={{color:'#394297',fontSize:16,fontWeight:'700'}}>IS YOUR BUST BIGGER THAN YOUR WAIST? </Text>
+                      <Text style={{color:'#394297',fontSize:16,fontWeight:'700'}}> ARE YOUR HIPS BIGGER THAN YOUR WAIST? </Text>
                       </View>
 
                       <View style={{justifyContent:'space-around',flexDirection:'row',marginLeft:24,marginRight:24}}>
                           
-                        <TouchableOpacity   onPress={()=> navigation.navigate('StyleTestTwo') }>
+                        <TouchableOpacity  >
                           <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'#E4637C'}}>
                            <Text style={{fontSize:14,fontWeight:'700', color:'white', textAlign:'center'}}>Yes</Text>
                           </View>
                         </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=> navigation.navigate('StyleTestTwo') } >
+                        <TouchableOpacity  >
                           <View style={{ elevation: 2, shadowColor: '#52006A',  alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'}}>
                            <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>No</Text>
                           </View>
                         </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=> navigation.navigate('StyleTestTwo') } >
+                        <TouchableOpacity  >
                           <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43, borderRadius:10,backgroundColor:'white'}}>
                            <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
                           </View>
@@ -70,13 +69,12 @@ import { useNavigation } from '@react-navigation/native';
                      
                 </View>
            );
-    
+        }
 }
 
 const styles = StyleSheet.create({
  appContainer:{
      flex:1,
      backgroundColor:'white',
-     
  }, 
 });

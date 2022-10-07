@@ -12,7 +12,7 @@ import LoginSignUpPage   from './screens/userAuth/LoginSignup';
 import verificationPage from './screens/userAuth/verification';
 import userRegistration from './screens/userAuth/userRegistration';
 //User Style and  Face Scan 
-import styleTestPage from './screens/userStyles/style_test';
+// import styleTestPage from './screens/userStyles/style_test';
 import faceScanPage from './screens/userStyles/faceScan';
 
 import clickPhotoPage from './screens/demo_screens/click_photo';
@@ -58,8 +58,13 @@ import IntroductoryPageZero from './screens/Introductory/introPage0';
 import IntroductoryPageOne from './screens/Introductory/introPage1';
 import IntroductoryPageTwo from './screens/Introductory/IntroPage2';
 import IntroductoryThree from './screens/Introductory/introPage3';
-
-
+//importin UserAuth Screens
+import PhoneNumberPage from './screens/userAuth/phoneNumberPage';
+import OtpVerification from './screens/userAuth/otpVerification';
+import UserRegisterPage from './screens/userAuth/userRegistrationPage';
+//importing user Styles
+import  StyleTestOne from './screens/userStyles/style_test';
+import  StyleTestTwo from './screens/userStyles/styleTest2';
 
 const RootStack  = createStackNavigator (
     {
@@ -70,7 +75,7 @@ const RootStack  = createStackNavigator (
         LoginSignUP: LoginSignUpPage,//crash
         Verification:verificationPage,//crash
         UserRegister:userRegistration,//crash
-        StyleTest:styleTestPage,//crash
+       
         faceScan:faceScanPage,//crash
         addWardrobeSection:addWardrobePage,//crash
         bottomNavBar: Bottomnav,//crash
@@ -84,18 +89,23 @@ const RootStack  = createStackNavigator (
         ProductHopnobPage:ProductHopnobPage,
         ProductConsumerPage:ProductConsumerPage,
         OutfitsPage:OutfitsPage,
+
         DefaultTestingPage:DefaultTestingPage, 
         IntroductoryPageZero:IntroductoryPageZero,
         IntroductoryPageOne:IntroductoryPageOne,
         IntroductoryPageTwo:IntroductoryPageTwo,
         IntroductoryThree:IntroductoryThree,
+        PhoneNumberPage:PhoneNumberPage,
+        OtpVerification:OtpVerification,
+        UserRegisterPage:UserRegisterPage,
+        StyleTestOne:StyleTestOne,
+        StyleTestTwo:StyleTestTwo,
 
     },
     {
         // change this for testing and changing screens
         // initialRouteName:'default',
         initialRouteName:'IntroductoryPageZero',
-        
 
     }
 

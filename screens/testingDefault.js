@@ -35,6 +35,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
             const introButton =() =>{
                 this.props.navigation.navigate('IntroductoryPageZero');
             }
+            
               return (
                  <View style={styles.appContainer}>
                         <Text style={{margin:10}}>Page for testing Screens</Text>

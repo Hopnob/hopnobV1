@@ -16,22 +16,28 @@ import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Butto
                     </View>
 
                     {/* tabs */}
-                    <View style={{marginLeft:25,marginTop:30,flexDirection:'row',justifyContent:'space-around'}}>
-                        <View style={{borderBottomColor:'#E4637C',alignItems:'center' ,padding:5,width:'30%', borderBottomWidth:1,}}>
+                    <View style={{marginLeft:25,marginRight:25, marginTop:30,flexDirection:'row',alignItems:'center', justifyContent:'space-around'}}>
+                        <View style={{borderBottomColor:'#E4637C',alignItems:'center' ,width:'30%', borderBottomWidth:1,}}>
                                 <Text style={{color:'#E4637C', fontSize:15,fontWeight:'700',}}> Click</Text>
                         </View>
-                        <View style={{borderBottomColor:'#A2A2A2',alignItems:'center' ,padding:5,width:'30%', borderBottomWidth:1,}} >
+                        <View style={{borderBottomColor:'#A2A2A2',alignItems:'center' ,width:'30%', borderBottomWidth:1,}} >
                                 <Text style={{color:'#A2A2A2', fontSize:15,fontWeight:'700'}}> Match</Text>
                         </View>
-                        <View style={{borderBottomColor:'#A2A2A2',alignItems:'center' ,padding:5,width:'30%', borderBottomWidth:1,}} >
+                        <View style={{borderBottomColor:'#A2A2A2',alignItems:'center' ,width:'30%', borderBottomWidth:1,}} >
                                 <Text style={{color:'#A2A2A2', fontSize:15,fontWeight:'700'}}> Explore</Text>
                         </View>
                     </View>
 
                     {/* image background */}
-                    <View style={{marginTop:16}}>
-                        <Image style={{width:375,height:300}} source={ require('../../assets/images/Introductory/banner1.png')} />
+                    <View style={{ width:'100%',height:300,marginTop:16,   }}>
+                        <Image  style={{ 
+                              flex: 1,
+                              width: '100%',
+                              height: '100%',
+                              resizeMode: 'contain',
+                         }} source={ require('../../assets/images/Introductory/banner1.png')} />
                     </View>
+    
 
                     {/* NEXT */}
                     <View style={{marginLeft:25,marginTop:30,flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
@@ -54,5 +60,6 @@ const styles = StyleSheet.create({
  appContainer:{
      flex:1,
      backgroundColor:'white',
+     
  }, 
 });
