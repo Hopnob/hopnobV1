@@ -1,13 +1,17 @@
 import React ,{useState} from 'react';
-import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import { TouchableHighlight,FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 
-  
-//   export default function DefaultTestingPage() {
-    export default class StyleTestTwo extends React.Component {
-        render(){
-            const introButtonPage =() =>{
-                this.props.navigation.navigate('IntroductoryPageTwo');
-            }
+ 
+      export default function DefaultTestingPage({navigation}){
+            var [ isPress, setIsPress ] = React.useState(false);
+            var touchProps = {
+              activeOpacity: 1,
+              underlayColor: '#E4637C',                               // <-- "backgroundColor" will be always overwritten by "underlayColor"
+              style: isPress ? styles.btnPress : styles.btnNormal, // <-- but you can still apply other style changes
+              onHideUnderlay: () => setIsPress(false),
+              onShowUnderlay: () => setIsPress(true),
+              onPress: () =>  navigation.navigate('faceScan') ,                 // <-- "onPress" is apparently required
+            };
               return (
                  <View style={styles.appContainer}>
                     <View style={{alignItems:'flex-end', marginRight:25,marginTop:25}}>
@@ -46,7 +50,17 @@ import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Butto
 
                       <View style={{justifyContent:'space-around',flexDirection:'row',marginLeft:24,marginRight:24}}>
                           
-                        <TouchableOpacity  >
+                      <TouchableHighlight {...touchProps}>
+                          <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Yes</Text>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight {...touchProps}>
+                          <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>No</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight {...touchProps}>
+                          <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
+                        </TouchableHighlight>
+                        {/* <TouchableOpacity  >
                           <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'#E4637C'}}>
                            <Text style={{fontSize:14,fontWeight:'700', color:'white', textAlign:'center'}}>Yes</Text>
                           </View>
@@ -60,7 +74,7 @@ import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Butto
                           <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43, borderRadius:10,backgroundColor:'white'}}>
                            <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
                           </View>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         
 
                       </View>
@@ -69,7 +83,7 @@ import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Butto
                      
                 </View>
            );
-        }
+       
 }
 
 const styles = StyleSheet.create({
@@ -77,4 +91,13 @@ const styles = StyleSheet.create({
      flex:1,
      backgroundColor:'white',
  }, 
+ btnNormal: {
+  
+  elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'
+ 
+},
+btnPress: {
+   
+   elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'
+}
 });

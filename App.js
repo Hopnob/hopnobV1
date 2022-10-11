@@ -65,6 +65,7 @@ import UserRegisterPage from './screens/userAuth/userRegistrationPage';
 //importing user Styles
 import  StyleTestOne from './screens/userStyles/style_test';
 import  StyleTestTwo from './screens/userStyles/styleTest2';
+//
 
 const RootStack  = createStackNavigator (
     {
@@ -76,7 +77,6 @@ const RootStack  = createStackNavigator (
         Verification:verificationPage,//crash
         UserRegister:userRegistration,//crash
        
-        faceScan:faceScanPage,//crash
         addWardrobeSection:addWardrobePage,//crash
         bottomNavBar: Bottomnav,//crash
         topNavBar:Topnavbar,//crash
@@ -100,12 +100,14 @@ const RootStack  = createStackNavigator (
         UserRegisterPage:UserRegisterPage,
         StyleTestOne:StyleTestOne,
         StyleTestTwo:StyleTestTwo,
+        FaceScan:faceScanPage,//crash
+
 
     },
     {
         // change this for testing and changing screens
         // initialRouteName:'default',
-        initialRouteName:'IntroductoryPageZero',
+        initialRouteName:'FaceScan',
 
     }
 

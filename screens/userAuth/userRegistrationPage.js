@@ -51,7 +51,7 @@ export default class   extends React.Component {
                                    end={{x: 1, y: 1}}
                                    style={{paddingVertical:9, borderRadius: 30,marginTop:15}}
                                >
-                                   <TouchableOpacity onPress={()=> this.props.navigation.navigate('IntroductoryPageZero') }>
+                                   <TouchableOpacity onPress={()=> this.props.navigation.navigate('StyleTestOne') }>
                                    <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Submit</Text>
                                    </TouchableOpacity>
                                </LinearGradient>

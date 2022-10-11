@@ -1,12 +1,19 @@
 import React ,{useState} from 'react';
-import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import { FlatList,ScrollView,TouchableHighlight, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
   
 //   export default function DefaultTestingPage() {
-  export default function DefaultTestingPage({navigation}){
-     
-        
+  export default function StyleTestOne({navigation}){
+              var [ isPress, setIsPress ] = React.useState(false);
+              var touchProps = {
+                activeOpacity: 1,
+                underlayColor: '#E4637C',                               // <-- "backgroundColor" will be always overwritten by "underlayColor"
+                style: isPress ? styles.btnPress : styles.btnNormal, // <-- but you can still apply other style changes
+                onHideUnderlay: () => setIsPress(false),
+                onShowUnderlay: () => setIsPress(true),
+                onPress: () =>  navigation.navigate('StyleTestTwo') ,                 // <-- "onPress" is apparently required
+              };
               return (
                  <View style={styles.appContainer}>
                     <View style={{alignItems:'flex-end', marginRight:25,marginTop:25}}>
@@ -38,7 +45,7 @@ import { useNavigation } from '@react-navigation/native';
                               resizeMode: 'contain',
                          }} source={ require('../../assets/images/UserStyles/style1.png')} />
                     </View>
-
+ 
                     {/* NEXT */}
                     <View style={{alignItems:'center',}}>
                       <View style={{marginBottom:15,marginTop:30}}>
@@ -46,10 +53,20 @@ import { useNavigation } from '@react-navigation/native';
                       </View>
 
                       <View style={{justifyContent:'space-around',flexDirection:'row',marginLeft:24,marginRight:24}}>
-                          
-                        <TouchableOpacity   onPress={()=> navigation.navigate('StyleTestTwo') }>
-                          <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'#E4637C'}}>
-                           <Text style={{fontSize:14,fontWeight:'700', color:'white', textAlign:'center'}}>Yes</Text>
+                        <TouchableHighlight {...touchProps}>
+                          <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Yes</Text>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight {...touchProps}>
+                          <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>No</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight {...touchProps}>
+                          <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
+                        </TouchableHighlight>
+
+                        {/* <TouchableOpacity   onPress={()=> navigation.navigate('StyleTestTwo') }>
+                          <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'}}>
+                           <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Yes</Text>
                           </View>
                         </TouchableOpacity>
                         <TouchableOpacity  onPress={()=> navigation.navigate('StyleTestTwo') } >
@@ -61,7 +78,7 @@ import { useNavigation } from '@react-navigation/native';
                           <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43, borderRadius:10,backgroundColor:'white'}}>
                            <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
                           </View>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         
 
                       </View>
@@ -77,6 +94,15 @@ const styles = StyleSheet.create({
  appContainer:{
      flex:1,
      backgroundColor:'white',
-     
  }, 
+ btnNormal: {
+  
+  elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'
+ 
+},
+btnPress: {
+   
+   elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'
+}
+
 });
