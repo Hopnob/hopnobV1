@@ -29,9 +29,7 @@ import Topnavbar from './screens/components/top_navbar';
 //addSection
 
 
-import addPage from './screens/addSection/addPage';
-import addWardrobePage from './screens/addSection/addPage2';
-import ourImagesPage from './screens/addSection/ourImages';
+
 
 
 //imporint camera component
@@ -65,7 +63,17 @@ import UserRegisterPage from './screens/userAuth/userRegistrationPage';
 //importing user Styles
 import  StyleTestOne from './screens/userStyles/style_test';
 import  StyleTestTwo from './screens/userStyles/styleTest2';
-//
+//importing add pages
+import addPage from './screens/addSection/addPage';
+import AddFromCameraPage from './screens/addSection/camers';
+import addWardrobePage from './screens/addSection/addPage2';
+import ourImagesPage from './screens/addSection/ourImages';
+import AddHopnobPage from './screens/addSection/hopnobPage';
+//importing from drees me
+import DressMePage from './screens/dressMe/dressme_page';
+import DressMePageOutfit from './screens/dressMe/dressme_outfit';
+
+
 
 const RootStack  = createStackNavigator (
     {
@@ -80,7 +88,6 @@ const RootStack  = createStackNavigator (
         addWardrobeSection:addWardrobePage,//crash
         bottomNavBar: Bottomnav,//crash
         topNavBar:Topnavbar,//crash
-        addSection:addPage,//crash
         dressMeHome:dressMeHome,//crash
         ourImages:ourImagesPage, //CRASHED
         Cameracomponent:Cameracmp,//crash
@@ -101,13 +108,18 @@ const RootStack  = createStackNavigator (
         StyleTestOne:StyleTestOne,
         StyleTestTwo:StyleTestTwo,
         FaceScan:faceScanPage,//crash
+        AddFromCameraPage:AddFromCameraPage,
+        addSection:addPage,
+        AddHopnobPage:AddHopnobPage,
 
+        DressMePage:DressMePage,
+        DressMePageOutfit:DressMePageOutfit,
 
     },
     {
         // change this for testing and changing screens
         // initialRouteName:'default',
-        initialRouteName:'FaceScan',
+        initialRouteName:'DressMePageOutfit',
 
     }
 

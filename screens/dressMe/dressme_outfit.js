@@ -4,8 +4,7 @@ import React ,{useState} from 'react';
 
 import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 
-// export default class DressMePage extends React.Component {
-    export default function DressMePage() {
+    export default function DressMePageOutfit() {
  
         const[people, setPeople] = useState([
             {image: require('../../assets/images/wardrobe/allcloth.png'), id:'1'},
@@ -18,11 +17,19 @@ import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput
         
   return (
      <View style={styles.appContainer}>
-          <View style={{flexDirection:'row', justifyContent:'space-around', }}>
+          <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-around', }}>
            {/* title */}
-           <View style={{width:'100%',alignItems:'flex-start'}}>
-                    <Text style={{color:'#2D3791',fontWeight:'700'}}>FOR WHICH TYPE OF OCASSION CAN WE DRESS YOU UP TODAY?</Text>
+           <View style={{flexDirection:'row',width:'100%'}}>
+           <View style={{width:'80%',alignItems:'flex-start'}}>
+                    <Text style={{color:'#2D3791',fontWeight:'700'}}>TRY THESE OUTFITS TODAY!</Text>
             </View>
+
+            <View style={{width:'20%',alignItems:'flex-end'}}>
+                    <Image style={{width:30,height:30,marginBottom:8}} source={ require ('../../assets/images/dressMe/refresh.png')}/>
+             
+            </View>
+           </View>
+           
 
             </View>
       
@@ -30,37 +37,13 @@ import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput
           <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:20,marginBottom:20}}>
                 <View style={{marginRight:20}}>
                     <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/1.png')}/>
-                    <Text style={{fontSize:12,fontWeight:'700'}}>KEEP IT CASUAL</Text>
                 </View>
                 <View>
                     <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/2.png')}/>
-                    <Text style={{fontSize:12,fontWeight:'700'}}>WORK </Text>
                 </View>
           </View>
-          <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:20,marginBottom:20}}>
-          <View style={{marginRight:20}}>
-                    <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/3.png')}/>
-                    <Text style={{fontSize:12,fontWeight:'700'}}>PARTAY</Text>
-                </View>
-                <View>
-                    <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/4.png')}/>
-                    <Text style={{fontSize:12,fontWeight:'700'}}>ETHNIC FEELS </Text>
-                </View>
-               
-          </View>
-          <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:20,marginBottom:20}}>
-                
-          <View style={{marginRight:20}}>
-                    <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/5.png')}/>
-                    <Text style={{fontSize:12,fontWeight:'700'}}>DATE NIGHT</Text>
-                </View>
-                <View>
-                    <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/6.png')}/>
-                    <Text style={{fontSize:12,fontWeight:'700'}}>JUST BRUNCHIN’ </Text>
-                </View>
-
-                 
-          </View>
+           
+        
           </View>
          
 

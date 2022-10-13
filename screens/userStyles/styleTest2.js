@@ -10,7 +10,7 @@ import { TouchableHighlight,FlatList,ScrollView, StyleSheet,ImageBackground,Imag
               style: isPress ? styles.btnPress : styles.btnNormal, // <-- but you can still apply other style changes
               onHideUnderlay: () => setIsPress(false),
               onShowUnderlay: () => setIsPress(true),
-              onPress: () =>  navigation.navigate('faceScan') ,                 // <-- "onPress" is apparently required
+              onPress: () =>  navigation.navigate('FaceScan') ,                 // <-- "onPress" is apparently required
             };
               return (
                  <View style={styles.appContainer}>

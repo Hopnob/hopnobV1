@@ -15,7 +15,7 @@ export default class TestaddPage extends React.Component {
     
     renderInner =() =>( 
         <View style={{height:'100%', backgroundColor:'white',paddingLeft:30}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>  this.props.navigation.navigate('AddFromCameraPage')} >
             <View style={{flexDirection:'row',marginTop:20,marginBottom:20 }}> 
                
                <View style={{ width:42,height:36, padding:10, marginRight:20 }}>
@@ -27,7 +27,7 @@ export default class TestaddPage extends React.Component {
                    
                </View>
                <View style={{paddingTop:15}}>
-               <Image style={{width:35, height:35,}} source ={ require ('../../assets/images/bottomSheet/arrow_circle.png')} />
+               <Image style={{width:35, height:35,}} source ={ require ('../../assets/images/bottomSheet/arrow_cricle2.png')} />
                    
                </View>
                </View>        
@@ -35,7 +35,7 @@ export default class TestaddPage extends React.Component {
             </TouchableOpacity>
 
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>  this.props.navigation.navigate('Gallery')} >
             <View style={{flexDirection:'row',marginTop:20,marginBottom:20 }}>  
 
 
@@ -49,7 +49,7 @@ export default class TestaddPage extends React.Component {
                     
                 </View>
                 <View style={{paddingTop:15}}>
-                <Image style={{width:35, height:35}} source ={ require ('../../assets/images/bottomSheet/arrow_circle.png')} />
+                <Image style={{width:35, height:35}} source ={ require ('../../assets/images/bottomSheet/arrow_cricle2.png')} />
                     
                 </View>
                 </View>        
@@ -111,8 +111,8 @@ export default class TestaddPage extends React.Component {
             <View style={{ padding:10, width:155,height:184, backgroundColor:'#F3F3F3',
             marginTop:30,
             borderRadius:20 ,justifyContent:'space-around', alignItems:'center'}}> 
-                <Image style={{width:35, height:35}} source ={ require ('../../assets/images/addMe/addLP2.png')} />
-                        <TouchableOpacity onPress={() =>  this.props.navigation.navigate('Gallery')}>
+                <Image style={{width:35, height:35}} source ={ require ('../../assets/images/addMe/checkLP2.png')} />
+                        <TouchableOpacity onPress={() =>  this.props.navigation.navigate('AddHopnobPage')} >
                             
                         <Text style={{color:'black', fontSize:16,textAlign:'center', fontWeight:'600'}}> 
                         Select <Text style = {{color:'#E4637C'}}> Our 

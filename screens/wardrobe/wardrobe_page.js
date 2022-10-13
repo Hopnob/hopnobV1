@@ -74,7 +74,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
             </View>
                 {/* button */}  
             <View> 
-                <Image source={ require( '../../assets/images/wardrobe/Arrowbutton.png')}/>
+                <Image style={{width:25,height:25}} source={ require( '../../assets/images/wardrobe/Arrowbutton.png')}/>
             </View>
         </View>
         

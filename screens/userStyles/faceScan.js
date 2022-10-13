@@ -75,7 +75,7 @@ if (hasPermission === null) {
                                         end={{x: 1, y: 1}}
                                         style={{paddingVertical:9, borderRadius: 30}}
                                     >
-                                        <TouchableOpacity onPress={()=> navigation.navigate('OtpVerification') }>
+                                        <TouchableOpacity onPress={()=> navigation.navigate('addSection') }>
                                         <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Finish</Text>
                                         </TouchableOpacity>
                                     </LinearGradient>
