@@ -73,8 +73,11 @@ import AddHopnobPage from './screens/addSection/hopnobPage';
 import DressMePage from './screens/dressMe/dressme_page';
 import DressMePageOutfit from './screens/dressMe/dressme_outfit';
 
-
-
+// imprting from 
+// import TestingPage from './screens/testing/testing';
+// importing click and match
+import clickandmatchPage from './screens/clickNmatch/clickandmatchPage';
+import clickandmatchRecommendedPage from './screens/clickNmatch/clickandmatchRecommend';
 const RootStack  = createStackNavigator (
     {
         default:introPage,
@@ -114,12 +117,16 @@ const RootStack  = createStackNavigator (
 
         DressMePage:DressMePage,
         DressMePageOutfit:DressMePageOutfit,
+        // TestingPage:TestingPage,
+
+        clickandmatchPage:clickandmatchPage,
+        clickandmatchRecommendedPage:clickandmatchRecommendedPage,
 
     },
     {
         // change this for testing and changing screens
         // initialRouteName:'default',
-        initialRouteName:'DressMePageOutfit',
+        initialRouteName:'clickandmatchRecommendedPage',
 
     }
 
