@@ -256,7 +256,7 @@ const RootStack = createStackNavigator ({
     
 
 }, {
-    initialRouteName:'IntroductoryPageZero',
+    initialRouteName:'Bottomnav',
 }
 )
 
