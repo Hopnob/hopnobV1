@@ -1,12 +1,14 @@
 
-import { VideoExportPreset } from 'expo-image-picker';
 import React ,{useState} from 'react';
 import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+ 
+import { useSafeArea } from 'react-native-safe-area-context';
 
-
-
+// // import { useSafeArea } from 'react-native-safe-area-context';
+// // const insets = useSafeArea();
+// {/* <View style={{paddingTop: insets.top}}>
+// </View> */}
   const data = [
     { label: 'Item 1', value: '1' },
     { label: 'Item 2', value: '2' },
@@ -19,7 +21,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
   ];
 
   
-  export default function WardrobePage() {
+  export default function WardrobePage({navigation}) {
+    const insets = useSafeArea();
+
     const [value, setValue] = useState(null);
     const[people, setPeople] = useState([
         {image: require('../../assets/images/wardrobe/allcloth.png'), id:'1'},
@@ -40,8 +44,10 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
         {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'17'},
     ])
       return (
-         <View style={styles.appContainer}>
-
+       <>
+       <View style={{paddingTop: insets.top}}>
+          </View>
+       <View style={styles.appContainer}>
         <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-around', }}>
            {/* title */}
            <View style={{width:'40%',alignItems:'flex-start'}}>
@@ -113,19 +119,27 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
                 </View>      
         </View>
 
-        <View style={{marginTop:20 }}>
+        <View style={{marginTop:20, }}>
             <View>
                  <Text style={{fontSize:12, fontWeight:'700'}}>ALL CLOTHES</Text>
             </View>
-            <View style={{marginTop:10,marginBottom:250}}>
+            <View style={{marginTop:10,}}>
                         <FlatList numColumns={3} 
                         keyExtractor={(item) =>item.id}
                         data = {people}
                         renderItem = {({item}) =>(
-                            <View style={{flex:1 , }}>
-                                <View style={styles.item}>
-                                 <Image style ={{padding:4}} source= {require ('../../assets/images/wardrobe/allcloth.png')} />
-                                </View>
+                              <View style={{flex:1 , }}>
+                              <TouchableOpacity onPress={()=> navigation.navigate('ProductHopnobPage')}>
+                              <View style={styles.item}>
+                              <Image style ={{width:90,height:70}} source= {require ('../../assets/images/wardrobe/allcloth2.png')} />
+                             </View>
+                              </TouchableOpacity>
+                              <TouchableOpacity onPress={()=> navigation.navigate('ProductConsumerPage')}>
+                              <View style={styles.item}>
+                              <Image style ={{width:90,height:70}} source= {require ('../../assets/images/wardrobe/allcloth.png')} />
+                             </View>
+                              </TouchableOpacity>
+                             
                                  {/* <Image style ={styles.item} source= {item.image} /> */}
                             </View>
                         )}
@@ -136,10 +150,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 
         </View>
-                           
-
-          
+         
      </View>
+     {/* <Bottomnav />  */}
+       </> 
+      
      
    );
   
@@ -151,6 +166,9 @@ const styles = StyleSheet.create({
      flex:1,
      backgroundColor:'white',
      padding:24,
+     paddingRight:24,
+     paddingBottom:91,
+
  },  
  item:{
     marginRight:5,

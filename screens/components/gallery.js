@@ -4,7 +4,7 @@ import { StyleSheet, View,Button,Image, Text,TouchableOpacity,ImageBackground } 
 
 import * as ImagePicker from 'expo-image-picker';
 
-export default function Gallerycmp() {
+export default function Gallerycmp({navigation}) {
    
   const[hasGalleryPermission,setHasCameraPermission ] = useState(null);
   const[image,setImage ] = useState(null);
@@ -43,7 +43,10 @@ export default function Gallerycmp() {
              <View style={{padding:10, flex:1, }}>
              {image && <Image source={{uri:image}} style={{flex:1/2}}/>}
       </View>
-      
+      <View>
+      <Button title='Wardrobe'  onPress={() =>  navigation.navigate('WardrobePage')} style={{marginTop:30}}/>
+       
+      </View>
     </View> 
     
   );

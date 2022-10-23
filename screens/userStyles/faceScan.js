@@ -30,6 +30,9 @@ if (hasPermission === null) {
   }
   return (
     <View style={styles.container}>
+                <View style={{alignItems:'flex-end', marginBottom:20}}>
+              <Text style={{fontSize:12,fontWeight:'700'}}> SKIP </Text>
+          </View>
              <View style={{width:'100%',alignItems:'flex-start',}}>
                      <Text style={{color:'#2D3791',fontWeight:'700',fontSize:16}}>LET'S FIND THE BEST COLORS FOR YOUR SKIN TONE</Text>
              </View>
@@ -75,7 +78,9 @@ if (hasPermission === null) {
                                         end={{x: 1, y: 1}}
                                         style={{paddingVertical:9, borderRadius: 30}}
                                     >
-                                        <TouchableOpacity onPress={()=> navigation.navigate('addSection') }>
+                                        {/* <TouchableOpacity onPress={()=> navigation.navigate('AddPageTwo') }> */}
+                                        <TouchableOpacity onPress={()=> navigation.navigate('Bottomnav') }>
+
                                         <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Finish</Text>
                                         </TouchableOpacity>
                                     </LinearGradient>
@@ -91,6 +96,8 @@ if (hasPermission === null) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'white',
+    marginTop:20,
     alignContent: 'center',
     backgroundColor:'white',
     padding:24

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 
-// import bgImg from '../assets/images/intro.png';
+import { useSafeArea } from 'react-native-safe-area-context';
+ 
 import { StyleSheet, View, Text,TouchableOpacity,ImageBackground,Image ,FlatList,Dimensions  } from 'react-native';
 import { TabView, SceneMap, TabBar, } from 'react-native-tab-view';
-import { useNavigation } from '@react-navigation/native';
-
-// export default class AddHopnobPage extends React.Component {
+ 
     export default function AddHopnobPage({navigation}) {
+      const insets = useSafeArea();
         
         const[people, setPeople] = useState([
             {image: require('../../assets/images/wardrobe/allcloth.png'), id:'1'},
@@ -23,7 +23,6 @@ import { useNavigation } from '@react-navigation/native';
             {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'11'},
             {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'12'},
             {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'13'},
-            
           
         ])
         const initialLayout = { width: Dimensions.get('window').width };
@@ -36,7 +35,7 @@ const FirstRoute = () => (
                               renderItem = {({item}) =>(
                                   <View style={{flex:1 , }}>
                                       <View style={styles.item}>
-                                       <Image style ={{padding:4}} source= {require ('../../assets/images/wardrobe/allcloth.png')} />
+                                       <Image style ={{width:70,height:105,  padding:4}} source= {require ('../../assets/images/wardrobe/allcloth.png')} />
                                       </View>
                                        {/* <Image style ={styles.item} source= {item.image} /> */}
                                   </View>
@@ -86,20 +85,13 @@ const SecondRoute = () => (
     forth: ForthRoute,
     fifth: FifthRoute,
   });
-
-
-
-
-
-    const buttonClickedHandler = () => {
-         this.props.navigation.navigate('launchPage');
-      };
-      const userAuthPage = () =>{
-          this.props.navigation.navigate('LoginSignUP');
-      }
+  
     return ( 
-         <View style={styles.containerMain}>
-             <View style={{width:'100%', backgroundColor:'none', flexDirection:'row',justifyContent:'space-around',}}>
+    <>
+     <View style={{paddingTop: insets.top}}>
+ </View> 
+ <View style={styles.containerMain}>
+             <View style={{ backgroundColor:'none', flexDirection:'row',justifyContent:'space-around',}}>
                 <View style={{justifyContent:'flex-start'}}>
                  <Text style={{textAlign:'left', color:'#2D3791',fontWeight:'700'}}> HOPNOB IMAGE COLLECTION</Text>
                 </View>
@@ -136,7 +128,7 @@ const SecondRoute = () => (
                     />
         </View>
         
-             <View style={{marginTop:6, backgroundColor:'none', flexDirection:'row',justifyContent:'space-around'}}>
+             <View style={{marginTop:6,   flexDirection:'row',justifyContent:'space-around'}}>
                  <TouchableOpacity onPress={()=> navigation.navigate('WardrobePage')}>
                  <View style={{backgroundColor:'#E4637C',borderRadius:30,width:181,height:50,justifyContent:'center',alignItems:'center'}}>
                     <Text style={{color:'white', fontWeight:'700',fontSize:14}}>Add to wardrobe</Text>
@@ -146,8 +138,10 @@ const SecondRoute = () => (
 
              </View>    
              
-             
-         </View>      
+      
+         </View>     
+    </>
+        
    
     );
  
@@ -155,9 +149,9 @@ const SecondRoute = () => (
 const styles = StyleSheet.create({
   containerMain: {
     flex:1,
-    padding:24,
-    paddingBottom:80,
-    backgroundColor:'white',
+    paddingTop:10,
+    paddingHorizontal:24,
+     backgroundColor:'white',
   },
   item:{
     marginRight:5,

@@ -5,39 +5,38 @@ import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Butto
 import { Dropdown } from 'react-native-element-dropdown';
 import { color } from 'react-native-reanimated';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+ 
 
-  
-//   export default function DefaultTestingPage() {
-    export default class DefaultTestingPage extends React.Component {
-        render(){
+import Bottomnav from './components/bottom_navbar';
+export default function DefaultTestingPage({navigation}) {
+      
 
             const outfitButton = () =>{
-                this.props.navigation.navigate('OutfitsPage');
+                navigation.navigate('OutfitsPage');
             }
             const wardrobeFeedButton =() => {
-                this.props.navigation.navigate('WardrobePage');
+                navigation.navigate('WardrobePage');
             }
             const wardrobeHopnobButton = () =>{
-                this.props.navigation.navigate('ProductHopnobPage');
+                navigation.navigate('ProductHopnobPage');
             }
             const wardrobeConsumerButton =() => {
-                this.props.navigation.navigate('ProductConsumerPage');
+                navigation.navigate('ProductConsumerPage');
             }
             const defaultButton =() => {
-                this.props.navigation.navigate('default');
+                navigation.navigate('default');
             }
             const addButton =() => {
-                this.props.navigation.navigate('addSection');
+                navigation.navigate('addSection');
             }
             const launchButton =() =>{
-                this.props.navigation.navigate('launchPage');
+                navigation.navigate('launchPage');
             }
             const introButton =() =>{
-                this.props.navigation.navigate('IntroductoryPageZero');
+                navigation.navigate('IntroductoryPageZero');
             }
-            
-              return (
-                 <View style={styles.appContainer}>
+    return (
+        <View style={styles.appContainer}>
                         <Text style={{margin:10}}>Page for testing Screens</Text>
                         <View style={{padding:10, flexDirection:'column'}}>
                                 <Button onPress={outfitButton} title='Outfits'/>
@@ -63,18 +62,20 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
                         <View style={{padding:10, wardrobeConsumerButton:'column',}}>
                                 <Button onPress={introButton} title='Introductory Page'/>
                         </View>
+                     {/* navigation */}
+                    
                 </View>
         
         
-             
-           );
-        }
+    );
 }
+ 
 
 const styles = StyleSheet.create({
  appContainer:{
      flex:1,
-     backgroundColor:'white',
-     padding:24,
+     marginTop:30,
+     padding:30,
+     backgroundColor:'grey',
  }, 
 });

@@ -14,6 +14,7 @@
     "@react-native-community/clipboard": "^1.5.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/picker": "^1.8.1",
+    "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/native": "^6.0.13",
     "@twotalltotems/react-native-otp-input": "^1.3.7",
     "@types/react-native": "~0.69.1",

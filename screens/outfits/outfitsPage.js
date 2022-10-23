@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useState } from 'react';
 import { View,FlatList, StyleSheet,Image, Dimensions, StatusBar, Text } from 'react-native';
 import { TabView, SceneMap, TabBar, } from 'react-native-tab-view';
-
+import { useSafeArea } from 'react-native-safe-area-context';
 
 const initialLayout = { width: Dimensions.get('window').width };
-
 export default function OutfitsPage() {
+  const insets = useSafeArea();
     
     const[people, setPeople] = useState([
         {image: require('../../assets/images/wardrobe/allcloth.png'), id:'1'},
@@ -26,7 +26,7 @@ export default function OutfitsPage() {
       
     ])
 const FirstRoute = () => (
-    <View style={{ flex: 1, backgroundColor: 'white', marginTop:24,marginBottom:10 }} >
+    <View style={{  backgroundColor: 'white', marginTop:24, }} >
             <Text style={{fontSize:12, fontWeight:'700'}}>RECENTLY ADDED</Text>
            <FlatList numColumns={3} 
                               keyExtractor={(item) =>item.id}
@@ -44,24 +44,24 @@ const FirstRoute = () => (
 );
 
 const SecondRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#white',padding:30 }]} >
+  <View style={[styles.scene, { backgroundColor: '#white', }]} >
     <Text>WORK</Text>
   </View>
 );
 
     const ThirdRoute = () => (
-        <View style={[styles.scene, { backgroundColor: '#white',padding:30 }]} >
+        <View style={[styles.scene, { backgroundColor: '#white', }]} >
         <Text>CASUAL</Text>
       </View>
     );
     const ForthRoute = () => (
-        <View style={[styles.scene, { backgroundColor: '#white',padding:30 }]} >
+        <View style={[styles.scene, { backgroundColor: '#white', }]} >
         <Text>PARTY</Text>
       </View>
     );
 
     const FifthRoute = () => (
-        <View style={[styles.scene, { backgroundColor: '#white',padding:30 }]} >
+        <View style={[styles.scene, { backgroundColor: '#white', }]} >
         <Text>OTHERS</Text>
       </View>
 
@@ -86,16 +86,16 @@ const SecondRoute = () => (
   });
 
   return (
+    <View style={{paddingTop: insets.top}}>
     <View style={styles.main}>
           {/* title */}
-          <View style={{backgroundColor:'white', width:'40%',alignItems:'flex-start'}}>
+          <View style={{backgroundColor:'white', width:'40%',alignItems:'flex-start',marginTop:20}}>
             <Text style={{color:'#2D3791',fontWeight:'700'}}>VIEW OUTFITS</Text>
             
         </View> 
         
-        <View style={{flex:1}}>
+        <View style={{width:'100%',height:'100%',  }}>
                         <TabView
-                       
                     navigationState={{ index, routes }}
                     renderTabBar={props => (
                         <TabBar
@@ -106,8 +106,6 @@ const SecondRoute = () => (
                             }
                             return <Text style={{ color: '#D9D9D9',fontSize:10.5,fontWeight:'700' }} >{route.title}</Text>
                         } }
-                        
-
                         style={{backgroundColor: 'white', }}
                         />
                     )}
@@ -117,26 +115,27 @@ const SecondRoute = () => (
                     style={styles.container}
                     />
         </View>
-        
+ 
     </View>
+
+    </View>
+
     
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: StatusBar.currentHeight,
-  },
-  scene: {
-    flex: 1,
-  },
-  main:{
-                flex:1,
-                padding:24,
-                paddingBottom:80,
-                backgroundColor:'white',
-            },
-             
+      scene: {
+        flex: 1,
+     
+      },
+      main:{
+        backgroundColor:'white',
+        paddingLeft:24,
+        paddingRight:24,
+       
+
+    },
      item:{
         marginRight:5,
         marginTop:5,
@@ -146,34 +145,7 @@ const styles = StyleSheet.create({
         height:120 ,
         justifyContent:'center',
         alignItems:'center'
-    },
-     dropdown: {
-        width:'100%',
-        backgroundColor:'#F3F3F3',
-        borderRadius:5,
-        alignItems:'center'
-     
-      },
-      icon: {
-        marginRight: 5,
-      },
-      placeholderStyle: {
-        fontSize: 12,
-        fontWeight:'600',
-        paddingLeft:10,
-        paddingRight:10,
-      },
-      selectedTextStyle: {
-        fontSize: 16,
-      },
-      iconStyle: {
-        width: 20,
-        height: 20,
-      },
-      inputSearchStyle: {
-        height: 40,
-        fontSize: 16,
-      },
+    }, 
 });
 
 

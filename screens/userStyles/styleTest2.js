@@ -10,7 +10,7 @@ import { TouchableHighlight,FlatList,ScrollView, StyleSheet,ImageBackground,Imag
               style: isPress ? styles.btnPress : styles.btnNormal, // <-- but you can still apply other style changes
               onHideUnderlay: () => setIsPress(false),
               onShowUnderlay: () => setIsPress(true),
-              onPress: () =>  navigation.navigate('FaceScan') ,                 // <-- "onPress" is apparently required
+              onPress: () =>  navigation.navigate('FaceScanPage') ,                 // <-- "onPress" is apparently required
             };
               return (
                  <View style={styles.appContainer}>
@@ -44,40 +44,51 @@ import { TouchableHighlight,FlatList,ScrollView, StyleSheet,ImageBackground,Imag
 
                     {/* NEXT */}
                     <View style={{alignItems:'center',}}>
+                      <View style={{alignItems:'center',marginLeft:10,marginRight:10}}>
                       <View style={{marginBottom:15,marginTop:30}}>
-                      <Text style={{color:'#394297',fontSize:16,fontWeight:'700'}}> ARE YOUR HIPS BIGGER THAN YOUR WAIST? </Text>
+                      <Text style={{color:'#394297',fontSize:16,fontWeight:'700'}}>IS YOUR BUST BIGGER THAN YOUR WAIST? </Text>
                       </View>
 
-                      <View style={{justifyContent:'space-around',flexDirection:'row',marginLeft:24,marginRight:24}}>
-                          
-                      <TouchableHighlight {...touchProps}>
+                      <View style={{justifyContent:'space-around',flexDirection:'row',}}>
+                      
+                        <View style={{marginRight:10}}>
+ 
+                        <TouchableHighlight  {...touchProps}>
                           <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Yes</Text>
                         </TouchableHighlight>
+                        </View>
 
-                        <TouchableHighlight {...touchProps}>
+                         <View style={{marginRight:10}}>
+                         <TouchableHighlight {...touchProps}>
                           <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>No</Text>
                         </TouchableHighlight>
+                         </View>
+
+                         <View style={{marginRight:10}}>
                         <TouchableHighlight {...touchProps}>
                           <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
                         </TouchableHighlight>
-                        {/* <TouchableOpacity  >
-                          <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'#E4637C'}}>
-                           <Text style={{fontSize:14,fontWeight:'700', color:'white', textAlign:'center'}}>Yes</Text>
+                         </View>
+
+                        {/* <TouchableOpacity   onPress={()=> navigation.navigate('StyleTestTwo') }>
+                          <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'}}>
+                           <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Yes</Text>
                           </View>
                         </TouchableOpacity>
-                        <TouchableOpacity  >
+                        <TouchableOpacity  onPress={()=> navigation.navigate('StyleTestTwo') } >
                           <View style={{ elevation: 2, shadowColor: '#52006A',  alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'}}>
                            <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>No</Text>
                           </View>
                         </TouchableOpacity>
-                        <TouchableOpacity  >
+                        <TouchableOpacity  onPress={()=> navigation.navigate('StyleTestTwo') } >
                           <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43, borderRadius:10,backgroundColor:'white'}}>
                            <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
                           </View>
                         </TouchableOpacity> */}
-                        
 
                       </View>
+
+                    </View>
 
                     </View>
                      
@@ -88,8 +99,9 @@ import { TouchableHighlight,FlatList,ScrollView, StyleSheet,ImageBackground,Imag
 
 const styles = StyleSheet.create({
  appContainer:{
-     flex:1,
-     backgroundColor:'white',
+  flex:1,
+  backgroundColor:'white',
+  marginTop:20,
  }, 
  btnNormal: {
   

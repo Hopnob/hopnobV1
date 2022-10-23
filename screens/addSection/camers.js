@@ -30,7 +30,7 @@ if (hasPermission === null) {
   }
   return (
     <View style={styles.container}>
-             <View style={{width:'100%',alignItems:'center',}}>
+             <View style={{width:'100%',alignItems:'center', marginTop:40}}>
                      <Text style={{color:'#1E1E1E',fontWeight:'400',fontSize:16}}>Take Photo </Text>
              </View>
              
@@ -40,21 +40,21 @@ if (hasPermission === null) {
           ref={ref => setCamera(ref)} 
           style={styles.camera} 
           type={type} 
-          ratio={'3:1'} 
+          // ratio={'3:1'} 
         />
       </View>
       
       
       <View style={{ backgroundColor:'white',}}>  
             <View style={styles.buttonContainer}>
-            <TouchableOpacity >
+            <TouchableOpacity   onPress={() =>  navigation.navigate('WardrobePage')} >
                 <Image style={{width:50,height:50}} source={ require('../../assets/images/Camera/capture.png')} />
             </TouchableOpacity>
             </View>
              
              <View style={styles.buttonContainer2}>
                          <TouchableOpacity 
-                        onPress={() =>  navigation.navigate('addSection')} 
+                       onPress={() =>  navigation.navigate('addSection')} 
                         //  onPress={() => {
                         //     setType(
                         //         type === Camera.Constants.Type.back
@@ -86,19 +86,16 @@ const styles = StyleSheet.create({
     padding:24
   },
   camera: {
-    flex: 1,
-    aspectRatio: 1,
-    borderRadius:20,
+ 
+    width:'100%',
+    height:'88%',
+    marginBottom:24,
   },
   cameraContainer: {
-     width:327,
-     height:463,
-    //  backgroundColor:'red',
-    flex:1,
-    borderWidth:3,
-    borderColor:'red',
-    flexDirection: 'row',
-    borderRadius:20,
+    
+  
+    // flexDirection: 'row',
+    // borderRadius:20,
   },
   button: {
     flex: 0.1,

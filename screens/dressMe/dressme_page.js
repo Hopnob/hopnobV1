@@ -3,9 +3,10 @@ import React ,{useState} from 'react';
 
 
 import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import { useSafeArea } from 'react-native-safe-area-context';
 
-// export default class DressMePage extends React.Component {
-    export default function DressMePage() {
+export default function DressMePage({navigation}) {
+const insets = useSafeArea();
  
         const[people, setPeople] = useState([
             {image: require('../../assets/images/wardrobe/allcloth.png'), id:'1'},
@@ -17,7 +18,10 @@ import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput
         ])
         
   return (
-     <View style={styles.appContainer}>
+    <>
+     <View style={{paddingTop: insets.top}}>
+ </View> 
+  <View style={styles.appContainer}>
           <View style={{flexDirection:'row', justifyContent:'space-around', }}>
            {/* title */}
            <View style={{width:'100%',alignItems:'flex-start'}}>
@@ -28,10 +32,13 @@ import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput
       
           <View style={{flexDirection:'column',justifyContent:'space-around', }}>
           <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:20,marginBottom:20}}>
-                <View style={{marginRight:20}}>
+            <TouchableOpacity onPress={()=> navigation.navigate('DressMePageOutfit')}>
+            <View style={{marginRight:20}}>
                     <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/1.png')}/>
                     <Text style={{fontSize:12,fontWeight:'700'}}>KEEP IT CASUAL</Text>
                 </View>
+            </TouchableOpacity>
+
                 <View>
                     <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/2.png')}/>
                     <Text style={{fontSize:12,fontWeight:'700'}}>WORK </Text>
@@ -68,6 +75,8 @@ import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput
     
      
      </View>
+ </>
+    
      
    );
     }

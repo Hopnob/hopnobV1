@@ -1,11 +1,12 @@
 
-import { VideoExportPreset } from 'expo-image-picker';
 import React ,{useState} from 'react';
 import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
-import { Dropdown } from 'react-native-element-dropdown';
-import { color } from 'react-native-reanimated';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+ 
 
+import { useSafeArea } from 'react-native-safe-area-context';
+ 
+{/* <View style={{paddingTop: insets.top}}>
+ </View> */}
 
 import { Rating, AirbnbRating } from 'react-native-ratings';
 const WATER_IMAGE = require('../../assets/images/wardrobe/heart.png');
@@ -24,6 +25,7 @@ const WATER_IMAGE = require('../../assets/images/wardrobe/heart.png');
   
   export default function ProductHopnobPage() {
     const [value, setValue] = useState(null);
+    const insets = useSafeArea();
 
    
       
@@ -53,7 +55,10 @@ const WATER_IMAGE = require('../../assets/images/wardrobe/heart.png');
         {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'17'},
     ])
       return (
-         <View style={styles.appContainer}>
+        <>
+        <View style={{paddingTop: insets.top}}>
+ </View>
+           <View style={styles.appContainer}>
      <View style={{flexDirection:'row', justifyContent:'space-around', }}>
            {/* title */}
            <View style={{width:'100%',alignItems:'flex-start'}}>
@@ -118,6 +123,8 @@ const WATER_IMAGE = require('../../assets/images/wardrobe/heart.png');
      
           
      </View>
+        </>
+      
      
    );
   

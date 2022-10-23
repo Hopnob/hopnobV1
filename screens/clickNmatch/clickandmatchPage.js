@@ -30,7 +30,7 @@ if (hasPermission === null) {
   }
   return (
     <View style={styles.container}>
-             <View style={{width:'100%',alignItems:'center',marginBottom:24}}>
+             <View style={{width:'100%',alignItems:'center',marginBottom:24,marginTop:20}}>
                      <Text style={{color:'#1E1E1E',fontWeight:'400',fontSize:20}}>Take Photo </Text>
              </View>
              

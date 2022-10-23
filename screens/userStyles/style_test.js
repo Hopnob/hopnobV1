@@ -5,7 +5,9 @@ import { useNavigation } from '@react-navigation/native';
   
 //   export default function DefaultTestingPage() {
   export default function StyleTestOne({navigation}){
-              var [ isPress, setIsPress ] = React.useState(false);
+              
+    
+            var [ isPress, setIsPress ] = React.useState(false);
               var touchProps = {
                 activeOpacity: 1,
                 underlayColor: '#E4637C',                               // <-- "backgroundColor" will be always overwritten by "underlayColor"
@@ -14,6 +16,7 @@ import { useNavigation } from '@react-navigation/native';
                 onShowUnderlay: () => setIsPress(true),
                 onPress: () =>  navigation.navigate('StyleTestTwo') ,                 // <-- "onPress" is apparently required
               };
+
               return (
                  <View style={styles.appContainer}>
                     <View style={{alignItems:'flex-end', marginRight:25,marginTop:25}}>
@@ -47,22 +50,31 @@ import { useNavigation } from '@react-navigation/native';
                     </View>
  
                     {/* NEXT */}
-                    <View style={{alignItems:'center',}}>
+                    <View style={{alignItems:'center',marginLeft:10,marginRight:10}}>
                       <View style={{marginBottom:15,marginTop:30}}>
                       <Text style={{color:'#394297',fontSize:16,fontWeight:'700'}}>IS YOUR BUST BIGGER THAN YOUR WAIST? </Text>
                       </View>
 
-                      <View style={{justifyContent:'space-around',flexDirection:'row',marginLeft:24,marginRight:24}}>
-                        <TouchableHighlight {...touchProps}>
+                      <View style={{justifyContent:'space-around',flexDirection:'row',}}>
+                      
+                        <View style={{marginRight:10}}>
+ 
+                        <TouchableHighlight  {...touchProps}>
                           <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Yes</Text>
                         </TouchableHighlight>
+                        </View>
 
-                        <TouchableHighlight {...touchProps}>
+                         <View style={{marginRight:10}}>
+                         <TouchableHighlight {...touchProps}>
                           <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>No</Text>
                         </TouchableHighlight>
+                         </View>
+
+                         <View style={{marginRight:10}}>
                         <TouchableHighlight {...touchProps}>
                           <Text  style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
                         </TouchableHighlight>
+                         </View>
 
                         {/* <TouchableOpacity   onPress={()=> navigation.navigate('StyleTestTwo') }>
                           <View style={{elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'}}>
@@ -79,7 +91,6 @@ import { useNavigation } from '@react-navigation/native';
                            <Text style={{fontSize:14,fontWeight:'700', color:'#1E1E1E', textAlign:'center'}}>Same Size</Text>
                           </View>
                         </TouchableOpacity> */}
-                        
 
                       </View>
 
@@ -94,6 +105,7 @@ const styles = StyleSheet.create({
  appContainer:{
      flex:1,
      backgroundColor:'white',
+     marginTop:20,
  }, 
  btnNormal: {
   
@@ -101,7 +113,6 @@ const styles = StyleSheet.create({
  
 },
 btnPress: {
-   
    elevation: 2, shadowColor: '#52006A', alignContent:'center',justifyContent:'space-around', width:102,height:43,marginRight:10, borderRadius:10,backgroundColor:'white'
 }
 

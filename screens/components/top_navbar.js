@@ -1,60 +1,43 @@
+
 import React,{useState,  Component } from 'react';
 import { Dimensions, StyleSheet, View, Text,TouchableOpacity,ImageBackground, Image,Button } from 'react-native';
-import {scale} from 'react-native-size-matters';
+import { useNavigation } from '@react-navigation/native';
 
-// images description array
-const icons = [
-    {
-        image:  require('../../assets/images/topNavBar/dressMe.png'),
-    },
+export default function Topnavbar ({navigation}) {
+            return (
+           <View style={{ marginTop:50, paddingTop:10,paddingBottom:10, position:'absolute', flexDirection:'row', justifyContent:'space-around', alignItems:'center',width:'100%',backgroundColor:'white', }}>
+           
+           <TouchableOpacity  onPress={() =>  navigation.navigate('DressMePage')}>
+                <View style={{alignItems:'center',padding:14,borderWidth:1,borderRadius:15 }}>
+                    <Text>Dress me</Text>
+                </View>
+            </TouchableOpacity>
+            
+            <TouchableOpacity onPress={() =>  navigation.navigate('clickandmatchPage')}>
+                    <View style={{alignItems:'center',padding:14,borderWidth:1,borderRadius:15}}>
 
-    {
-        image:  require('../../assets/images/topNavBar/clickNmatch.png'),
-    },
+                        <Text>Click & match</Text>
+                </View>
+            </TouchableOpacity>
 
-    {
-        image:  require('../../assets/images/topNavBar/shop.png'),
-    },
- 
-    
-];
+            <TouchableOpacity onPress={() =>  navigation.navigate('OutfitsPage')}>
+            <View style={{alignItems:'center',padding:14,borderWidth:1,borderRadius:15}}>
+                <Text>Shop</Text>
+                </View>
+            </TouchableOpacity>
 
-const Topnavbar =() =>{
-  return (
-    <View style={styles.containerMain} >
-         <View style={{backgroundColor:'none',flexDirection:'row',justifyContent:'space-around'}}>
-               <View style={{borderRadius:15, padding:10,justifyContent:'space-around',alignItems:'center',backgroundColor:'#5BAE58'}}> 
-                    <TouchableOpacity style={{justifyContent:'space-around',alignItems:'center' }}>
-                    <Image style={{width:60,height:60}} source={icons[0].image}></Image>
-                    <Text style={{ color:'white',fontSize:12,fontWeight:700}}>Dress Me</Text>
-                    </TouchableOpacity>
-               </View>
+         
                
-               <View style={{borderRadius:15, padding:10,justifyContent:'space-around',alignItems:'center', backgroundColor:"#E95689"}}>
-               <TouchableOpacity style={{justifyContent:'space-around',alignItems:'center' }}>
-               <Image style={{ width:60,height:60}} source={icons[1].image}></Image>
-                    
-                <Text style={{color:'white', fontSize:12,fontWeight:700}}>Click N Match</Text>
-               </TouchableOpacity>
-                </View>
-                <View style={{borderRadius:15, padding:10,justifyContent:'space-around',alignItems:'center',  backgroundColor:"#2B388F"}}>
-               <TouchableOpacity style={{justifyContent:'space-around',alignItems:'center' }}>
-               <Image style={{color:'white',width:60,height:60}} source={icons[2].image}></Image>
-
-                <Text style={{color:'white',fontSize:12,fontWeight:700}}>Shop</Text>
-               </TouchableOpacity>
-                </View>
-                
-         </View>
-    </View>
+           </View>
+ 
   );
 }
-export default Topnavbar;
+ 
  
 const styles = StyleSheet.create({
     containerMain: {
       flex: 1,
-      width:"100%"
+       backgroundColor:'black',
     }, 
      
     

@@ -3,8 +3,10 @@ import React ,{useState} from 'react';
 
 
 import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import { useSafeArea } from 'react-native-safe-area-context';
 
-    export default function DressMePageOutfit() {
+export default function DressMePageOutfit() {
+        const insets = useSafeArea();
  
         const[people, setPeople] = useState([
             {image: require('../../assets/images/wardrobe/allcloth.png'), id:'1'},
@@ -16,7 +18,10 @@ import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput
         ])
         
   return (
-     <View style={styles.appContainer}>
+    <>
+     <View style={{paddingTop: insets.top}}>
+ </View>  
+    <View style={styles.appContainer}>
           <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-around', }}>
            {/* title */}
            <View style={{flexDirection:'row',width:'100%'}}>
@@ -29,28 +34,25 @@ import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput
              
             </View>
            </View>
-           
-
             </View>
       
           <View style={{flexDirection:'column',justifyContent:'space-around', }}>
           <View style={{flexDirection:'row',justifyContent:'space-around', marginTop:20,marginBottom:20}}>
-                <View style={{marginRight:20}}>
-                    <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/1.png')}/>
+                <View style={{width:154,height:152,marginBottom:8,backgroundColor:'grey',borderRadius:20}}>
+                    {/* <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/1.png')}/> */}
                 </View>
-                <View>
-                    <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/2.png')}/>
+                <View style={{width:154,height:152,marginBottom:8,backgroundColor:'grey',borderRadius:20}} >
+                    {/* <Image style={{width:154,height:152,marginBottom:8}} source={ require ('../../assets/images/dressMe/2.png')}/> */}
                 </View>
           </View>
            
         
           </View>
          
-
-
-    
      
      </View>
+    </>
+    
      
    );
     }
@@ -59,6 +61,7 @@ import { FlatList, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput
 
 const styles = StyleSheet.create({
  appContainer:{
+    
     flex:1,
     backgroundColor:'white',
     padding:24,
