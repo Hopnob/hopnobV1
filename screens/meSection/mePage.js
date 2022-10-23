@@ -1,9 +1,6 @@
-
 import React  from 'react';
-
 import { StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
- 
  
 export default function MePage( {navigation} ) {
     const insets = useSafeArea();
@@ -12,8 +9,10 @@ export default function MePage( {navigation} ) {
         <View style={{paddingTop: insets.top}}>
         <ImageBackground style={{justifyContent:'space-around', alignItems:'center',resizeMode: 'stretch',}} source={require('../../assets/images/mePage/backgroundImg.jpg')}>
             <View style={{marginTop:22, marginBottom:50,flexDirection:'row', width:'100%',}}>  
-                    <View style={{alignItems:'center',width:'90%',backgroundColor:'none' }}>
-                    <Image style={{width:84,height:84}} source={require('../../assets/images/mePage/profilePic.png')}/>
+                    <View style={{alignItems:'center',width:'98%',backgroundColor:'none' }}>
+                    <ImageBackground style={{width:84,height:84}} source={require('../../assets/images/mePage/profilePic.png')}>
+                        <Image style={{width:19,height:19,alignSelf:'flex-end',position:'absolute',bottom:0}} source={require('../../assets/images/mePage/pencil.png')}/>
+                    </ImageBackground>
                     <Text style={{marginTop:10, color:'white',fontSize:22, fontWeight:'700'}}>RIYA ADAVANI</Text>
                     </View>
                     <View style={{alignItems:'flex-end',width:'1%' }}>

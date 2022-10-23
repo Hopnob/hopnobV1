@@ -1,30 +1,29 @@
 import React,{useState,  Component } from 'react';
 import { Dimensions, StyleSheet, View, Text,TouchableOpacity,ImageBackground, Image,Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
- 
+
 export default function Bottomnav ({navigation}) {
-     function TopNavigationBarCMP(){
-        return(
-                     <View style={styles.TopNavigationBar}>
-                        <TouchableOpacity  onPress={() =>   navigation.navigate('DressMePage') }>
-                        <View style={[styles.card1, styles.elevation]}>
-                        <Text style={{fontSize:12,fontWeight:'400'}}>Dress me</Text>
-                        </View>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() =>  navigation.navigate('clickandmatchPage')}>
-                        <View style={[styles.card2, styles.elevation]}>
-                        <Text style={{fontSize:12,fontWeight:'400'}}>Click & match</Text>
-                        </View>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() =>  navigation.navigate('OutfitsPage')}>
-                        <View style={[styles.card3, styles.elevation]}>
-                        <Text style={{fontSize:12,fontWeight:'400'}}>Shop</Text>
-                        </View>
-                        </TouchableOpacity>
-                    </View>
-        )
+    function TopNavigationBarCMP(){
+      return(
+        <View style={styles.TopNavigationBar}>
+        <TouchableOpacity  onPress={() =>  navigation.navigate('DressMePage') }>
+          <View style={[styles.card1, styles.elevation]}>
+          <Text style={{fontSize:12,fontWeight:'400'}}>Dress me</Text>
+          </View>
+          </TouchableOpacity>
+  
+          <TouchableOpacity onPress={() =>   navigation.navigate('clickandmatchPage')}>
+          <View style={[styles.card2, styles.elevation]}>
+          <Text style={{fontSize:12,fontWeight:'400'}}>Click & match</Text>
+          </View>
+          </TouchableOpacity>
+  
+          <TouchableOpacity onPress={() =>   navigation.navigate('OutfitsPage')}>
+          <View style={[styles.card3, styles.elevation]}>
+          <Text style={{fontSize:12,fontWeight:'400'}}>Shop</Text>
+          </View>
+          </TouchableOpacity>
+      </View>
+      )
     }
     function BottomNavigationBarCMP(){
         return(
@@ -64,6 +63,7 @@ export default function Bottomnav ({navigation}) {
     return (
             <View style={{flex:1,backgroundColor:'white'}}>
                         <TopNavigationBarCMP />
+                        
                         <BottomNavigationBarCMP />
             </View>
   );

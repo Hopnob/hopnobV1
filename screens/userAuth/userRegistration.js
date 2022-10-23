@@ -17,7 +17,8 @@ import { Placeholder } from 'react-bootstrap';
                 <Text style={ {fontSize: 15,
     color: "white",
     textAlign: "center",} 
-    }>{text}</Text>
+    }>{text}
+    </Text>
               </TouchableOpacity>
             );
           };

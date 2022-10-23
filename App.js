@@ -82,7 +82,7 @@ import clickandmatchRecommendedPage from './screens/clickNmatch/clickandmatchRec
 //my Profile
 import MePage from './screens/meSection/mePage';
 import MeSettingsPage from './screens/meSection/meSettingsPage';
-
+import EditProfile from './screens/meSection/editProfile';
 
 
 const RootStack = createStackNavigator ({
@@ -203,6 +203,7 @@ const RootStack = createStackNavigator ({
             header: null,
         },
     },
+    // ME Section
     MePage: {
         screen: MePage, 
         navigationOptions: {
@@ -214,6 +215,12 @@ const RootStack = createStackNavigator ({
         navigationOptions: {
             header: null,
         },
+    },
+    EditProfile:{
+        screen:EditProfile,
+        navigationOptions:{
+            header:null,
+        }
     },
     Bottomnav: {
             screen: Bottomnav, 

@@ -3,23 +3,29 @@ import React ,{useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
-  export default function MeSettingsPage({ useNavigation }) {
+  
+export default function MeSettingsPage({ navigation }) {
     
       return (
          <View style={styles.appContainer}>
-         
-
         {/* list */}
         <View style={{ flexDirection:'column',justifyContent:'space-around',paddingTop:25,}}>
+            <TouchableOpacity onPress={()=> navigation.navigate('EditProfile') }>
+
             <View style={{marginBottom:25, flexDirection:'row',justifyContent:'space-around',alignItems:'center',width:'100%'}}>
+               
                 <View style={{flexDirection:'row',alignItems:'flex-start', width:'75%'}}>
                 <Image style={{width:15,height:17}} source={ require('../../assets/images/mePage/settings/1.png')}/>
                 <Text style={{fontSize:16,fontWeight:'600'}}>  Edit Profile</Text>
                 </View>
+
                <View style={{flexDirection:'row',alignItems:'flex-end'}}>
                <Image style={{width:9,height:16}} source={ require('../../assets/images/mePage/arrow.png')}/>
                </View>
+
             </View>
+            </TouchableOpacity>
+
             
             <View style={{marginBottom:25, flexDirection:'row',justifyContent:'space-around',alignItems:'center',width:'100%'}}>
                 <View style={{flexDirection:'row',alignItems:'flex-start', width:'75%'}}>
