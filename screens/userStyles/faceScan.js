@@ -79,7 +79,7 @@ if (hasPermission === null) {
                                         style={{paddingVertical:9, borderRadius: 30}}
                                     >
                                         {/* <TouchableOpacity onPress={()=> navigation.navigate('AddPageTwo') }> */}
-                                        <TouchableOpacity onPress={()=> navigation.navigate('Bottomnav') }>
+                                        <TouchableOpacity onPress={()=> navigation.navigate('AddPageTwo') }>
 
                                         <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Finish</Text>
                                         </TouchableOpacity>

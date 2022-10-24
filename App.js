@@ -23,8 +23,7 @@ import dressMeHome from './screens/dressMe/dressme_page';
 
 //bottom nav bar
 import Bottomnav from './screens/components/bottom_navbar';
-//top nav bar
-import Topnavbar from './screens/components/top_navbar';
+import TopNavigationBarPrimary from './screens/components/topNavigationP';
 
 
 
@@ -83,7 +82,7 @@ import clickandmatchRecommendedPage from './screens/clickNmatch/clickandmatchRec
 import MePage from './screens/meSection/mePage';
 import MeSettingsPage from './screens/meSection/meSettingsPage';
 import EditProfile from './screens/meSection/editProfile';
-
+import MyStats from './screens/meSection/myStats';
 
 const RootStack = createStackNavigator ({
     DefaultScreen: {
@@ -222,15 +221,20 @@ const RootStack = createStackNavigator ({
             header:null,
         }
     },
+    MyStats:{
+        screen:MyStats,
+        navigationOptions:{
+            header:null,
+        }
+    },
     Bottomnav: {
             screen: Bottomnav, 
             navigationOptions: {
                 header: null,
             },
     },
-
-    Topnavbar: {
-        screen: Topnavbar, 
+    TopNavigationBarPrimary: {
+        screen: TopNavigationBarPrimary, 
         navigationOptions: {
             header: null,
         },
@@ -263,7 +267,8 @@ const RootStack = createStackNavigator ({
     
 
 }, {
-    initialRouteName:'Bottomnav',
+    // TopNavigationBarPrimary
+    initialRouteName:'AddPageTwo',
 }
 )
 

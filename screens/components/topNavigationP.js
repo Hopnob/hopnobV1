@@ -1,40 +1,34 @@
 import React ,{useState} from 'react';
-import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { StyleSheet, Text, View,TouchableOpacity, } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
 
-export default function Topnavigation ({navigation}) {
-    return(
-        <View style={styles.TopNavigationBar}>
-        <TouchableOpacity  onPress={() =>   navigation.navigate('DressMePage') }>
-        <View style={[styles.card1, styles.elevation]}>
-        <Text style={{fontSize:12,fontWeight:'400'}}>Dress me</Text>
-        </View>
-        </TouchableOpacity>
+export default function TopNavigationBarPrimary({navigator}){
+  return(
+      <View style={styles.TopNavigationBar}>
+          <TouchableOpacity  onPress={() =>  navigator.navigate('DressMePage') }>
+            <View style={[styles.card1, styles.elevation]}>
+            <Text style={{fontSize:12,fontWeight:'400'}}>Dress me</Text>
+            </View>
+            </TouchableOpacity>
 
-        <TouchableOpacity onPress={() =>  navigation.navigate('clickandmatchPage')}>
-        <View style={[styles.card2, styles.elevation]}>
-        <Text style={{fontSize:12,fontWeight:'400'}}>Click & match</Text>
-        </View>
-        </TouchableOpacity>
+            <TouchableOpacity onPress={() =>   navigator.navigate('clickandmatchPage')}>
+            <View style={[styles.card2, styles.elevation]}>
+            <Text style={{fontSize:12,fontWeight:'400'}}>Click & match</Text>
+            </View>
+            </TouchableOpacity>
 
-        <TouchableOpacity onPress={() =>  navigation.navigate('OutfitsPage')}>
-        <View style={[styles.card3, styles.elevation]}>
-        <Text style={{fontSize:12,fontWeight:'400'}}>Shop</Text>
+            <TouchableOpacity onPress={() =>   navigator.navigate('OutfitsPage')}>
+            <View style={[styles.card3, styles.elevation]}>
+            <Text style={{fontSize:12,fontWeight:'400'}}>Shop</Text>
+            </View>
+            </TouchableOpacity>
         </View>
-        </TouchableOpacity>
-    </View>
-    )
+    
+  )
 }
     
 const styles = StyleSheet.create({
- appContainer:{
-     flex:1,
-     backgroundColor:'white',
-     padding:24,
- }, 
  TopNavigationBar: {
-    top:50,
-    position:'absolute',
     width:'100%',
     flexDirection:'row',
     alignItems:'center',
@@ -56,7 +50,7 @@ const styles = StyleSheet.create({
       borderRadius: 15,
     },
     elevation: {
-      elevation: 20,
+      elevation: 40,
       shadowColor: 'grey',
     },
 });

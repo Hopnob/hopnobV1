@@ -1,5 +1,4 @@
 import Bottomnav from '../components/bottom_navbar';
-import Topnavbar from '../components/top_navbar';
 
 import {FlatList, StyleSheet,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 import { useState } from 'react';
@@ -22,7 +21,6 @@ export default function ourImagesPage() {
   return (
    <View style={styles.appContainer}>
        <View style={styles.topNavBar}>
-           <Topnavbar />
        </View>
 
        <View style={styles.pageDesc}>

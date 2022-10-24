@@ -43,16 +43,22 @@ export default function MePage( {navigation} ) {
 
         {/* button */}
         <View style={{ flexDirection:'row',justifyContent:'space-around',alignItems:'center',paddingTop:30,borderColor:'#313679;', paddingBottom:20,borderBottomWidth:1,}}>
+        <TouchableOpacity onPress={()=> navigation.navigate('MyStats')  }>
             <View style={{ borderColor:'#2D3791',borderWidth:1,borderRadius:20,width:156,height:50,alignItems:'center',justifyContent:'space-around'}}>
-                <TouchableOpacity>
+                
                     <Text style={{fontSize:16, fontWeight:'700',color:'#2D3791'}} >My stats</Text>
-                </TouchableOpacity>
             </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=> navigation.navigate('MyStats')  }>
+
             <View style={{marginLeft:12, borderColor:'#2D3791',borderWidth:1,borderRadius:20,width:156,height:50,alignItems:'center',justifyContent:'space-around'}}>
                 <TouchableOpacity>
                     <Text style={{fontSize:16, fontWeight:'700',color:'#2D3791'}}>My calendar</Text>
                 </TouchableOpacity>
             </View>
+        </TouchableOpacity>
+
             
         </View>
         {/* list */}
