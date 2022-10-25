@@ -83,7 +83,7 @@ import MePage from './screens/meSection/mePage';
 import MeSettingsPage from './screens/meSection/meSettingsPage';
 import EditProfile from './screens/meSection/editProfile';
 import MyStats from './screens/meSection/myStats';
-
+import MeStyleTestOne from './screens/meSection/styleTests/meStyleTestOne';
 const RootStack = createStackNavigator ({
     DefaultScreen: {
         screen: DefaultTestingPage, 
@@ -227,6 +227,13 @@ const RootStack = createStackNavigator ({
             header:null,
         }
     },
+    MeStyleTestOne:{
+        screen:MeStyleTestOne,
+        navigationOptions:{
+            header:null,
+        }
+    },
+
     Bottomnav: {
             screen: Bottomnav, 
             navigationOptions: {
@@ -268,72 +275,9 @@ const RootStack = createStackNavigator ({
 
 }, {
     // TopNavigationBarPrimary
-    initialRouteName:'AddPageTwo',
+    initialRouteName:'IntroductoryPageZero',
 }
 )
-
-// const RootStack  = createStackNavigator ( 
-//     {
-//         default:introPage,
-//         launchPage: launchPage,
-//         Opening: openingPage,//crash
-//         clickPhotoPage: clickPhotoPage,//crash
-//         LoginSignUP: LoginSignUpPage,//crash
-//         Verification:verificationPage,//crash
-//         UserRegister:userRegistration,//crash
-       
-        
-//         bottomNavBar: Bottomnav,//crash
-//         topNavBar:Topnavbar,//crash
-//         dressMeHome:dressMeHome,//crash
-//         ourImages:ourImagesPage, //CRASHED
-//         Cameracomponent:Cameracmp,//crash
-
-//         Gallery:Gallerycmp,
-
-//         WardrobePage:WardrobePage,
-//         ProductHopnobPage:ProductHopnobPage,
-//         ProductConsumerPage:ProductConsumerPage,
-
-//         OutfitsPage:OutfitsPage,
-
-//         DefaultTestingPage:DefaultTestingPage, 
-//         IntroductoryPageZero:IntroductoryPageZero,
-//         IntroductoryPageOne:IntroductoryPageOne,
-//         IntroductoryPageTwo:IntroductoryPageTwo,
-//         IntroductoryThree:IntroductoryThree,
-//         PhoneNumberPage:PhoneNumberPage,
-//         OtpVerification:OtpVerification,
-//         UserRegisterPage:UserRegisterPage,
-//         StyleTestOne:StyleTestOne,
-//         StyleTestTwo:StyleTestTwo,
-//         FaceScan:faceScanPage,
-//         AddFromCameraPage:AddFromCameraPage,
-
-//         AddPageTwo:AddPageTwo,
-//         AddHopnobPage:AddHopnobPage,
-
-//         DressMePage:DressMePage,
-//         DressMePageOutfit:DressMePageOutfit,
-       
-
-//         clickandmatchPage:clickandmatchPage,
-//         clickandmatchRecommendedPage:clickandmatchRecommendedPage,
-        
-//         MePage:MePage,
-//         MeSettingsPage:MeSettingsPage
-//     },
-    // {
-    //     // change this for testing and changing screens
-    //     // initialRouteName:'default',
-    //     // initialRouteName:'DefaultTestingPage',
-    //     initialRouteName:'bottomNavBar',
-
-    // },
-    
-
-// );
-
 
 
 const  AppContainer  = createAppContainer(RootStack);

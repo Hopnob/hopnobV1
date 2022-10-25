@@ -3,7 +3,7 @@ import {   View, Text,TouchableOpacity, Image, } from 'react-native';
 
 export default function BottomNavigationBarCMP({navigator}){
   return(
-      <View style={{borderWidth:0.2, marginTop:10, paddingTop:10,paddingBottom:10, position:'absolute',bottom:0, flexDirection:'row',borderColor:'grey', justifyContent:'space-around', alignItems:'center',width:'100%',backgroundColor:'white',borderTopRightRadius:20,borderTopLeftRadius:20 }}>
+      <View style={{borderWidth:0.2, marginTop:10, paddingTop:10,paddingBottom:10, flexDirection:'row',borderColor:'grey', justifyContent:'space-around', alignItems:'center',width:'100%',backgroundColor:'white',borderTopRightRadius:20,borderTopLeftRadius:20 }}>
      
       <TouchableOpacity  onPress={() =>  navigator.navigate('WardrobePage')}>
            <View style={{alignItems:'center',padding:5,}}>

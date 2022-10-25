@@ -93,7 +93,9 @@ export default function AddPageTwo({navigation}){
             </View>
      
      </View>
-      <BottomNavigationBarCMP navigator={navigation} />
+     <View style={{position:'absolute',backgroundColor:'white', bottom:0,width:'100%'}}>
+        <BottomNavigationBarCMP navigator={navigation}/>
+        </View>
       <BottomSheet
         ref={sheetRef}
         snapPoints={[220, 100, 0]}

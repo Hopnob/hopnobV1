@@ -7,7 +7,9 @@ import { useNavigation } from '@react-navigation/native';
 export default function PhoneNumberPage({navigation}) {
     const refContainer = useRef(null);
     const [value, setValue] = useState("");
+    
     const [formattedValue, setFormattedValue] = useState("");
+
     const [valid, setValid] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
     // const phoneInput = useRef<PhoneInput>(null);
@@ -17,6 +19,11 @@ export default function PhoneNumberPage({navigation}) {
     
       }, []);
             
+      
+      const proceedButtonHandler=()=>{
+        console.log(formattedValue);
+        navigation.navigate('OtpVerification',{mobileNumber: formattedValue } );
+      }
 
          
               return (
@@ -76,7 +83,7 @@ export default function PhoneNumberPage({navigation}) {
                                         end={{x: 1, y: 1}}
                                         style={{paddingVertical:9, borderRadius: 30}}
                                     >
-                                        <TouchableOpacity onPress={()=> navigation.navigate('OtpVerification') }>
+                                        <TouchableOpacity onPress={proceedButtonHandler }>
                                         <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Proceed</Text>
                                         </TouchableOpacity>
                                     </LinearGradient>

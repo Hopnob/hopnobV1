@@ -5,14 +5,29 @@ import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Butto
 import { Dropdown } from 'react-native-element-dropdown';
 import { color } from 'react-native-reanimated';
 import AntDesign from 'react-native-vector-icons/AntDesign';
- 
+ import axios from 'axios';
 
 import Bottomnav from './components/bottom_navbar';
 export default function DefaultTestingPage({navigation}) {
-      
-
-            const outfitButton = () =>{
-                navigation.navigate('OutfitsPage');
+            const Post = () =>{
+                axios.post("https://hopnob-backend-cctjhm4vha-uc.a.run.app/api/v1/auth/register", 
+                {
+                    "firstName": "Anadi",
+                    "lastName": "Vyas",
+                    "email": "anadi@gmail.com",
+                    "username": "balikavadhu",
+                    "password": "rawal@123",
+                    "mobileNumber": "9773984541"
+                }
+                )
+                  .then((response) => {
+                    console.log('Success:-New user created');
+                    console.log(response);
+                  }).catch((response)=>{
+                    console.log('Falied to Create new user');
+                    console.log(response);
+                  })
+                  ;
             }
             const wardrobeFeedButton =() => {
                 navigation.navigate('WardrobePage');
@@ -39,7 +54,7 @@ export default function DefaultTestingPage({navigation}) {
         <View style={styles.appContainer}>
                         <Text style={{margin:10}}>Page for testing Screens</Text>
                         <View style={{padding:10, flexDirection:'column'}}>
-                                <Button onPress={outfitButton} title='Outfits'/>
+                                <Button onPress={Post} title='Post'/>
                         </View>
                         <View style={{padding:10, flexDirection:'column',}}>
                                 <Button onPress={wardrobeFeedButton} title='Wardrobe Feed'/>

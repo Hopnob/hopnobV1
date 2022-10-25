@@ -2,17 +2,13 @@ import React ,{useState,useRef,useEffect} from 'react';
 import { SafeAreaView,StatusBar, FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import PhoneInput from "react-native-phone-number-input";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
  
 import OTPInputView from '@twotalltotems/react-native-otp-input'; 
-
-export default class OtpVerification extends React.Component {
-// export default function OtpVerification({navigation}) {
-           
-    render(){
+  
+ function OtpVerification({navigation}) {
+    const mobileNumber = navigation.getParam('mobileNumber');
         return (
-                 
-
             <View style={styles.appContainer}>
                {/* BackGround */}
                <ImageBackground style={{width:'100%', height:'100%'}} source={require ('../../assets/images/UserLogin/background.png')} >
@@ -20,10 +16,14 @@ export default class OtpVerification extends React.Component {
                    <View style={{padding:25, width:'100%',height:'50%', backgroundColor:'white', bottom:0,position:'absolute',borderTopLeftRadius:30,borderTopRightRadius:30}}>
                       <View>
                        <Text style={{fontSize:22, fontWeight:'400'}}> Verify your number </Text>
+                      
                        </View>
                        <View style={{marginTop:14,marginBottom:28}}>
                        <Text style={{fontSize:16, fontWeight:'400'}}>
                        Enter the 4 digit code to verify your account and proceed ahead 
+                           </Text>
+                           <Text style={{fontSize:12, fontWeight:'400'}}>
+                       Mobile Number{ mobileNumber}
                            </Text>
                        </View>
                        <View style={{ backgroundColor:'white'}}>
@@ -44,7 +44,7 @@ export default class OtpVerification extends React.Component {
                                    end={{x: 1, y: 1}}
                                    style={{paddingVertical:9, borderRadius: 30}}
                                >
-                                   <TouchableOpacity onPress={()=> this.props.navigation.navigate('UserRegisterPage') }>
+                                   <TouchableOpacity onPress={()=> navigation.navigate('UserRegisterPage',{ mobileNumber: mobileNumber}) }>
                                    <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Next</Text>
                                    </TouchableOpacity>
                                </LinearGradient>
@@ -66,11 +66,9 @@ export default class OtpVerification extends React.Component {
        
 
       );
-    }
-     
               
         }
-// }
+ export default OtpVerification;
 
 const styles = StyleSheet.create({
     

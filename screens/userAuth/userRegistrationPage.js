@@ -1,46 +1,107 @@
 import React ,{useState,useRef,useEffect} from 'react';
-import { SafeAreaView,StatusBar, FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import { Alert, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import PhoneInput from "react-native-phone-number-input";
-import { useNavigation } from '@react-navigation/native';
-import OTPInputView from '@twotalltotems/react-native-otp-input'; 
+import axios from 'axios';
 
-export default class   extends React.Component {
-// export default function OtpVerification({navigation}) {
+ 
+export default function UserRegisterPage({navigation}){
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const mobileNumber = navigation.getParam('mobileNumber');
+    const successAlert=()=> {  
+        Alert.alert(  
+            'User Created',  
+            'Welcome to Hopnob',  
+            [  
+                {  
+                    text: 'Next',  
+                    onPress: () => navigation.navigate('StyleTestOne') ,  
+                    style: 'cancel',  
+                },  
            
-    render(){
-        
-        return (
-                 
+            ]  
+        );  
+    }  
+    const failAlert=()=> {  
+        Alert.alert(  
+            'Error',  
+            'Please provide a diffrent input',  
+            [  
+                {  
+                    text: 'Next',  
+                    onPress: () => console.log('Cancel Pressed'),  
+                    style: 'cancel',  
+                },  
+               
+            ]  
+        );  
+    } 
+    const submitHandler=()=> {
+        console.log(firstName);
+        console.log(lastName);
+        console.log(email);
+        console.log(username);
+        console.log(password);
+        console.log(mobileNumber);
 
+
+        axios.post("https://hopnob-backend-cctjhm4vha-uc.a.run.app/api/v1/auth/register", 
+        {
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "username": username,
+            "password": password,
+            "mobileNumber": mobileNumber,
+        }
+        )
+          .then((response) => {
+            successAlert();
+            console.log('Success');
+            console.log(response.status);
+          }).catch((response)=>{
+            failAlert();
+            console.log('Falied to Create new user');
+            console.log(response);
+          })
+          ;
+
+    }
+        return (
             <View style={styles.appContainer}>
                {/* BackGround */}
                <ImageBackground style={{width:'100%', height:'100%'}} source={require ('../../assets/images/UserLogin/background.png')} >
-                   
+
                    <View style={{padding:25, width:'100%',height:'80%', backgroundColor:'white', bottom:0,position:'absolute',borderTopLeftRadius:30,borderTopRightRadius:30}}>
                       <View>
                        <Text style={{fontSize:22, fontWeight:'400'}}> Let’s create your profile </Text>
+                       {/* <Text style={{fontSize:12, fontWeight:'400'}}>
+                       Mobile Number { mobileNumber}
+                           </Text> */}
                        </View>
 
                        <View style={{ backgroundColor:'white'}}>
                                 {/* Inputs */}
-                                <TextInput  placeholder="First name" style={{margin: 15,
+                                <TextInput  onChangeText={newfirstName => setFirstName(newfirstName)}  placeholder="First name" style={{margin: 15,
                                     borderColor: 'black',
                                     borderBottomWidth: 1}}
                                     />
-                                     <TextInput  placeholder="Last name" style={{margin: 15,
+                                     <TextInput onChangeText={newLastName => setLastName(newLastName)} placeholder="Last name" style={{margin: 15,
                                     borderColor: 'black',
                                     borderBottomWidth: 1}}
                                     />
-                                     <TextInput  placeholder="Email-Id" style={{margin: 15,
+                                     <TextInput  onChangeText={newEmail => setEmail(newEmail)} placeholder="Email-Id" style={{margin: 15,
                                     borderColor: 'black',
                                     borderBottomWidth: 1}}
                                     />
-                                     <TextInput  placeholder="Username" style={{margin: 15,
+                                     <TextInput  onChangeText={newUsername => setUsername(newUsername)} placeholder="Username" style={{margin: 15,
                                     borderColor: 'black',
                                     borderBottomWidth: 1}}
                                     />
-                                     <TextInput  placeholder="Password" style={{margin: 15,
+                                     <TextInput onChangeText={newPassword => setPassword(newPassword)} secureTextEntry={true}  placeholder="Password" style={{margin: 15,
                                     borderColor: 'black',
                                     borderBottomWidth: 1}}
                                     />
@@ -51,7 +112,7 @@ export default class   extends React.Component {
                                    end={{x: 1, y: 1}}
                                    style={{paddingVertical:9, borderRadius: 30,marginTop:15}}
                                >
-                                   <TouchableOpacity onPress={()=> this.props.navigation.navigate('StyleTestOne') }>
+                                   <TouchableOpacity onPress={submitHandler }>
                                    <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Submit</Text>
                                    </TouchableOpacity>
                                </LinearGradient>
@@ -99,11 +160,7 @@ export default class   extends React.Component {
        
 
       );
-    }
-     
-              
-        }
-// }
+}
 
 const styles = StyleSheet.create({
     

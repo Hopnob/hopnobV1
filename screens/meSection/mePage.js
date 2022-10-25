@@ -1,7 +1,7 @@
 import React  from 'react';
 import { StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
- 
+import BottomNavigationBarCMP from '../components/bottom_navbar';
 export default function MePage( {navigation} ) {
     const insets = useSafeArea();
       return (
@@ -20,8 +20,8 @@ export default function MePage( {navigation} ) {
                         <Image style={{width:20,height:21}} source={require('../../assets/images/mePage/settings.png')}/>
                         </TouchableOpacity>
                     </View>                
-
             </View>
+
             <View style={{   elevation: 3, flexDirection:'row',position:'absolute',bottom:-23,paddingBottom:10,paddingTop:5, height:60,borderRadius:10, alignSelf:'center', width:'80%', backgroundColor:'white'}}>
                 <View style={{alignItems:'center',justifyContent:'space-around', width:'50%', flexDirection:'row',}}>
                     <Text style={{color:'#E4637C', fontSize:21, fontWeight:'700'} }>90</Text>
@@ -39,7 +39,7 @@ export default function MePage( {navigation} ) {
         
  
   <View style={styles.appContainer}>
-        {/* info */}
+        
 
         {/* button */}
         <View style={{ flexDirection:'row',justifyContent:'space-around',alignItems:'center',paddingTop:30,borderColor:'#313679;', paddingBottom:20,borderBottomWidth:1,}}>
@@ -58,7 +58,6 @@ export default function MePage( {navigation} ) {
                 </TouchableOpacity>
             </View>
         </TouchableOpacity>
-
             
         </View>
         {/* list */}
@@ -112,9 +111,10 @@ export default function MePage( {navigation} ) {
                <Image style={{width:9,height:16}} source={ require('../../assets/images/mePage/arrow.png')}/>
                </View>
             </View>
-            
+
+            <TouchableOpacity onPress={()=> navigation.navigate('MeStyleTestOne') }>
             <View style={{marginBottom:25, flexDirection:'row',justifyContent:'space-around',alignItems:'center',width:'100%'}}>
-                <View style={{flexDirection:'row',alignItems:'flex-start', width:'75%'}}>
+               <View style={{flexDirection:'row',alignItems:'flex-start', width:'75%'}}>
                 <Image style={{width:20,height:20}} source={ require('../../assets/images/mePage/6.png')}/>
                 <Text style={{fontSize:16,fontWeight:'600'}}>  Style Test</Text>
                 </View>
@@ -122,6 +122,7 @@ export default function MePage( {navigation} ) {
                <Image style={{width:9,height:16}} source={ require('../../assets/images/mePage/arrow.png')}/>
                </View>
             </View>
+            </TouchableOpacity>
             <View style={{marginBottom:25, flexDirection:'row',justifyContent:'space-around',alignItems:'center',width:'100%'}}>
                 <View style={{flexDirection:'row',alignItems:'flex-start', width:'75%'}}>
                 <Image style={{width:20,height:20}} source={ require('../../assets/images/mePage/7.png')}/>
@@ -153,7 +154,13 @@ export default function MePage( {navigation} ) {
             </View>
             
         </View>
+         
      </View>
+
+     <View style={{position:'absolute',backgroundColor:'white', bottom:0,width:'100%'}}>
+        <BottomNavigationBarCMP navigator={navigation}/>
+        </View>
+
         </>
        
 
@@ -167,15 +174,11 @@ export default function MePage( {navigation} ) {
 const styles = StyleSheet.create({
  appContainer:{
     flex: 1,
-    backgroundColor: "#fff",
-   
-  
- 
+    backgroundColor: "white",
     paddingLeft:24,
     paddingRight:24,
-    paddingBottom:80,
-     
- 
+    paddingBottom:85,
+    marginBottom:75,
  }, 
 
 });
