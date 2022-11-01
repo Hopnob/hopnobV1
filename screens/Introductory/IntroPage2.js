@@ -1,5 +1,6 @@
 import React ,{useState} from 'react';
-import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import {  StyleSheet, Text, View,TouchableOpacity, Dimensions} from 'react-native';
+import Image from 'react-native-scalable-image';
 
   
 //   export default function DefaultTestingPage() {
@@ -8,50 +9,48 @@ import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Butto
             const introButtonPage =() =>{
                 this.props.navigation.navigate('IntroductoryThree');
             }
+            const dimensions = Dimensions.get('window');
+            const DeviceWidth = dimensions.width;
+            const DeviceHeight = dimensions.height;
               return (
                  <View style={styles.appContainer}>
                     {/* title */}
-                    <View style={{marginLeft:25,marginTop:50}}>
+                    <View style={{paddingLeft:25,marginTop:50}}>
                         <Text style={{fontSize:22,fontWeight:'400'}}> How Hopnob works?</Text>
                     </View>
 
                     {/* tabs */}
-                    <View style={{marginLeft:25,marginRight:25, marginTop:30,flexDirection:'row',alignItems:'center', justifyContent:'space-around'}}>
+                    <View style={{paddingLeft:25,marginRight:25, marginTop:30,flexDirection:'row',alignItems:'center', justifyContent:'space-around'}}>
                         <View style={{borderBottomColor:'#E4637C',alignItems:'center' ,width:'30%', borderBottomWidth:1,}}>
-                                <Text style={{color:'#E4637C', fontSize:15,fontWeight:'700',}}> Click</Text>
+                                <Text style={{paddingBottom:5,color:'#E4637C', fontSize:15,fontWeight:'700',}}> Click</Text>
                         </View>
                         <View style={{borderBottomColor:'#E4637C',alignItems:'center' ,width:'30%', borderBottomWidth:1,}} >
-                                <Text style={{color:'#E4637C', fontSize:15,fontWeight:'700'}}> Match</Text>
+                                <Text style={{paddingBottom:5,color:'#E4637C', fontSize:15,fontWeight:'700'}}> Match</Text>
                         </View>
                         <View style={{borderBottomColor:'#A2A2A2',alignItems:'center' ,width:'30%', borderBottomWidth:1,}} >
-                                <Text style={{color:'#A2A2A2', fontSize:15,fontWeight:'700'}}> Explore</Text>
+                                <Text style={{paddingBottom:5,color:'#A2A2A2', fontSize:15,fontWeight:'700'}}> Explore</Text>
                         </View>
                     </View>
 
 
                     {/* image background */}
-                    <View style={{ width:'100%',height:300,marginTop:16,   }}>
-                        <Image  style={{ 
-                              flex: 1,
-                              width: '100%',
-                              height: '100%',
-                              resizeMode: 'contain',
-                         }} source={ require('../../assets/images/Introductory/banner2.png')} />
-                    </View>
+                    <Image style={{marginTop:16}} width={Dimensions.get('window').width} source={ require('../../assets/images/Introductory/banner2.png')} />
     
 
+
                     {/* NEXT */}
-                    <View style={{marginLeft:25,marginTop:30,flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
-                            <View style={{width:'75%'}}>
-                                        <Text style={{fontSize:20,fontWeight:'400'}}>Get matching suggestions with your favorite brands </Text>
+                    <View style={{width:DeviceWidth,backgroundColor:'white',paddingTop:40, paddingLeft:25,paddingRight:25,flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
+                            <View style={{width:DeviceWidth*0.85, backgroundColor:'white', alignItems:'flex-start'}}>
+                                        <Text style={{fontSize:20,fontWeight:'400',paddingRight:50,backgroundColor:'white' }}>Get matching suggestions with your favorite brands</Text>
                             </View>
-                            <View style={{width:'25%',}}>
-                                <TouchableOpacity onPress={introButtonPage}>
-                                        <Image style={{width:71,height:71}} source={ require ('../../assets/images/Introductory/Next.png')}/>
+                            <View style={{width:DeviceWidth*0.15, backgroundColor:'white', alignItems:'flex-end'}}>
+                                <TouchableOpacity onPress={introButtonPage} >
+                                        <Image width={75} height={75} source={ require ('../../assets/images/Introductory/Next.png')}/>
                                 </TouchableOpacity>
-                            </View>
+                    </View>
                             
                     </View>
+                    
                 </View>
            );
         }

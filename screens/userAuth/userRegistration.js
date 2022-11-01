@@ -1,10 +1,34 @@
 import React, { useState, useRef ,Component } from 'react';
 import bgImg from '../../assets/images/userAuthBG.png';
 import { StyleSheet,TextInput, View, Text,TouchableOpacity,ImageBackground, Touchable } from 'react-native';
-import { Placeholder } from 'react-bootstrap';
+ 
 
+const validateUser=(uniqueID,accessToken)=>{
+  axios.get(
+    `https://hopnob-backend-cctjhm4vha-uc.a.run.app/api/v1/users/${uniqueID}` ,
+{
+    headers: { 
+        'Authorization':`Bearer ${accessToken}`
+    }
+}).then((response)=>{
+  console.log(response.data.user);
+    if(response.data.user.email === undefined){
+        alert("Hello We just need some Details :)");
+        navigation.navigate('UserRegisterPage',{uniqueID: auth.currentUser.uid, accessToken:auth.currentUser.accessToken });
+    }else{
+      console.log('DATA PRESNET');
+        navigation.navigate('StyleTestOne');
+    }
+    
+}).catch((err)=>{
+    alert(err);
+})
+
+}
 
  const userRegistration = () =>{
+
+
         const [value, setValue] = useState("");
       
         const CButton = ({ text }) => {

@@ -84,198 +84,215 @@ import MeSettingsPage from './screens/meSection/meSettingsPage';
 import EditProfile from './screens/meSection/editProfile';
 import MyStats from './screens/meSection/myStats';
 import MeStyleTestOne from './screens/meSection/styleTests/meStyleTestOne';
+
+
+
+
+import TestingPageOtp from './screens/testing/testing';
 const RootStack = createStackNavigator ({
     DefaultScreen: {
         screen: DefaultTestingPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     IntroductoryPageZero: {
         screen: IntroductoryPageZero, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     IntroductoryPageOne: {
         screen: IntroductoryPageOne, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
+            // title:false,
+            // headerBackButtonMenuEnabled:true,
         },
     },
     IntroductoryPageTwo: {
         screen: IntroductoryPageTwo, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     IntroductoryThree: {
         screen: IntroductoryThree, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     PhoneNumberPage: {
         screen: PhoneNumberPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     OtpVerification: {
         screen: OtpVerification, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     UserRegisterPage: {
         screen: UserRegisterPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     // Style Test
     StyleTestOne: {
         screen: StyleTestOne, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     StyleTestTwo: {
         screen: StyleTestTwo, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     FaceScanPage: {
         screen: FaceScanPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     // Add Section 
     AddPageTwo: {
         screen: AddPageTwo, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     AddFromCameraPage: {
         screen: AddFromCameraPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     AddHopnobPage: {
         screen: AddHopnobPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     Gallerycmp: {
         screen: Gallerycmp, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     //wardrobe screens
     WardrobePage: {
         screen: WardrobePage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     ProductHopnobPage: {
         screen: ProductHopnobPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     ProductConsumerPage: {
         screen: ProductConsumerPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     OutfitsPage: {
         screen: OutfitsPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     // ME Section
     MePage: {
         screen: MePage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     MeSettingsPage: {
         screen: MeSettingsPage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     EditProfile:{
         screen:EditProfile,
         navigationOptions:{
-            header:null,
+            header:()=>false,
         }
     },
     MyStats:{
         screen:MyStats,
         navigationOptions:{
-            header:null,
+            header:()=>false,
         }
     },
     MeStyleTestOne:{
         screen:MeStyleTestOne,
         navigationOptions:{
-            header:null,
+            header:()=>false,
         }
     },
 
     Bottomnav: {
             screen: Bottomnav, 
             navigationOptions: {
-                header: null,
+                header:()=> false,
             },
     },
     TopNavigationBarPrimary: {
         screen: TopNavigationBarPrimary, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     DressMePage: {
         screen: DressMePage, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
    
     DressMePageOutfit: {
         screen: DressMePageOutfit, 
         navigationOptions: {
-            header: null,
+            header:()=> false,
         },
     },
     clickandmatchPage:{
         screen:clickandmatchPage,
         navigationOptions:{
-            header:null,
+            header:()=>false,
         }
     },
     clickandmatchRecommendedPage:{
         screen:clickandmatchRecommendedPage,
         navigationOptions:{
-            header:null,
+            header:()=>false,
         }
     },
-    
+    TestingPageOtp:{
+        screen:TestingPageOtp,
+        navigationOptions:{
+            header:()=>false,
+        }
+    }
 
 }, {
     // TopNavigationBarPrimary
-    initialRouteName:'IntroductoryPageZero',
+    // initialRouteName:'OtpVerification',
+    // initialRouteName:'PhoneNumberPage',
+    
+    initialRouteName:'UserRegisterPage',
+
+
 }
 )
 

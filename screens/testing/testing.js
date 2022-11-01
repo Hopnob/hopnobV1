@@ -1,137 +1,122 @@
-// //  //TestingPage.js
-// // import React, { Component } from 'react'
-// // import { StyleSheet, Text, View } from 'react-native'
-// // import { client } from '../../src/graphql/Client'
-// // import { Headlines } from '../../src/graphql/Queries'
-
-// // // import { Headlines } from './src/graphql/Queries'
-// // class TestingPage extends Component {
-// //   render() {
-// //     return (
-// //       <View style={styles.container}>
-// //         <View style={styles.header}>
-// //           <Text style={styles.headerText}>Headlines TestingPage</Text>
-// //         </View>
-// //         <View style={styles.contentContainer}>
-// //           <Text>Open up TestingPage.js to start working on your app!</Text>
-// //         </View>
-// //       </View>
-// //     )
-// //   }
-// // }
-// // const styles = StyleSheet.create({
-// //   container: {
-// //     flex: 1,
-// //     backgroundColor: '#fff'
-// //   },
-// //   header: {
-// //     marginTop: 50,
-// //     alignItems: 'center',
-// //     borderBottomWidth: StyleSheet.hairlineWidth
-// //   },
-// //   headerText: {
-// //     marginBottom: 5,
-// //     fontSize: 30,
-// //     fontWeight: 'bold'
-// //   },
-// //   contentContainer: {
-// //     marginTop: 30,
-// //     alignItems: 'center',
-// //     justifyContent: 'center'
-// //   }
-// // })
-// // export default TestingPage
+import * as React from "react";
+import { Text, View, TextInput, Button, StyleSheet, TouchableOpacity, Platform } from "react-native";
+ import { useEffect } from "react";
+import { initializeApp,getApp} from 'firebase/app';
+import { getAuth, PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
+import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
  
+        apiKey: "AIzaSyAcz7MI-8_HSeAiZsEz5mlyfGlI_jmpxwY",
+        authDomain: "micro-citadel-359610.firebaseapp.com",
+        projectId: "micro-citadel-359610",
+        storageBucket: "micro-citadel-359610.appspot.com",
+        messagingSenderId: "34345464363",
+        appId: "1:34345464363:web:96b25a028d826aa8d8b06e"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-// import { StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
-// // import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
-// import  ApolloClient  from 'apollo-boost';
-// import  ApolloProvider  from 'apollo-boost';
-// import  InMemoryCache  from 'apollo-boost';
-// import React from 'react';
-// import {useQuery, gql} from '@apollo/client';
- 
-// const client = new ApolloClient({
-//     uri : 'https://graphql.anilist.co/',
-//     cache: new InMemoryCache(),
-//   })
+if (!app?.options || Platform.OS === 'web') {
+    throw new Error(
+      'This example only works on Android or iOS, and requires a valid Firebase config.'
+    );
+  }
+
+
   
-//   const AnimeList = gql'query Query {
-//     Page {
-//       media {
-//         siteUrl
-//         title {
-//           english
-//           native
-//         }
-//         description
-//         coverImage {
-//           medium
-//         }
-//         bannerImage
-//         volumes
-//         episodes
-//       }
-//     }
-//   }'
-//   ;
-//   const {loading, error, data} = useQuery(AnimeList);
-
- 
-   
-//     export default function TestaddPage() {
- 
-        
-//   return (
-//      <View style={styles.appContainer}>
-  
-//         <Text>2</Text>
-//         <Text>2</Text>
-
-        
-//      </View>
-     
-//    );
-//     }
-
- 
-
-// const styles = StyleSheet.create({
-//  appContainer:{
-//      flex:1,
-//      backgroundColor:'white',
-//      padding:10,
-//  }, 
-//  topNavBar:{
-//      paddingTop:10,
-//      width:'100%',
-//  },
-//  bottomNavBar:{
-//      bottom:0,
-//      paddingTop:10,
-//      width:'100%',
-//      position:'absolute',
-//  },banner:{
-//      width:'100%',
-//      marginTop:30,
+export default function TestingPageOtp(){
+    const recaptchaVerifier = React.useRef(null);
+    // const [phoneNumber, setPhoneNumber] = React.useState();
     
-
-//  },clothing:{
-//      width:155,
-//      height:184,
-//      backgroundColor:'#F3F3F3',
-//      marginTop:30,
-//      borderRadius:20,
-//      paddingVertical:10,
-//      paddingHorizontal:5,
-//  },
-//  ourImage:{
-//     width:'100%',
-//     backgroundColor:'#C87600',
-//     marginTop:30,
-//     borderRadius:20,
-//     paddingVertical:10,
-//     paddingHorizontal:5,
-// },
- 
-// });
+    const phoneNumber = "+919772814843";
+            
+    const [verificationId, setVerificationId] = React.useState();
+    const [verificationCode, setVerificationCode] = React.useState();
+  
+    const firebaseConfig = app ? app.options : undefined;
+    const [message, showMessage] = React.useState();
+    const attemptInvisibleVerification = false;
+    return (
+        <View style={{ padding: 20, marginTop: 50 }}>
+        <FirebaseRecaptchaVerifierModal
+          ref={recaptchaVerifier}
+          firebaseConfig={app.options}
+          // attemptInvisibleVerification
+        />
+        <Text style={{ marginTop: 20 }}>Enter phone number</Text>
+        {/* <TextInput
+          style={{ marginVertical: 10, fontSize: 17 }}
+          placeholder="+1 999 999 9999"
+          autoFocus
+          autoCompleteType="tel"
+          keyboardType="phone-pad"
+          textContentType="telephoneNumber"
+          value={phoneNumber}
+          onChangeText={phoneNumber => setPhoneNumber(phoneNumber)}
+        /> */}
+        <Button
+          title="Send Verification Code"
+          disabled={!phoneNumber}
+          onPress={
+            async () => {
+            // The FirebaseRecaptchaVerifierModal ref implements the
+            // FirebaseAuthApplicationVerifier interface and can be
+            // passed directly to `verifyPhoneNumber`.
+            try {
+              const phoneProvider = new PhoneAuthProvider(auth);
+              const verificationId = await phoneProvider.verifyPhoneNumber(
+                phoneNumber,
+                recaptchaVerifier.current
+              );
+              setVerificationId(verificationId);
+              showMessage({
+                text: 'Verification code has been sent to your phone.',
+              });
+            } catch (err) {
+              showMessage({ text: `Error: ${err.message}`, color: 'red' });
+            }
+          }}
+        />
+        <Text style={{ marginTop: 20 }}>Enter Verification code</Text>
+        <TextInput
+          style={{ marginVertical: 10, fontSize: 17 }}
+          editable={!!verificationId}
+          placeholder="123456"
+          onChangeText={setVerificationCode}
+        />
+        <Button
+          title="Confirm Verification Code"
+          disabled={!verificationId}
+          onPress={async () => {
+            try {
+              const credential = PhoneAuthProvider.credential(verificationId, verificationCode);
+              await signInWithCredential(auth, credential);
+              showMessage({ text: 'Phone authentication successful 👍' });
+            } catch (err) {
+              showMessage({ text: `Error: ${err.message}`, color: 'red' });
+            }
+          }}
+        />
+        {message ? (
+          <TouchableOpacity
+            style={[
+              StyleSheet.absoluteFill,
+              { backgroundColor: 0xffffffee, justifyContent: 'center' },
+            ]}
+            onPress={() => showMessage(undefined)}>
+            <Text
+              style={{
+                color: message.color || 'blue',
+                fontSize: 17,
+                textAlign: 'center',
+                margin: 20,
+              }}>
+              {message.text}
+            </Text>
+          </TouchableOpacity>
+        ) : undefined}
+        {attemptInvisibleVerification && <FirebaseRecaptchaBanner />}
+      </View>
+    );
+}
