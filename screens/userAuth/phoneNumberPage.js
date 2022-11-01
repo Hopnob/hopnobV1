@@ -1,15 +1,18 @@
 import React ,{useState,useRef,useEffect} from 'react';
-import { SafeAreaView,StatusBar, FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import {KeyboardAvoidingView,Platform, SafeAreaView,StatusBar, FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import PhoneInput from "react-native-phone-number-input";
 import { useNavigation } from '@react-navigation/native';
+import { useSafeArea } from 'react-native-safe-area-context';
 
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-
+import * as Font from "expo-font";
 
 import { initializeApp,getApp} from 'firebase/app';
 import { getAuth, PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
 import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
+import { Dimensions } from 'react-native';
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
  
@@ -39,15 +42,6 @@ export default function PhoneNumberPage({navigation}) {
     const [valid, setValid] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
 
-  
-    // const phoneInput = useRef<PhoneInput>(null);
-    // useEffect(() => {
-    //     // 👇️ this is reference to input element
-    //     console.log(refContainer.current);
-    
-    //   }, []);
-            
-      
       const proceedButtonHandler=()=>{
         
         console.log(formattedValue);
@@ -60,30 +54,47 @@ export default function PhoneNumberPage({navigation}) {
     const [verificationCode, setVerificationCode] = React.useState();
    
     const [message, showMessages] = React.useState();
-    
+    const deviceWidth = Dimensions.get('window').width;
+    const deviceHeight = Dimensions.get('window').height;
+    const fetchFonts = async () =>
+    await Font.loadAsync({
+      'OpenSans': require('../../assets/fonts/OpenSans-Regular.ttf')
+    });
+    const insets = useSafeArea();
               return (
-                 
-
-                 <View style={styles.appContainer}>
+                    <> 
+                    <StatusBar style='dark'/>
+                    <View style={{paddingTop: insets.top,backgroundColor:'black'}}></View>
+                    <KeyboardAvoidingView enabled behavior={ Platform.OS === 'ios'? 'padding': null}
+                style= {{flexGrow : 1}}> 
+                
+                <View  style={styles.appContainer}>
                     {/* BackGround */}
                     <FirebaseRecaptchaVerifierModal
                     ref={recaptchaVerifier}
                     firebaseConfig={app.options}
                     //   attemptInvisibleVerification
                     />
-                    <ImageBackground style={{width:'100%', height:'100%'}} source={require ('../../assets/images/UserLogin/background.png')} >
-                        
-                        <View style={{padding:25, width:'100%',height:'50%', backgroundColor:'white', bottom:0,position:'absolute',borderTopLeftRadius:30,borderTopRightRadius:30}}>
+                    <ImageBackground style={{width:wp('100%'), height:'100%'}} source={require ('../../assets/images/UserLogin/background.png')} >
+                        <View style={{paddingTop:10,paddingLeft:15,}}>
+                            <TouchableOpacity onPress={()=> navigation.navigate('IntroductoryThree')}>
+                         <Image style={{width:40,height:40}} source={require('../../assets/images/backbuttonlight.png')} />
+                         </TouchableOpacity>
+
+                    </View>
+
+                        <View style={{padding:25, width:wp('100%'),height:deviceHeight>600?342:hp('50%'), backgroundColor:'white', bottom:0,position:'absolute',borderTopLeftRadius:30,borderTopRightRadius:30}}>
                            <View>
-                            <Text style={{fontSize:22, fontWeight:'400'}}>Login with mobile</Text>
+                            <Text style={{fontFamily: 'OpenSans',fontSize:22, fontWeight:'400'}}>Login with mobile</Text>
                             </View>
                             <View style={{marginTop:14,marginBottom:28}}>
-                            <Text style={{fontSize:16, fontWeight:'400'}}>Enter your mobile number to continue with Hopnob and earn coupons </Text>
+                            <Text style={{fontFamily: 'OpenSans',fontSize:16, fontWeight:'400'}}>Enter your mobile number to continue with Hopnob and earn coupons </Text>
                             </View>
                             <View style={{marginTop:14,marginBottom:20}}>
                                 {/* https://www.abstractapi.com/guides/react-native-phone-number-verification article  */}
-                         
-                                <SafeAreaView style={styles.wrapper}>
+                                
+
+                                <SafeAreaView   style={{width:'100%', backgroundColor:'white' }}>
                                             {showMessage && (
                                                 <View style={styles.message}>
                                                 <Text>Value : {value}</Text>
@@ -94,7 +105,7 @@ export default function PhoneNumberPage({navigation}) {
                                             <PhoneInput
                                                 ref={refContainer}
                                                 defaultValue={value}
-                                                defaultCode="US"
+                                                defaultCode="IN"
                                                 layout="first"
                                                 onChangeText={(text) => {
                                                 setValue(text);
@@ -103,6 +114,24 @@ export default function PhoneNumberPage({navigation}) {
                                                 setFormattedValue(text);
                                                 }}
                                                 withDarkTheme
+                                                
+                                                containerStyle={
+                                                {
+                                                    borderRadius:75,
+                                                    borderWidth:1,
+                                                    width:'100%',
+                                                    backgroundColor:'white'
+                                                }
+                                                } textInputProps={{
+                                                    borderLeftWidth:1,
+                                                   color:'white',
+                                                   paddingLeft:10
+                                                }}
+                                                textContainerStyle={{
+                                                    backgroundColor:'white',
+                                                    borderTopRightRadius:75,
+                                                    borderBottomRightRadius:75,
+                                                }}
                                             />
                                             {/* <TouchableOpacity
                                                 style={styles.button}
@@ -115,6 +144,7 @@ export default function PhoneNumberPage({navigation}) {
                                                 <Text>Validate</Text>
                                             </TouchableOpacity> */}
                                             </SafeAreaView>
+
 
                             </View>
                             <TouchableOpacity 
@@ -145,7 +175,7 @@ export default function PhoneNumberPage({navigation}) {
                             >
                             <View style={{marginBottom:50,borderRadius:30,paddingVertical:10, backgroundColor:'#1E1E1E',alignItems:'center', justifyContent:'space-around'}}>
                                  
-                                        <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Proceed</Text>
+                                        <Text style={{ fontFamily: 'OpenSans',color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Proceed</Text>
                                        
                                     {/* <LinearGradient colors={['#2D3791', '#4453DF', ]}
                                         start={{x: 0, y: 0.5}}
@@ -162,7 +192,12 @@ export default function PhoneNumberPage({navigation}) {
                         
                     </ImageBackground>
 
-                </View>
+                    </View>
+                </KeyboardAvoidingView>
+                  
+
+                    </>
+                
             
 
            );
@@ -173,8 +208,6 @@ const styles = StyleSheet.create({
     
  appContainer:{
      flex:1,
-     backgroundColor:'white',
-     paddingBottom:30,
  }, 
   
   

@@ -287,10 +287,11 @@ const RootStack = createStackNavigator ({
 
 }, {
     // TopNavigationBarPrimary
-    // initialRouteName:'OtpVerification',
+
+    // initialRouteName:'TestingPageOtp',
     // initialRouteName:'PhoneNumberPage',
     
-    initialRouteName:'UserRegisterPage',
+    initialRouteName:'IntroductoryPageOne',
 
 
 }

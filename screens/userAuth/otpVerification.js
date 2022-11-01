@@ -5,6 +5,9 @@ import PhoneInput from "react-native-phone-number-input";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import axios from 'axios';
 import OTPInputView from '@twotalltotems/react-native-otp-input'; 
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { useSafeArea } from 'react-native-safe-area-context';
+
 import * as SecureStore from 'expo-secure-store';
 async function save(key, value) {
     await SecureStore.setItemAsync(key, value);
@@ -18,9 +21,6 @@ async function save(key, value) {
     //   alert('No values stored under that key.');
     // }
   }
-  
-
-
 
 
 import { initializeApp,getApp} from 'firebase/app';
@@ -55,11 +55,15 @@ throw new Error(
     const verificationIdhash = navigation.getParam('hashValue');
         
    
- 
+    const deviceWidth = Dimensions.get('window').width;
+    const deviceHeight = Dimensions.get('window').height;
+    const fetchFonts = async () =>
+    await Font.loadAsync({
+      'OpenSans': require('../../assets/fonts/OpenSans-Regular.ttf')
+    });
   
     async function ValidateOTP (){
         try {
-             
             const credential = PhoneAuthProvider.credential(verificationIdhash, verificationCode);
             await signInWithCredential(auth, credential);
             console.log(auth.currentUser);
@@ -67,8 +71,6 @@ throw new Error(
             getValueFor("token");
             console.log(getValueFor("token"));
             alert('Phone Authentication Successful');
-            
-           
             navigation.navigate('UserRegisterPage',{uniqueID: auth.currentUser.uid, accessToken:auth.currentUser.accessToken });
             }catch (err) {
                 alert(err);
@@ -78,26 +80,34 @@ throw new Error(
     
 
     const [message, showMessages] = React.useState();
+    const insets = useSafeArea();
 
         return (
-            <View style={styles.appContainer}>
+          <>
+                    <StatusBar style='dark'/>
+                    <View style={{paddingTop: insets.top,backgroundColor:'black'}}></View>
+           <View style={styles.appContainer}>
                {/* BackGround */}
-               <ImageBackground style={{width:'100%', height:'100%'}} source={require ('../../assets/images/UserLogin/background.png')} >
-                   
-                   <View style={{padding:25, width:'100%',height:'50%', backgroundColor:'white', bottom:0,position:'absolute',borderTopLeftRadius:30,borderTopRightRadius:30}}>
+               <ImageBackground style={{width:wp('100%'), height:'100%'}} source={require ('../../assets/images/UserLogin/background.png')} >
+                      <View style={{paddingTop:10,paddingLeft:15,}}>
+                          <TouchableOpacity onPress={()=> navigation.navigate('PhoneNumberPage')}>
+                      <Image style={{width:40,height:40}} source={require('../../assets/images/backbuttonlight.png')} />
+                      </TouchableOpacity>
+                      </View>
+                   <View style={{paddingTop:25,paddingHorizontal:25, width:wp('100%'), height:deviceHeight>600?342:hp('50%'), backgroundColor:'white', bottom:0,position:'absolute',borderTopLeftRadius:30,borderTopRightRadius:30}}>
                       <View>
-                       <Text style={{fontSize:22, fontWeight:'400'}}> Verify your number </Text>
+                       <Text style={{fontFamily:'OpenSans', fontSize:22, fontWeight:'400'}}> Verify your number </Text>
                       
                        </View>
-                       <View style={{marginTop:14,marginBottom:28}}>
-                       <Text style={{fontSize:16, fontWeight:'400'}}>
+                       <View style={{marginTop:14,marginBottom:28,backgroundColor:'white'}}>
+                       <Text style={{fontFamily:'OpenSans', fontSize:16, fontWeight:'400'}}>
                        Enter the 4 digit code to verify your account and proceed ahead 
                            </Text>
                            {/* <Text style={{fontSize:12, fontWeight:'400'}}>
                        Mobile Number{ mobileNumber}
                            </Text> */}
                        </View>
-                       <View >
+                       <View  >
                            {/* https://www.npmjs.com/package/@twotalltotems/react-native-otp-input*/}
                            <OTPInputView 
                            codeInputFieldStyle={{color:'black',borderColor:'#1E1E1E', borderRadius:(Dimensions.get('window').width>375? 20:15),marginRight:10, width:(Dimensions.get('window').width>375? 70:43),height:(Dimensions.get('window').width>375? 50:50)}}
@@ -110,17 +120,17 @@ throw new Error(
                            }
                        
                            autoFocusOnLoad
-                            style={{alignSelf:'center', width: Dimensions.get('window').width,height:100,backgroundColor:'white',paddingLeft:22,paddingRight:22 }} pinCount={6}/>
+                            style={{alignSelf:'center', width: Dimensions.get('window').width,height:50,backgroundColor:'white',paddingLeft:22,paddingRight:22 }} pinCount={6}/>
               
                        </View>
-                       <View style={{ backgroundColor:'white'}}>
+                       <View style={{marginTop:20, backgroundColor:'white'}}>
                                <LinearGradient colors={['#1E1E1E', '#1E1E1E', ]}
                                    start={{x: 0, y: 0.5}}
                                    end={{x: 1, y: 1}}
                                    style={{paddingVertical:10, borderRadius: 30}}
                                >
                                    <TouchableOpacity onPress={ ValidateOTP}>
-                                   <Text style={{color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Next</Text>
+                                   <Text style={{fontFamily:'OpenSans', color: '#fff', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Next</Text>
                                    </TouchableOpacity>
                                </LinearGradient>
                        </View>
@@ -129,13 +139,11 @@ throw new Error(
 
                        
 
-                       <View style={{justifyContent:'space-around',alignItems:'center',marginTop:20, width:'100%', backgroundColor:'white',marginBottom:100, marginBottom:50}}>
+                       <View style={{justifyContent:'space-around',alignItems:'center',marginTop:20, width:'100%', backgroundColor:'white',}}>
                        <TouchableOpacity onPress={()=>    navigation.navigate('PhoneNumberPage' ) }>
-                        <Text style={{fontSize:14,fontWeight:'400',textAlign:'center'}}>Didn’t receive the code? 
-                                <Text style={{color:'#F05A28'}}> RESEND 
+                        <Text style={{fontFamily:'OpenSans', fontSize:14,fontWeight:'400',textAlign:'center'}}>Didn’t receive the code? 
+                                 <Text style={{fontFamily:'OpenSans', color:'#F05A28'}}> RESEND 
                         </Text>
-                        
-                        
                        </Text> 
                        </TouchableOpacity>
 
@@ -149,6 +157,8 @@ throw new Error(
                </ImageBackground>
 
            </View>
+          </>
+           
        
 
       );
@@ -161,7 +171,6 @@ const styles = StyleSheet.create({
  appContainer:{
      flex:1,
      backgroundColor:'white',
-     paddingBottom:50,
  },  
  borderStyleHighLighted: {
     borderColor: "#03DAC6",
