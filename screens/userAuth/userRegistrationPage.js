@@ -64,13 +64,14 @@ export default function UserRegisterPage({navigation}){
             if(response.data.user.email === undefined){
                 alert("Hello We just need Few Details :)");
             }else{
+                alert("Your are already Present");
                 navigation.navigate('StyleTestOne');
             }
             
         }).catch((err)=>{
             // alert(err);
-            alert("Hello We just need Few Details :)");
-            
+            alert("Failed to check user Existence ");
+           
         })
       }, [])
     
@@ -82,7 +83,9 @@ export default function UserRegisterPage({navigation}){
             [  
                 {  
                     text: 'Next',  
+                    // onPress: () => navigation.navigate('StyleTestOne') ,  
                     onPress: () => navigation.navigate('StyleTestOne') ,  
+
                     style: 'cancel',  
                 },  
            
@@ -96,7 +99,9 @@ export default function UserRegisterPage({navigation}){
             [  
                 {  
                     text: 'SKIP',  
-                    onPress: () => navigation.navigate('StyleTestOne'),  
+                    // onPress: () => navigation.navigate('StyleTestOne'),  
+                    onPress: () => navigation.navigate('StyleTestOne') ,  
+
                     style: 'cancel',  
                 },  
                

@@ -290,8 +290,9 @@ const RootStack = createStackNavigator ({
 
     // initialRouteName:'TestingPageOtp',
     // initialRouteName:'PhoneNumberPage',
+    initialRouteName:'DefaultScreen',
     
-    initialRouteName:'IntroductoryPageOne',
+    // initialRouteName:'IntroductoryPageOne',
 
 
 }

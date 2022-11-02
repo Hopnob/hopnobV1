@@ -9,24 +9,28 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { useSafeArea } from 'react-native-safe-area-context';
 
 import * as SecureStore from 'expo-secure-store';
-async function save(key, value) {
+async function  save(key, value) {
     await SecureStore.setItemAsync(key, value);
   }
   
   async function getValueFor(key) {
     let result = await SecureStore.getItemAsync(key);
-    // if (result) {
-    //   alert("🔐 Here's your value 🔐 \n" + result);
-    // } else {
-    //   alert('No values stored under that key.');
-    // }
+    if (result) {
+      alert("🔐 Here's your value 🔐 \n" + result);
+    } else {
+      alert('No values stored under that key.');
+    }
   }
 
+ export const getToken = () => {
+      return SecureStore.getItemAsync('token');
+  };
+
+ 
 
 import { initializeApp,getApp} from 'firebase/app';
 import { ActionCodeURL, getAuth, PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
 import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
-import { Token } from 'graphql';
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
  
@@ -101,7 +105,7 @@ throw new Error(
                        </View>
                        <View style={{marginTop:14,marginBottom:28,backgroundColor:'white'}}>
                        <Text style={{fontFamily:'OpenSans', fontSize:16, fontWeight:'400'}}>
-                       Enter the 4 digit code to verify your account and proceed ahead 
+                       Enter the 6 digit code to verify your account and proceed ahead 
                            </Text>
                            {/* <Text style={{fontSize:12, fontWeight:'400'}}>
                        Mobile Number{ mobileNumber}
