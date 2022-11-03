@@ -65,7 +65,7 @@ export default function UserRegisterPage({navigation}){
                 alert("Hello We just need Few Details :)");
             }else{
                 alert("Your are already Present");
-                navigation.navigate('StyleTestOne');
+                navigation.navigate('DefaultScreen');
             }
             
         }).catch((err)=>{
@@ -83,8 +83,8 @@ export default function UserRegisterPage({navigation}){
             [  
                 {  
                     text: 'Next',  
-                    // onPress: () => navigation.navigate('StyleTestOne') ,  
-                    onPress: () => navigation.navigate('StyleTestOne') ,  
+                    // onPress: () => navigation.navigate('DefaultScreen') ,  
+                    onPress: () => navigation.navigate('DefaultScreen') ,  
 
                     style: 'cancel',  
                 },  
@@ -99,8 +99,8 @@ export default function UserRegisterPage({navigation}){
             [  
                 {  
                     text: 'SKIP',  
-                    // onPress: () => navigation.navigate('StyleTestOne'),  
-                    onPress: () => navigation.navigate('StyleTestOne') ,  
+                    // onPress: () => navigation.navigate('DefaultScreen'),  
+                    onPress: () => navigation.navigate('DefaultScreen') ,  
 
                     style: 'cancel',  
                 },  

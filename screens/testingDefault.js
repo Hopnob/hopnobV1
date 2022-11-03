@@ -26,20 +26,17 @@ if (!app?.options || Platform.OS === 'web') {
     }
 export default function DefaultTestingPage({navigation}) {
     const [tokenpresent,setTokenpresent] = useState('');
-    getToken().then(token => setTokenpresent(token))
 
     useEffect(()=>{
-       if(tokenpresent != null){ 
-        alert('Welcome Back');
-    }
-       else {
-        alert('You must signin');
-        navigation.navigate('PhoneNumberPage');
-       }
+        getToken().then(token => setTokenpresent(token))
+        if(tokenpresent ===null ) {
+            alert('Please SignIn');
+                navigation.navigate('PhoneNumberPage');
+        }
+        console.log(tokenpresent);
+ 
     },[]);
-    
-    console.log(Dimensions.get('window').width);
-    console.log(Dimensions.get('window').height);
+ 
 
     signOutUser = async () => {
         try {
