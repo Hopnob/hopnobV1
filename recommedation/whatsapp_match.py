@@ -214,7 +214,7 @@ async def main():
 
             # publishing results to whatsapp bot subject in json format with utf-8 encoding
             output = bytes(str(json.dumps(predictions)), 'utf-8')
-            ack = await js.publish("user.id.apparel.recommendation_wp", output)
+            ack = await nc.publish("user.id.apparel.recommendation_wp", output)
             print(ack)
         except Exception as e:
             print("ERROR")
