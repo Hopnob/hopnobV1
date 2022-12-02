@@ -2,7 +2,7 @@ import React ,{useState} from 'react';
 import {Dimensions, FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
 
 import {getToken} from './userAuth/otpVerification';
-
+import axios from 'axios';
 import { initializeApp,getApp} from 'firebase/app';
 import { ActionCodeURL, getAuth, PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
 const firebaseConfig = {
@@ -17,6 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 import * as SecureStore from 'expo-secure-store';
 import { useEffect } from 'react';
+import { Token } from 'graphql';
 
 const auth = getAuth(app);
 if (!app?.options || Platform.OS === 'web') {
@@ -25,20 +26,52 @@ if (!app?.options || Platform.OS === 'web') {
     );
     }
 export default function DefaultTestingPage({navigation}) {
-    const [tokenpresent,setTokenpresent] = useState('');
-
+    
+    const [accessToken,setAccessToken] = useState('');
+    const mobileNumber = navigation.getParam('mobileNumber');
     useEffect(()=>{
-        getToken().then(token => setTokenpresent(token))
-        if(tokenpresent ===null ) {
-            alert('Please SignIn');
-                navigation.navigate('PhoneNumberPage');
+       getToken().then(token=> 
+       { if(token!=null){
+        setAccessToken(token)   
+        // alert(token)
+        }else{
+            alert('No token present')
         }
-        console.log(tokenpresent);
- 
-    },[]);
+    }
+    )
+    } ,[])
+    console.log(accessToken);
+    console.log(mobileNumber);
+    
+    function getData(){
+        axios.get(
+            `https://hopnob-backend-cctjhm4vha-uc.a.run.app/api/v1/users/${mobileNumber}` ,
+        {
+            headers: { 
+                'Authorization':`Bearer ${accessToken}`
+            }
+        }).then((response)=>{
+          console.log(response.data.user);
+            if(response.data.user.email === undefined){
+                alert("Hello We just need Few Details :)");
+            }else{
+                alert("Welcome Back");
+            }
+            
+        }).catch((err)=>{
+            // alert(err);
+            alert(err);
+           
+        })
+    }
+    // useEffect(() => {
+    
+    //   }, [])
+    
+    
  
 
-    signOutUser = async () => {
+   const signOutUser = async () => {
         try {
             SecureStore.deleteItemAsync('token').then(
                 alert('User Is Signout')
@@ -50,14 +83,12 @@ export default function DefaultTestingPage({navigation}) {
 
     return (
         <View style={styles.appContainer}>
-                      <Text>Dummy Dashboard</Text>
+                      <Text>JUST A PAGE</Text>
                       <View style={{margin:10}}>
-
-                      <Button onPress={ ()=>    getToken().then(token => console.log(token))} title='Check Token'/>
-
+                      <Button onPress={ getData } title='Style Test'/>
                       </View>
                         <View>
-                        <Button onPress={signOutUser} title='Signout'/>
+                        {/* <Button onPress={signOutUser} title='Signout'/> */}
 
                         </View>
         </View>

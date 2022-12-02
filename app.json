@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "hopnobv1",
-    "slug": "hopnobv1",
-    "version": "1.0.0",
+    "name": "Hopnob",
+    "slug": "hopnob",
+    "version": "2.1.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/launchPage.png",
+      "resizeMode": "strech",
+      "backgroundColor": "#D9D9D9"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,17 +23,19 @@
     },
     "android": {
       "package": "testing.hopnobapp",
+      "versionCode":8,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       }
+
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "a029c533-326b-4e7e-972e-df8ecb62320a"
+        "projectId": "f7ecb39c-46e6-4168-b551-d9488402901d"
       }
     },
     "plugins": [

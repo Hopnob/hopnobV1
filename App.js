@@ -40,11 +40,12 @@ import IntroductoryThree from './screens/Introductory/introPage3';
 import PhoneNumberPage from './screens/userAuth/phoneNumberPage';
 import OtpVerification from './screens/userAuth/otpVerification';
 import UserRegisterPage from './screens/userAuth/userRegistrationPage';
-//importing user Styles
+// importing user Styles
 import  StyleTestOne from './screens/userStyles/style_test';
 import  StyleTestTwo from './screens/userStyles/styleTest2';
 import FaceScanPage from './screens/userStyles/faceScan';
 
+import DressMeZero from './screens/dressMe/dressMeZero';
 
 //importing add pages
 import AddPageTwo from './screens/addSection/addPageTwo';
@@ -56,8 +57,9 @@ import AddHopnobPage from './screens/addSection/hopnobPage';
 import DressMePage from './screens/dressMe/dressme_page';
 import DressMePageOutfit from './screens/dressMe/dressme_outfit';
 
-// imprting from 
-// import TestingPage from './screens/testing/testing';
+// importing outfit play
+import OutfitPlayPage from './screens/outfitPlay/outfitPlay';
+ 
 // importing click and match
 import clickandmatchPage from './screens/clickNmatch/clickandmatchPage';
 import clickandmatchRecommendedPage from './screens/clickNmatch/clickandmatchRecommend';
@@ -73,19 +75,13 @@ import MeStyleTestOne from './screens/meSection/styleTests/meStyleTestOne';
 
 import TestingPageOtp from './screens/testing/testing';
 const RootStack = createStackNavigator ({
-    DefaultScreen: {
+    DefaultTestingPage: {
         screen: DefaultTestingPage, 
         navigationOptions: {
             header:()=> false,
         },
     },
-    IntroductoryPageZero: {
-        screen: IntroductoryPageZero, 
-        navigationOptions: {
-            header:()=> false,
-        },
-    },
-    IntroductoryPageOne: {
+   IntroductoryPageOne: {
         screen: IntroductoryPageOne, 
         navigationOptions: {
             header:()=> false,
@@ -123,160 +119,170 @@ const RootStack = createStackNavigator ({
             header:()=> false,
         },
     },
-    // // Style Test
-    // StyleTestOne: {
-    //     screen: StyleTestOne, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // StyleTestTwo: {
-    //     screen: StyleTestTwo, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // FaceScanPage: {
-    //     screen: FaceScanPage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // // Add Section 
-    // AddPageTwo: {
-    //     screen: AddPageTwo, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // AddFromCameraPage: {
-    //     screen: AddFromCameraPage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // AddHopnobPage: {
-    //     screen: AddHopnobPage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // Gallerycmp: {
-    //     screen: Gallerycmp, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // //wardrobe screens
-    // WardrobePage: {
-    //     screen: WardrobePage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // ProductHopnobPage: {
-    //     screen: ProductHopnobPage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // ProductConsumerPage: {
-    //     screen: ProductConsumerPage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // OutfitsPage: {
-    //     screen: OutfitsPage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // // ME Section
-    // MePage: {
-    //     screen: MePage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // MeSettingsPage: {
-    //     screen: MeSettingsPage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // EditProfile:{
-    //     screen:EditProfile,
-    //     navigationOptions:{
-    //         header:()=>false,
-    //     }
-    // },
-    // MyStats:{
-    //     screen:MyStats,
-    //     navigationOptions:{
-    //         header:()=>false,
-    //     }
-    // },
-    // MeStyleTestOne:{
-    //     screen:MeStyleTestOne,
-    //     navigationOptions:{
-    //         header:()=>false,
-    //     }
-    // },
+    // Style Test
+    StyleTestOne: {
+        screen: StyleTestOne, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    StyleTestTwo: {
+        screen: StyleTestTwo, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    FaceScanPage: {
+        screen: FaceScanPage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    DressMeZero:{
+        screen:DressMeZero,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    // Add Section 
+    AddPageTwo: {
+        screen: AddPageTwo, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    AddFromCameraPage: {
+        screen: AddFromCameraPage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    AddHopnobPage: {
+        screen: AddHopnobPage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    Gallerycmp: {
+        screen: Gallerycmp, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    //wardrobe screens
+    WardrobePage: {
+        screen: WardrobePage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    ProductHopnobPage: {
+        screen: ProductHopnobPage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    ProductConsumerPage: {
+        screen: ProductConsumerPage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    OutfitsPage: {
+        screen: OutfitsPage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    // ME Section
+    MePage: {
+        screen: MePage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    MeSettingsPage: {
+        screen: MeSettingsPage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    EditProfile:{
+        screen:EditProfile,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    MyStats:{
+        screen:MyStats,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    MeStyleTestOne:{
+        screen:MeStyleTestOne,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
 
-    // Bottomnav: {
-    //         screen: Bottomnav, 
-    //         navigationOptions: {
-    //             header:()=> false,
-    //         },
-    // },
-    // TopNavigationBarPrimary: {
-    //     screen: TopNavigationBarPrimary, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // DressMePage: {
-    //     screen: DressMePage, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
+    Bottomnav: {
+            screen: Bottomnav, 
+            navigationOptions: {
+                header:()=> false,
+            },
+    },
+    TopNavigationBarPrimary: {
+        screen: TopNavigationBarPrimary, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    DressMePage: {
+        screen: DressMePage, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
    
-    // DressMePageOutfit: {
-    //     screen: DressMePageOutfit, 
-    //     navigationOptions: {
-    //         header:()=> false,
-    //     },
-    // },
-    // clickandmatchPage:{
-    //     screen:clickandmatchPage,
-    //     navigationOptions:{
-    //         header:()=>false,
-    //     }
-    // },
-    // clickandmatchRecommendedPage:{
-    //     screen:clickandmatchRecommendedPage,
-    //     navigationOptions:{
-    //         header:()=>false,
-    //     }
-    // },
-    // TestingPageOtp:{
-    //     screen:TestingPageOtp,
-    //     navigationOptions:{
-    //         header:()=>false,
-    //     }
-    // }
+    DressMePageOutfit: {
+        screen: DressMePageOutfit, 
+        navigationOptions: {
+            header:()=> false,
+        },
+    },
+    clickandmatchPage:{
+        screen:clickandmatchPage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    clickandmatchRecommendedPage:{
+        screen:clickandmatchRecommendedPage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    OutfitPlayPage:{
+        screen:OutfitPlayPage,
+        navigationOptions:{
+            header:()=>false
+        }
+    },
+    TestingPageOtp:{
+        screen:TestingPageOtp,
+        navigationOptions:{
+            header:()=>false,
+        }
+    }
 
 }, {
     // TopNavigationBarPrimary
 
     // initialRouteName:'TestingPageOtp',
-    // initialRouteName:'PhoneNumberPage',
-    initialRouteName:'DefaultScreen',
-    
-    // initialRouteName:'IntroductoryPageOne',
-
+    initialRouteName:'MeStyleTestOne',
+    // initialRouteName:'DefaultTestingPage',
+    // initialRouteName:'StyleTestOne',
 
 }
 )

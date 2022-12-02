@@ -4,15 +4,11 @@ import {
     Platform,
     SafeAreaView,
     StatusBar,
-    FlatList,
-    ScrollView,
     StyleSheet,
     ImageBackground,
     Image,
     Text,
     View,
-    Button,
-    TextInput,
     TouchableOpacity
 } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
@@ -22,7 +18,8 @@ import {useSafeArea} from 'react-native-safe-area-context';
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-import * as Font from "expo-font";
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 
 import {initializeApp, getApp} from 'firebase/app';
 import {getAuth, PhoneAuthProvider, signInWithCredential} from 'firebase/auth';
@@ -61,12 +58,8 @@ export default function PhoneNumberPage({navigation}) {
     const [valid, setValid] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
 
-    const proceedButtonHandler = () => {
+     
 
-        console.log(formattedValue);
-
-        navigation.navigate('OtpVerification', {mobileNumber: formattedValue});
-    }
 
     const recaptchaVerifier = React.useRef(null);
     const [verificationId, setVerificationId] = React.useState();
@@ -79,9 +72,12 @@ export default function PhoneNumberPage({navigation}) {
     const deviceHeight = Dimensions
         .get('window')
         .height;
-    const fetchFonts = async () => await Font.loadAsync(
-        {'OpenSans': require('../../assets/fonts/OpenSans-Regular.ttf')}
-    );
+        let [fontsLoaded] = useFonts({
+            'Open-sans': require('../../assets/fonts/OpenSans-Regular.ttf'),
+          });
+          if (!fontsLoaded) {
+            return <AppLoading />;
+          }
     const insets = useSafeArea();
     
     return(
@@ -96,7 +92,8 @@ export default function PhoneNumberPage({navigation}) {
                 flexGrow: 1
             }}>
             <View style={styles.appContainer}>
-            <FirebaseRecaptchaVerifierModal ref={recaptchaVerifier} firebaseConfig={app.options}
+            <FirebaseRecaptchaVerifierModal
+             ref={recaptchaVerifier} firebaseConfig={app.options}
                     //   attemptInvisibleVerification
                 />
                 <ImageBackground
@@ -137,7 +134,7 @@ export default function PhoneNumberPage({navigation}) {
                         <View>
                             <Text
                                 style={{
-                                    fontFamily: 'OpenSans',
+                                    fontFamily: 'Open-sans',
                                     fontSize: 22,
                                     fontWeight: '400'
                                 }}>Login with mobile</Text>
@@ -149,7 +146,7 @@ export default function PhoneNumberPage({navigation}) {
                             }}>
                             <Text
                                 style={{
-                                    fontFamily: 'OpenSans',
+                                    fontFamily: 'Open-sans',
                                     fontSize: 16,
                                     fontWeight: '400'
                                 }}>Enter your mobile number to continue with Hopnob and earn coupons
@@ -200,7 +197,7 @@ export default function PhoneNumberPage({navigation}) {
                                     }}
                                     textInputProps={{
                                         borderLeftWidth: 1,
-                                        color: 'white',
+                                        color: 'black',
                                         paddingLeft: 10
                                     }}
                                     textContainerStyle={{
@@ -261,7 +258,7 @@ export default function PhoneNumberPage({navigation}) {
 
                                 <Text
                                     style={{
-                                        fontFamily: 'OpenSans',
+                                        fontFamily: 'Open-sans',
                                         color: '#fff',
                                         textAlign: 'center',
                                         fontSize: 15,

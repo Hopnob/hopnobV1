@@ -3,11 +3,52 @@ import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-n
 import { Camera } from 'expo-camera';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function clickandmatchPage({navigation}) {
+  let [fontsLoaded] = useFonts({
+    'Open-sans': require('../../assets/fonts/OpenSans-Regular.ttf'),
+    'Open-sans-Bold': require('../../assets/fonts/OpenSans-Bold.ttf'),
+
+  });
+  const [visible, setVisible] = useState(false);
+  const[hasGalleryPermission,setHasCameraPermission ] = useState(null);
+  const[image,setImage ] = useState(null);
+  useEffect(()=>{
+    (async () => {
+      const galleryStatus= await ImagePicker.requestMediaLibraryPermissionsAsync();
+      setHasCameraPermission(galleryStatus.status === 'granted');
+    })();
+  }, []);
+
+  const pickImage = async () =>{
+    let result= await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing:true,
+      // aspect:[16,9],
+      quality:1,
+    });
+    console.log(result);
+
+    if(!result.cancelled){
+      setImage(result.uri);
+      console.log("SUCESS PICKING IMAGE");
+      setVisible(!visible);
+      navigation.navigate('clickandmatchRecommendedPage');
+    }
+  }
+
+  if(hasGalleryPermission === false){
+    return <Text>No access to internal storage</Text>
+  }
+          const toggleBottomNavigationView = () => {
+            //Toggling the visibility state of the bottom sheet
+            setVisible(!visible);
+          };  
   const [hasPermission, setHasPermission] = useState(null);
   const [camera, setCamera] = useState(null);
-  const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
 useEffect(() => {
     (async () => {
@@ -28,10 +69,13 @@ if (hasPermission === null) {
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <View style={styles.container}>
              <View style={{width:'100%',alignItems:'center',marginBottom:24,marginTop:20}}>
-                     <Text style={{color:'#1E1E1E',fontWeight:'400',fontSize:20}}>Take Photo </Text>
+                     <Text style={{color:'#1E1E1E',fontWeight:'400',fontFamily:'Open-sans', fontSize:20}}>Take Photo </Text>
              </View>
              
 
@@ -51,7 +95,7 @@ if (hasPermission === null) {
     marginBottom:28,
     bottom:0,
     position:'absolute'}}>
-                         <TouchableOpacity 
+                         <TouchableOpacity  onPress={() => pickImage()}
                         // onPress={() =>  navigation.navigate('addSection')} 
                         //  onPress={() => {
                         //     setType(
@@ -76,15 +120,8 @@ if (hasPermission === null) {
              
              <View style={styles.buttonContainer2}>
                          <TouchableOpacity 
-                        onPress={() =>  navigation.navigate('addSection')} 
-                        //  onPress={() => {
-                        //     setType(
-                        //         type === Camera.Constants.Type.back
-                        //         ? Camera.Constants.Type.front
-                        //         : Camera.Constants.Type.back
-                        //     );
-                        //     }
-                        // }
+                        onPress={() =>  navigation.navigate('AddPageTwo')} 
+                       
                         >
                             <Text style={{fontSize:18}   }> Cancel</Text>
                           </TouchableOpacity>

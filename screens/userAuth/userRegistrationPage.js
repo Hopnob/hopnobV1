@@ -2,16 +2,17 @@ import React ,{useState,useRef,useEffect} from 'react';
 import { Alert, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity,Dimensions,PixelRatio } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
-import { color } from 'react-native-reanimated';
 import { initializeApp,getApp} from 'firebase/app';
-import { getAuth, PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
+import {GoogleAuthProvider, getAuth, PhoneAuthProvider, signInWithPopup } from 'firebase/auth';
+// import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
-import { Token } from 'graphql';
-import { useFonts } from 'expo-font';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { StatusBar } from 'expo-status-bar';
+import {getToken} from '../userAuth/otpVerification';
 
-
+import * as GoogleAuthentication from 'expo-google-app-auth';
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
  
@@ -24,7 +25,7 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-  
+const provider = new GoogleAuthProvider();
 if (!app?.options || Platform.OS === 'web') {
 throw new Error(
   'This example only works on Android or iOS, and requires a valid Firebase config.'
@@ -35,26 +36,25 @@ import { useSafeArea } from 'react-native-safe-area-context';
 
 
 export default function UserRegisterPage({navigation}){
-    const fetchFonts = async () =>
-    await Font.loadAsync({
-      'OpenSans': require('../../assets/fonts/OpenSans-Regular.ttf')
-    });
-    
+    let [fontsLoaded] = useFonts({
+        'Open-sans': require('../../assets/fonts/OpenSans-Regular.ttf'),
+      });
 
+    const [accessToken,setAccessToken] = useState('');
+    const mobileNumber = navigation.getParam('mobileNumber');
+    useEffect(()=>{
+       getToken().then(token=> 
+    setAccessToken(token)   
+    )} ,[])
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const mobileNumber = navigation.getParam('mobileNumber');
-
-    const accessToken = navigation.getParam('accessToken');
-    const uniqueID = navigation.getParam('uniqueID');
+    
     // checking if a user data is already present
     useEffect(() => {
         axios.get(
-            `https://hopnob-backend-cctjhm4vha-uc.a.run.app/api/v1/users/${uniqueID}` ,
+            `https://hopnob-backend-cctjhm4vha-uc.a.run.app/api/v1/users/${mobileNumber}` ,
         {
             headers: { 
                 'Authorization':`Bearer ${accessToken}`
@@ -64,13 +64,13 @@ export default function UserRegisterPage({navigation}){
             if(response.data.user.email === undefined){
                 alert("Hello We just need Few Details :)");
             }else{
-                alert("Your are already Present");
-                navigation.navigate('DefaultScreen');
+                alert("Your Data is already Present");
+                navigation.navigate('StyleTestOne');
             }
             
         }).catch((err)=>{
             // alert(err);
-            alert("Failed to check user Existence ");
+            alert(err);
            
         })
       }, [])
@@ -84,7 +84,7 @@ export default function UserRegisterPage({navigation}){
                 {  
                     text: 'Next',  
                     // onPress: () => navigation.navigate('DefaultScreen') ,  
-                    onPress: () => navigation.navigate('DefaultScreen') ,  
+                    onPress: () => navigation.navigate('StyleTestOne') ,  
 
                     style: 'cancel',  
                 },  
@@ -100,7 +100,7 @@ export default function UserRegisterPage({navigation}){
                 {  
                     text: 'SKIP',  
                     // onPress: () => navigation.navigate('DefaultScreen'),  
-                    onPress: () => navigation.navigate('DefaultScreen') ,  
+                    onPress: () => navigation.navigate('StyleTestOne') ,  
 
                     style: 'cancel',  
                 },  
@@ -112,8 +112,9 @@ export default function UserRegisterPage({navigation}){
     const submitHandler=()=> {
         console.log(accessToken);
         console.log(uniqueID);
+        console.log(mobileNumber);
          axios.patch(
-            `https://hopnob-backend-cctjhm4vha-uc.a.run.app/api/v1/users/${uniqueID}` ,
+            `https://hopnob-backend-cctjhm4vha-uc.a.run.app/api/v1/users/${mobileNumber}` ,
          {
             "firstName": firstName,
             "lastName": lastName,
@@ -127,20 +128,44 @@ export default function UserRegisterPage({navigation}){
             successAlert();
 
             console.log("New User Created");
-        }).catch(()=>{
+        }).catch((err)=>{
             alert("Failed to Register");
-            console.log("fail");
+            console.log(err);
         });
 
     }
+
+    // const googleLoginHandler = () => {
+
+    //     signInWithPopup(auth, provider)
+    //       .then((result) => {
+    //         // The signed-in user info.
+    //         const user = result.user;
+    //         // ...
+    //       })
+    //       .catch((error) => {
+    //         // Handle Errors here.
+    //         const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //         // The email of the user's account used.
+    //         const email = error.customData.email;
+    //         // The AuthCredential type that was used.
+    //         const credential = GoogleAuthProvider.credentialFromError(error);
+    //         // ...
+    //       });
+    //   };
+      
    
     const deviceHeight = Dimensions.get('window').height;
     const deviceWidth = Dimensions.get('window').height;
+    if (!fontsLoaded) {
+        return <AppLoading />;
+      }
     const insets = useSafeArea();
         return (
             <>
-            <StatusBar style='dark'/>
-               <View style={{paddingTop: insets.top,}}></View>
+            <StatusBar style='light'/>
+            <View style={{paddingTop: insets.top,backgroundColor:'black'}}></View>
                <View style={styles.appContainer}>
                {/* BackGround */}
                <ImageBackground style={{width:wp('100%'), height:'100%'}} source={require ('../../assets/images/UserLogin/background.png')} >
@@ -154,24 +179,24 @@ export default function UserRegisterPage({navigation}){
                        
 
                        <View style={{ backgroundColor:'white'}}>
-                       <Text style={{fontFamily: 'OpenSans', fontSize:22, fontWeight:'400'}}>Let's create your profile </Text>
+                       <Text style={{fontFamily: 'Open-sans', fontSize:22, fontWeight:'400'}}>Let's create your profile </Text>
                                 
                                 {/* Inputs */}
 
                                     <TextInput  onChangeText={newfirstName => setFirstName(newfirstName)}  placeholder="First name" 
-                                    style={{fontFamily: 'OpenSans', marginTop: 20,marginBottom:17,paddingBottom:8,
+                                    style={{fontFamily: 'Open-sans', marginTop: 20,marginBottom:17,paddingBottom:8,
                                     borderColor: ' #1E1E1E;',
                                     borderBottomWidth: 0.75
                                 }}
                                     />
                                      <TextInput onChangeText={newLastName => setLastName(newLastName)} placeholder="Last name" 
-                                     style={{fontFamily: 'OpenSans', marginBottom:17,paddingBottom:8,
+                                     style={{fontFamily: 'Open-sans', marginBottom:17,paddingBottom:8,
                                         borderColor: ' #1E1E1E;',
                                         borderBottomWidth: 0.75
                                     }}
                                     />
                                      <TextInput   onChangeText={newEmail => setEmail(newEmail)} placeholder="Email-id"
-                                     style={{fontFamily: 'OpenSans', marginBottom:26,paddingBottom:8,
+                                     style={{fontFamily: 'Open-sans', marginBottom:26,paddingBottom:8,
                                     borderColor: ' #1E1E1E;',
                                     borderBottomWidth: 0.75
                                 }}
@@ -184,7 +209,7 @@ export default function UserRegisterPage({navigation}){
                                     borderColor: 'black',
                                     borderBottomWidth: 1}}
                                     /> */}
-                                    
+                                    {/* <Button onPress={googleLoginHandler} title='test' /> */}
 
                                <LinearGradient colors={['#1E1E1E', '#1E1E1E', ]}
                                    start={{x: 0, y: 0.5}}
@@ -192,11 +217,11 @@ export default function UserRegisterPage({navigation}){
                                    style={{paddingVertical:10, borderRadius: 30, }}
                                >
                                    <TouchableOpacity onPress={submitHandler }>
-                                   <Text style={{color: '#fff',fontFamily: 'OpenSans', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Submit</Text>
+                                   <Text style={{color: '#fff',fontFamily: 'Open-sans', textAlign: 'center',fontSize: 15,fontWeight:'700'}}>Submit</Text>
                                    </TouchableOpacity>
                                </LinearGradient>
 
-                               <Text style={{fontFamily: 'OpenSans',marginTop:20,marginBottom:15, textAlign:'center',fontWeight:'700',fontSize:12}}>OR SIGN UP WITH</Text>
+                               <Text style={{fontFamily: 'Open-sans',marginTop:20,marginBottom:15, textAlign:'center',fontWeight:'700',fontSize:12}}>OR SIGN UP WITH</Text>
 
                                 {/* view of button */}
                                
@@ -224,8 +249,8 @@ export default function UserRegisterPage({navigation}){
                                          
                                 </View>
                                 <View style={{width:'100%',backgroundColor:'white',}}>
-                                <Text style={{fontFamily: 'OpenSans', textAlign:'center',fontWeight:'400',fontSize:8}}>By continuing you agree to our <Text style={{fontFamily: 'OpenSans', textAlign:'center',fontWeight:'700',fontSize:8, color:'#323DA2'}}>TERMS OF SERVICE </Text></Text>
-                                <Text style={{fontFamily: 'OpenSans',textAlign:'center',fontWeight:'400',fontSize:8}}>Hopnob services are subject to our <Text style={{fontFamily: 'OpenSans',textAlign:'center',fontWeight:'700',fontSize:8, color:'#323DA2'}}> PRIVACY POLICY </Text></Text>
+                                <Text style={{fontFamily: 'Open-sans', textAlign:'center',fontWeight:'400',fontSize:8}}>By continuing you agree to our <Text style={{fontFamily: 'Open-sans', textAlign:'center',fontWeight:'700',fontSize:8, color:'#323DA2'}}>TERMS OF SERVICE </Text></Text>
+                                <Text style={{fontFamily: 'Open-sans',textAlign:'center',fontWeight:'400',fontSize:8}}>Hopnob services are subject to our <Text style={{fontFamily: 'Open-sans',textAlign:'center',fontWeight:'700',fontSize:8, color:'#323DA2'}}> PRIVACY POLICY </Text></Text>
                                
                                 </View>
 

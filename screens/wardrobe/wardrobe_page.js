@@ -1,164 +1,205 @@
-
-import React ,{useState} from 'react';
-import { FlatList,ScrollView, StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
+import React, {useState,useRef,useEffect} from 'react';
+import {
+    FlatList,ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from 'react-native';
+import Image from 'react-native-scalable-image';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {useSafeArea} from 'react-native-safe-area-context';
+import {StatusBar} from 'expo-status-bar';
 import { Dropdown } from 'react-native-element-dropdown';
- 
-import { useSafeArea } from 'react-native-safe-area-context';
-
-// // import { useSafeArea } from 'react-native-safe-area-context';
-// // const insets = useSafeArea();
-// {/* <View style={{paddingTop: insets.top}}>
-// </View> */}
-  const data = [
-    { label: 'Item 1', value: '1' },
-    { label: 'Item 2', value: '2' },
-    { label: 'Item 3', value: '3' },
-    { label: 'Item 4', value: '4' },
-    { label: 'Item 5', value: '5' },
-    { label: 'Item 6', value: '6' },
-    { label: 'Item 7', value: '7' },
-    { label: 'Item 8', value: '8' },
-  ];
-
+import TopNavigationBarPrimary from '../components/topNavigationP';
+import BottomNavigationBarCMP from '../components/bottom_navbar';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+import ChatBox from '../components/chatbox';
+const data = [
+  { label: 'Item 1', value: '1' },
+  { label: 'Item 2', value: '2' },
+  { label: 'Item 3', value: '3' },
+  { label: 'Item 4', value: '4' },
+  { label: 'Item 5', value: '5' },
+  { label: 'Item 6', value: '6' },
+  { label: 'Item 7', value: '7' },
+  { label: 'Item 8', value: '8' },
+];
+const dummyArray = [
+  { id: '1',description:"KEEP IT CASUAL", image: require('../../assets/images/dressMe/1.png') },
+  { id: '2',description:"WORK ", image: require('../../assets/images/dressMe/2.png') },
+  { id: '3',description:"PARTAY!", image: require('../../assets/images/dressMe/3.png')},
+  { id: '4',description:"ETHNIC FEELS", image: require('../../assets/images/dressMe/4.png') },
+  { id: '5',description:"DATE NIGHT", image: require('../../assets/images/dressMe/5.png') },
+  { id: '6',description:"JUST BRUNCHIN’", image: require('../../assets/images/dressMe/6.png') },
   
-  export default function WardrobePage({navigation}) {
-    const insets = useSafeArea();
+];
+export default function WardrobePage({navigation}) {
+     const [value, setValue] = useState(null);
+     const [listItems, setListItems] = useState(dummyArray);
 
-    const [value, setValue] = useState(null);
-    const[people, setPeople] = useState([
-        {image: require('../../assets/images/wardrobe/allcloth.png'), id:'1'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'2'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'3'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'4'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'5'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'6'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'7'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'8'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'9'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'10'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'11'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'12'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'13'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'15'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'16'},
-        {image: require('../../assets/images/topsWardrobe/Rectangle100.png'), id:'17'},
-    ])
-      return (
-       <>
-       <View style={{paddingTop: insets.top}}>
-          </View>
-       <View style={styles.appContainer}>
-        <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-around', }}>
-           {/* title */}
-           <View style={{width:'40%',alignItems:'flex-start'}}>
-        <Text style={{color:'#2D3791',fontWeight:'700'}}>WARDROBE</Text>
-            </View>
-            {/* dropdown */}
-            <View style={{alignItems:'flex-end', width:'30%',}}>
-                            <Dropdown
-                        style={styles.dropdown}
-                        placeholderStyle={styles.placeholderStyle}
-                        selectedTextStyle={styles.selectedTextStyle}
-                        inputSearchStyle={styles.inputSearchStyle}
-                        iconStyle={styles.iconStyle}
-                        data={data}
-                        search
-                        maxHeight={300}
-                        labelField="label"
-                        valueField="value"
-                        placeholder="Sort by"
-                        searchPlaceholder="Search..."
-                        value={value}
-                        onChange={item => {
-                        setValue(item.value);
-                        }}
-                        // renderLeftIcon={() => (
-                        // <AntDesign style={styles.icon} color="black" name="Safety" size={20} />
-                        // )}
-                    />
+    let [fontsLoaded] = useFonts({
+        'Open-sans': require('../../assets/fonts/OpenSans-Regular.ttf'),
+        'Open-sans-Bold': require('../../assets/fonts/OpenSans-Bold.ttf'),
 
-            </View>
-                {/* button */}  
-            <View> 
-                <Image style={{width:25,height:25}} source={ require( '../../assets/images/wardrobe/Arrowbutton.png')}/>
-            </View>
-        </View>
-        
-        <View style={{marginTop:16}}>
-
-            <Text style={{fontSize:12, fontWeight:'700'}}>RECENTLY ADDED</Text>
-
-            <View>
-                <ScrollView horizontal={true}>
-                            <View style={styles.item  }>
-                                <Image style ={{}} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
-                            </View>
-                            <View style={styles.item}>
-                                <Image style ={{}} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
-                            </View>
-                            <View style={styles.item}>
-                                <Image style ={{}} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
-                                
-                            </View>
-                            <View style={styles.item}>
-                            <Image style ={{}} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
-                            </View> 
-                            <View style={styles.item}>
-                            <Image style ={{}} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
-                            </View> 
-                            <View style={styles.item}>
-                            <Image style ={{}} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
-                            </View> 
-                            <View style={styles.item}>
-                            <Image style ={{}} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
-                            </View> 
-                            <View style={styles.item}>
-                            <Image style ={{}} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
-                            </View> 
-                </ScrollView>
-                </View>      
-        </View>
-
-        <View style={{marginTop:20, }}>
-            <View>
-                 <Text style={{fontSize:12, fontWeight:'700'}}>ALL CLOTHES</Text>
-            </View>
-            <View style={{marginTop:10,}}>
-                        <FlatList numColumns={3} 
-                        keyExtractor={(item) =>item.id}
-                        data = {people}
-                        renderItem = {({item}) =>(
-                              <View style={{flex:1 , }}>
-                              <TouchableOpacity onPress={()=> navigation.navigate('ProductHopnobPage')}>
-                              <View style={styles.item}>
-                              <Image style ={{width:90,height:70}} source= {require ('../../assets/images/wardrobe/allcloth2.png')} />
-                             </View>
-                              </TouchableOpacity>
-                              <TouchableOpacity onPress={()=> navigation.navigate('ProductConsumerPage')}>
-                              <View style={styles.item}>
-                              <Image style ={{width:90,height:70}} source= {require ('../../assets/images/wardrobe/allcloth.png')} />
-                             </View>
-                              </TouchableOpacity>
-                             
-                                 {/* <Image style ={styles.item} source= {item.image} /> */}
-                            </View>
-                        )}
-                        />
-
-            
-            </View>
-
-
-        </View>
-         
-     </View>
-     {/* <Bottomnav />  */}
-       </> 
-      
+      });
      
-   );
+      if (!fontsLoaded) {
+        return <AppLoading />;
+      }
+      const ItemView = ({ item }) => {
+        return (
+                <>
+                <View style={{}}>
+                
+                <View style={{backgroundColor:'#F5F5F5',borderRadius:20, justifyContent:'space-around',alignItems:'center', width:wp(30)-10,height:wp(35)-10, marginBottom:5, marginRight:5}}>
+                   
+                    <TouchableOpacity onPress={()=>navigation.navigate('ProductHopnobPage')}>
+                    <Image width={wp(30)-15} source= {require ('../../assets/images/wardrobe/allcloth.png')} />  
+                    {/* <Image width={wp(30)-15} source= {require ('../../assets/images/wardrobe/allcloth.png')} /> */}
+                 {/* <Text style={{marginTop:10, fontFamily:'Open-sans-Bold',fontSize:12, backgroundColor:'white'}} >
+                    {item.description} 
+                </Text> */}
+                  </TouchableOpacity>
+                </View>
+                <View style={{backgroundColor:'#F5F5F5',borderRadius:20, justifyContent:'space-around',alignItems:'center', width:wp(30)-10,height:wp(35)-10, marginBottom:5, marginRight:5}}>
+                   
+                    <TouchableOpacity onPress={()=>navigation.navigate('ProductConsumerPage')}>
+                    <Image width={wp(30)-15} source= {require ('../../assets/images/wardrobe/allcloth2.png')} /> 
+                    {/* <Image width={wp(30)-15} source= {require ('../../assets/images/wardrobe/allcloth.png')} /> */}
+                 {/* <Text style={{marginTop:10, fontFamily:'Open-sans-Bold',fontSize:12, backgroundColor:'white'}} >
+                    {item.description} 
+                </Text> */}
+                    </TouchableOpacity>  
+                </View>
+
+                </View>
+               
+               
+                </>
+        );
+      };
+    const insets = useSafeArea();
   
 
+    return (
+        <>
+                <StatusBar style='light'/>
+                <View style={{paddingTop: insets.top,backgroundColor:'black'}}></View>
+                <TopNavigationBarPrimary navigator={navigation}/>
+                <View
+                    style={{ flex:1, paddingLeft:25,paddingRight:25,paddingTop:0,backgroundColor:'white',paddingTop:15
+                }}>
+                    
+                    <View style={{marginBottom:20, flexDirection:'row',width:wp(100)-50,backgroundColor:'white',}}>
+                        <View style={{width:wp(50)-20,justifyContent:'space-around', backgroundColor:'white', alignItems:'flex-start'}}> 
+                        <Text
+                        style={{
+                            fontSize:16,
+                            fontFamily:'Open-sans-Bold',
+                            color: '#2D3791',
+                            
+                        }}>WARDROBE
+                        </Text>  
+                        </View>
+                        <View style={{width:wp(30)-10,flexDirection:'row', alignItems:'flex-end', backgroundColor:'white'}}>
+                         
+                          <Dropdown
+                          style={styles.dropdown}
+                          placeholderStyle={styles.placeholderStyle}
+                          selectedTextStyle={styles.selectedTextStyle}
+                          inputSearchStyle={styles.inputSearchStyle}
+                          iconStyle={styles.iconStyle}
+                          data={data}
+                          search
+                          maxHeight={300}
+                          labelField="label"
+                          valueField="value"
+                          placeholder="Sort by"
+                          searchPlaceholder="Search..."
+                          value={value}
+                          onChange={item => {
+                          setValue(item.value);
+                          }}
+                      />
+                         
+                        </View>
+                        <View style={{width:wp(20)-20, alignItems:'flex-end', backgroundColor:'white'}}>
+                         
+                          
+                        <Image width={35}  source={require('../../assets/images/wardrobe/Arrowbutton.png')}/>
+                        </View>
+                    </View>
+                    <View style={{marginTop:16}}>
+                        <Text style={{fontFamily:'Open-sans-Bold', fontSize:12, fontWeight:'700'}}>RECENTLY ADDED</Text>
+                        <View style={{marginTop:5}}>
+                            <ScrollView horizontal={true}>
+                                        <View style={{
+                                          marginRight:5,
+                                          backgroundColor:'#F5F5F5',
+                                          borderRadius:20,
+                                          width:wp(30)-10,height:wp(35)-10,
+                                          justifyContent:'center',
+                                        alignItems:'center'
+                                        }}>
+                                            <Image width={wp(30)-15} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
+                                        </View>
+                                        <View style={{ marginRight:5,
+                                          backgroundColor:'#F5F5F5',
+                                          borderRadius:20,
+                                          width:wp(30)-10,height:wp(35)-10,
+                                          justifyContent:'center',
+                                        alignItems:'center'}}>
+                                            <Image width={wp(30)-15} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
+                                        </View>
+                                        <View style={{ marginRight:5,
+                                          backgroundColor:'#F5F5F5',
+                                          borderRadius:20,
+                                          width:wp(30)-10,height:wp(35)-10,
+                                          justifyContent:'center',
+                                        alignItems:'center'}}>
+                                            <Image width={wp(30)-15} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
+                                        </View>
+                                        <View style={{ marginRight:5,
+                                          backgroundColor:'#F5F5F5',
+                                          borderRadius:20,
+                                          width:wp(30)-10,height:wp(35)-10,
+                                          justifyContent:'center',
+                                        alignItems:'center'}}>
+                                        <Image width={wp(30)-15} source= {require ('../../assets/images/wardrobe/recentlyadded.png')} />
+                                        </View> 
+                            </ScrollView>
+                            </View>      
+                        </View>
+                    <Text style={{marginVertical:10, fontFamily:'Open-sans-Bold', fontSize:12, fontWeight:'700'}}>All CLOTHES</Text>
+                        
+                        <FlatList
+                    numColumns={3}
+                    data={listItems}
+                    //data
+                    defined="defined"
+                    in="in"
+                    constructor="constructor"
+                    //Item
+                    Separator="Separator"
+                    View="View"
+                    renderItem={ItemView}
+                    keyExtractor={(item, index) => index.toString()}/>
+
+
+                <View style={{position:'absolute',alignSelf:'flex-end',padding:24, bottom:10}}>
+                        <ChatBox />
+                </View>
+                </View>
+
+                <BottomNavigationBarCMP navigator={navigation}/>
+            
+
+              
+    </>
+
+    );
 }
 
 const styles = StyleSheet.create({
@@ -171,14 +212,7 @@ const styles = StyleSheet.create({
 
  },  
  item:{
-    marginRight:5,
-    marginTop:5,
-    backgroundColor:'#F5F5F5',
-    borderRadius:20,
-    width:100,
-    height:120 ,
-    justifyContent:'center',
-    alignItems:'center'
+    
 },
  dropdown: {
     width:'100%',

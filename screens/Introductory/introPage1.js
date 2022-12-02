@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React ,{useState} from 'react';
-import {  StyleSheet, Text, View,TouchableOpacity, Dimensions, } from 'react-native';
+import {  StyleSheet, Text, View,TouchableOpacity, Dimensions,ScrollView } from 'react-native';
 import Image from 'react-native-scalable-image';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -40,39 +40,27 @@ export default class IntroductoryPageOne extends React.Component {
 
                         
 
-                    <Image style={{marginTop:16}} width={wp('100%')} source={ require('../../assets/images/Introductory/banner1.png')} />
+                    <Image style={{marginTop:16,}} width={wp('100%')}  source={ require('../../assets/images/Introductory/banner1.png')} />
                     
-                    <View style={{marginTop:40, paddingLeft:25,paddingRight:25, backgroundColor:'white' }}>
-                        <View style={{flexDirection:'row',width:'100%',backgroundColor:'white' }}>
-                        <View style={{width:'85%', backgroundColor:'white', alignItems:'flex-start'}}>
-                                        <Text style={{fontSize:20,fontWeight:'400',paddingRight:50,backgroundColor:'white' }}>Take a picture of your clothes & earn cashback </Text>
-                            </View>
-                            <View style={{width:'15%', backgroundColor:'white', alignItems:'flex-end'}}>
-                                <TouchableOpacity onPress={introButtonPage} >
-                                        <Image width={75} height={75} source={ require ('../../assets/images/Introductory/Next.png')}/>
-                                </TouchableOpacity>
-                            
-                        </View>    
-                    </View>
-
-
-                    
-                            
-                    </View>
-
+                  
 
 
                     </View>
-
-                    {/* tabs */}
-                   
-
-                   
  
-                   
-    
-
-                    {/* NEXT */}
+                    <View style={{flex:1,justifyContent:'space-around', backgroundColor:'white',marginTop:0, paddingLeft:25,paddingRight:25, }}>
+                                <View style={{ justifyContent:'space-around',alignItems:'center', flexDirection:'row',width:'100%', }}>
+                                                <View style={{width:'85%',  alignItems:'flex-start'}}>
+                                                                <Text style={{ fontSize:20,fontWeight:'400',paddingRight:50, }}>Take a picture of your clothes & earn cashback </Text>
+                                                </View>
+                                                <View style={{width:'15%',  alignItems:'flex-end'}}>
+                                                        <TouchableOpacity onPress={introButtonPage} >
+                                                                <Image width={75} height={75} source={ require ('../../assets/images/Introductory/Next.png')}/>
+                                                        </TouchableOpacity>
+                                                
+                                                </View>    
+                                </View>
+                                      
+                        </View>
                    
                 </View>
                 </>
@@ -85,7 +73,7 @@ const styles = StyleSheet.create({
  appContainer:{
       flex:1,
      backgroundColor:'white',
-    justifyContent:'space-around',
+//     justifyContent:'space-around',
     // alignItems:'center'
  }, 
 });

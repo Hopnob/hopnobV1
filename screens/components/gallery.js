@@ -1,6 +1,6 @@
 import React, { Component,useState,useEffect } from 'react';
 
-import { StyleSheet, View,Button,Image, Text,TouchableOpacity,ImageBackground } from 'react-native';
+import {  View,Button,Image, Text, } from 'react-native';
 
 import * as ImagePicker from 'expo-image-picker';
 
@@ -20,13 +20,10 @@ export default function Gallerycmp({navigation}) {
     let result= await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing:true,
-      aspect:[4,3],
+      // aspect:[16,9],
       quality:1,
     });
-
-    console.log(result);
-
-
+    // console.log(result);
 
     if(!result.cancelled){
       setImage(result.uri);
@@ -42,9 +39,8 @@ export default function Gallerycmp({navigation}) {
              <Button title='press me' onPress={() => pickImage()} style={{marginTop:30}}/>
              <View style={{padding:10, flex:1, }}>
              {image && <Image source={{uri:image}} style={{flex:1/2}}/>}
-      </View>
+              </View>
       <View>
-      <Button title='Wardrobe'  onPress={() =>  navigation.navigate('WardrobePage')} style={{marginTop:30}}/>
        
       </View>
     </View> 
@@ -53,12 +49,3 @@ export default function Gallerycmp({navigation}) {
 }
 
  
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: "center",
-  
-    },
-    
-    
-  });
