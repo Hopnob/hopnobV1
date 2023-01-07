@@ -3,32 +3,22 @@ import React, { Component } from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-
-
 //bottom nav bar
 import Bottomnav from './screens/components/bottom_navbar';
 import TopNavigationBarPrimary from './screens/components/topNavigationP';
 
-
-
-
 //imporint camera component
 import Gallerycmp from './screens/components/gallery';
-
 
 //import wardrobe 
 import WardrobePage  from './screens/wardrobe/wardrobe_page';
 import ProductHopnobPage from './screens/wardrobe/wardrobe_hopnob';
 import ProductConsumerPage from './screens/wardrobe/wardrobe_consumer';
 
-
-
 //improting outfits
 import OutfitsPage from './screens/outfits/outfitsPage';
 
-
 import DefaultTestingPage from './screens/testingDefault';
-
 
 //importing Introductory pages
 import IntroductoryPageZero from './screens/Introductory/introPage0';
@@ -68,12 +58,26 @@ import MePage from './screens/meSection/mePage';
 import MeSettingsPage from './screens/meSection/meSettingsPage';
 import EditProfile from './screens/meSection/editProfile';
 import MyStats from './screens/meSection/myStats';
-import MeStyleTestOne from './screens/meSection/styleTests/meStyleTestOne';
 
-
-
-
+import BrandsPage from './screens/meSection/styleTests/brandsPage';
+import StyleTestOnePage from './screens/meSection/styleTests/StyleTestOnePage';
+import StyleTestTwoPage from './screens/meSection/styleTests/meStyleTestTwo';
+import LikesPage from './screens/meSection/styleTests/likesPage';
+import DislikesOnePage from './screens/meSection/styleTests/DislikesOnePage';
+import DislikesTwoPage from './screens/meSection/styleTests/DislikesTwoPage';
+import DislikesThreePage from './screens/meSection/styleTests/DislikesThreePage';
+import endStyleTestPage from './screens/meSection/styleTests/endStyleTestPage';
 import TestingPageOtp from './screens/testing/testing';
+
+// faqs
+import faqsPage from './screens/meSection/faqs/faqsPage';
+// body Specs
+import htandwtPage from './screens/meSection/bodySpecs/htandwtPage';
+import typePage from './screens/meSection/bodySpecs/typePage';
+import sizePage from './screens/meSection/bodySpecs/sizePage';
+// Calander
+import calanderPage from './screens/calander/calander';
+import badgesPage from './screens/badges/badgesPages';
 const RootStack = createStackNavigator ({
     DefaultTestingPage: {
         screen: DefaultTestingPage, 
@@ -219,13 +223,86 @@ const RootStack = createStackNavigator ({
             header:()=>false,
         }
     },
-    MeStyleTestOne:{
-        screen:MeStyleTestOne,
+    BrandsPage:{
+        screen:BrandsPage,
         navigationOptions:{
             header:()=>false,
         }
     },
-
+    StyleTestOnePage:{
+        screen:StyleTestOnePage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    StyleTestTwoPage:{
+        screen:StyleTestTwoPage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    LikesPage:{
+        screen:LikesPage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },DislikesOnePage:{
+        screen:DislikesOnePage,
+        navigationOptions:{
+            header:()=> false,
+        }
+    },DislikesTwoPage:{
+        screen:DislikesTwoPage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },DislikesThreePage:{
+        screen:DislikesThreePage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    endStyleTestPage:{
+        screen:endStyleTestPage,
+        navigationOptions:{
+            header:()=>false
+        }
+    }
+    ,
+    faqsPage:{
+        screen:faqsPage,
+        navigationOptions:{
+            header:()=>false
+        }
+    },
+    htandwtPage:{
+        screen:htandwtPage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },typePage:{
+        screen:typePage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },sizePage:{
+        screen:sizePage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    calanderPage:{
+        screen:calanderPage,
+        navigationOptions:{
+            header:()=>false,
+        }
+    },
+    badgesPage:{
+        screen:badgesPage,
+        navigationOptions:{
+            header:()=>false
+        }
+    },
     Bottomnav: {
             screen: Bottomnav, 
             navigationOptions: {
@@ -276,14 +353,9 @@ const RootStack = createStackNavigator ({
         }
     }
 
-}, {
-    // TopNavigationBarPrimary
-
-    // initialRouteName:'TestingPageOtp',
-    initialRouteName:'MeStyleTestOne',
-    // initialRouteName:'DefaultTestingPage',
-    // initialRouteName:'StyleTestOne',
-
+}, 
+{
+    initialRouteName:'badgesPage',
 }
 )
 

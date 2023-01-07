@@ -27,12 +27,7 @@ export default function MePage({navigation}){
         <ImageBackground style={{justifyContent:'space-around', alignItems:'center',resizeMode: 'stretch',}} source={require('../../assets/images/mePage/backgroundImg.jpg')}>
             <View style={{marginTop:22, marginBottom:50,flexDirection:'row', width:'100%',}}>  
                     <View style={{alignItems:'center',width:wp(100),justifyContent:'space-around'  }}>
-                    {/* Settings Button */}
-                    {/* <View style={{alignItems:'flex-end',position:'absolute', width:wp(100),paddingRight:24,paddingTop:10, }}>
-                    <TouchableOpacity onPress={()=> navigation.navigate('MeSettingsPage')  } >
-                        <Image width={20} source={require('../../assets/images/mePage/settings.png')}/>
-                    </TouchableOpacity>
-                    </View>     */}
+                  
 
                     <ImageBackground style={{width:84,height:84}} source={require('../../assets/images/mePage/profilePic.png')}>
                         <Image width={20} style={{width:19,height:19,alignSelf:'flex-end',position:'absolute',bottom:0}} source={require('../../assets/images/mePage/pencil.png')}/>
@@ -81,7 +76,7 @@ export default function MePage({navigation}){
                 <TouchableOpacity onPress={()=> navigation.navigate('MyStats')  }>
 
                     <View style={{marginLeft:12, borderColor:'#2D3791',borderWidth:1,borderRadius:20,width:wp(42),height:50,alignItems:'center',justifyContent:'space-around'}}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=> navigation.navigate('calanderPage')}>
                             <Text style={{fontSize:RFValue(16), fontWeight:'700',fontFamily:'Open-sans', color:'#2D3791'}}>My calendar</Text>
                         </TouchableOpacity>
                     </View>
@@ -101,7 +96,7 @@ export default function MePage({navigation}){
                 <Image width={25} source={ require('../../assets/images/mePage/6.png')}/>
                 </View>
                 <View style={{width:'85%'}}>
-                <TouchableOpacity onPress={()=> navigation.navigate('MeStyleTestOne') }>
+                <TouchableOpacity onPress={()=> navigation.navigate('BrandsPage') }>
                 <Text style={{fontSize:RFValue(15),fontWeight:'600',fontFamily:'Open-sans', backgroundColor:'white'}}>Style Test</Text>
                 </TouchableOpacity>
                 </View>
@@ -137,7 +132,7 @@ export default function MePage({navigation}){
                 <Image width={25} source={ require('../../assets/images/mePage/5.png')}/>
                 </View>
                 <View style={{width:'85%'}}>
-                <TouchableOpacity onPress={()=> navigation.navigate('MeStyleTestOne') }>
+                <TouchableOpacity onPress={()=> navigation.navigate('htandwtPage') }>
                 <Text style={{fontSize:RFValue(15),fontWeight:'600',fontFamily:'Open-sans', backgroundColor:'white'}}>Body Specs</Text>
                 </TouchableOpacity>
                 </View>
@@ -191,7 +186,7 @@ export default function MePage({navigation}){
                 <Image width={25} source={ require('../../assets/images/mePage/settings/1.png')}/>
                 </View>
                 <View style={{width:'85%'}}>
-                <TouchableOpacity onPress={()=> navigation.navigate('MeStyleTestOne') }>
+                <TouchableOpacity onPress={()=> navigation.navigate('EditProfile') }>
                 <Text style={{fontSize:RFValue(15),fontWeight:'600',fontFamily:'Open-sans', backgroundColor:'white'}}>Edit Profile</Text>
                 </TouchableOpacity>
                 </View>
@@ -228,7 +223,7 @@ export default function MePage({navigation}){
                 <Image width={25} source={ require('../../assets/images/mePage/settings/4.png')}/>
                 </View>
                 <View style={{width:'85%'}}>
-                <TouchableOpacity onPress={()=> navigation.navigate('MeStyleTestOne') }>
+                <TouchableOpacity onPress={()=> navigation.navigate('faqsPage') }>
                 <Text style={{fontSize:RFValue(15),fontWeight:'600',fontFamily:'Open-sans', backgroundColor:'white'}}>FAQ</Text>
                 </TouchableOpacity>
                 </View>
@@ -238,7 +233,7 @@ export default function MePage({navigation}){
                <Image width={10} source={ require('../../assets/images/mePage/arrow.png')}/>
                </View>
             </View>
-                        {/* Logout */}
+            {/* Logout */}
                         <View style={{flex:1, flexDirection:'row',justifyContent:'space-around',alignItems:'center',width:'100%'}}>
 
                         <View style={{flexDirection:'row',alignItems:'flex-start', width:'75%'}}>
@@ -278,56 +273,4 @@ const styles = StyleSheet.create({
     flex:1, paddingLeft:25,paddingRight:25,paddingTop:0,backgroundColor:'white',
  },  
 });
-
-// import React  from 'react';
-// import { StyleSheet,ImageBackground,Image, Text, View,Button,TextInput,TouchableOpacity, } from 'react-native';
-// import { useSafeArea } from 'react-native-safe-area-context';
-// import BottomNavigationBarCMP from '../components/bottom_navbar';
-// export default function MePage( {navigation} ) {
-//     const insets = useSafeArea();
-//       return (
-//         <>
-//         <View style={{paddingTop: insets.top}}>
-
-//         </View>
-            
-        
  
-//   <View style={styles.appContainer}>
-        
-
-
-//         {/* list */}
-//         <View style={{ flexDirection:'column',justifyContent:'space-around',paddingTop:25,}}>
-
-            
-//         </View>
-         
-//      </View>
-
-//      <View style={{position:'absolute',backgroundColor:'white', bottom:0,width:'100%'}}>
-//         <BottomNavigationBarCMP navigator={navigation}/>
-//         </View>
-
-//         </>
-       
-
-
-     
-//    );
-  
-
-// }
-
-// const styles = StyleSheet.create({
-//  appContainer:{
-//     flex: 1,
-//     backgroundColor: "white",
-//     paddingLeft:24,
-//     paddingRight:24,
-//     paddingBottom:85,
-//     marginBottom:75,
-//  }, 
-
-// });
-

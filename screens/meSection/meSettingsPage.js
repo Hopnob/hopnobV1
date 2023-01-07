@@ -1,4 +1,3 @@
-
 import React ,{useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,7 +15,7 @@ export default function MeSettingsPage({ navigation }) {
                
                 <View style={{flexDirection:'row',alignItems:'flex-start', width:'75%'}}>
                 <Image style={{width:15,height:17}} source={ require('../../assets/images/mePage/settings/1.png')}/>
-                <Text style={{fontSize:16,fontWeight:'600'}}>  Edit Profile</Text>
+                <Text style={{fontSize:16,fontWeight:'600'}}>Edit Profile</Text>
                 </View>
 
                <View style={{flexDirection:'row',alignItems:'flex-end'}}>
@@ -30,7 +29,7 @@ export default function MeSettingsPage({ navigation }) {
             <View style={{marginBottom:25, flexDirection:'row',justifyContent:'space-around',alignItems:'center',width:'100%'}}>
                 <View style={{flexDirection:'row',alignItems:'flex-start', width:'75%'}}>
                 <Image style={{width:20,height:20}} source={ require('../../assets/images/mePage/settings/2.png')}/>
-                <Text style={{fontSize:16,fontWeight:'600'}}>  Chat with us</Text>
+                <Text style={{fontSize:16,fontWeight:'600'}}>Chat with us</Text>
                 </View>
                <View style={{flexDirection:'row',alignItems:'flex-end'}}>
                <Image style={{width:9,height:16}} source={ require('../../assets/images/mePage/arrow.png')}/>

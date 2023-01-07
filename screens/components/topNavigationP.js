@@ -5,8 +5,6 @@ import AppLoading from 'expo-app-loading';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Shadow} from 'react-native-shadow-2';
 import Image from 'react-native-scalable-image';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { useRoute } from '@react-navigation/native';
 import { useEffect } from 'react';
 
 export default function TopNavigationBarPrimary({navigator},{backbutton} ){
@@ -22,7 +20,7 @@ export default function TopNavigationBarPrimary({navigator},{backbutton} ){
    
   useEffect(() => {
     // Update the document title using the browser API
-    if(currPage=='AddPageTwo' || currPage=='AddHopnobPage' || currPage== 'ProductHopnobPage' || currPage=='ProductConsumerPage'){
+    if(currPage=='AddPageTwo' ||currPage=='MyStats' || currPage=='AddHopnobPage' || currPage== 'ProductHopnobPage' || currPage=='ProductConsumerPage'){
       setShouldShow(true);
     }
  });
