@@ -69,8 +69,10 @@ import DislikesThreePage from './screens/meSection/styleTests/DislikesThreePage'
 import endStyleTestPage from './screens/meSection/styleTests/endStyleTestPage';
 import TestingPageOtp from './screens/testing/testing';
 
+
 // faqs
 import faqsPage from './screens/meSection/faqs/faqsPage';
+
 // body Specs
 import htandwtPage from './screens/meSection/bodySpecs/htandwtPage';
 import typePage from './screens/meSection/bodySpecs/typePage';
@@ -78,6 +80,7 @@ import sizePage from './screens/meSection/bodySpecs/sizePage';
 // Calander
 import calanderPage from './screens/calander/calander';
 import badgesPage from './screens/badges/badgesPages';
+
 const RootStack = createStackNavigator ({
     DefaultTestingPage: {
         screen: DefaultTestingPage, 
@@ -355,11 +358,9 @@ const RootStack = createStackNavigator ({
 
 }, 
 {
-    initialRouteName:'badgesPage',
+    initialRouteName:'WardrobePage',
 }
 )
-
-
 const  AppContainer  = createAppContainer(RootStack);
 export default class  App extends React.Component{
     render(){
